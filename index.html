@@ -2,101 +2,106 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <style>
-        * {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 14px;
+        .btn:hover {
+            background: #EFCB68;
         }
 
-        .content {
-            max-width: fit-content;
+        a:hover {
+            color: #EFCB68;
         }
 
-        .container img {
-            max-width: 420px;
-            max-height: 420px;
-        }
-
-        .footer-text {
-            width: 500px;
+        ul li::marker {
+            content: "✔";
+            /* Your symbol here */
         }
     </style>
-    <!-- best font -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <title>Ramandhika IP - Github</title>
-    <!-- make website same like mobile view -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-    <!-- make jumbotron with img on canter -->
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container text-center content">
-            <img src="img/me.jpg" class="rounded-circle" alt="...">
-            <h3 class="font-weight-bold text-left">Hello, world! <br> I'am Ramandhika Ilham Pratama</h3>
-            <p class="lead">I'm a college student from STMIK Sinar Nusantara,I have experience in Web Developer</p>
-            <a href="https://www.instagram.com/ramandhika.ip/" class="btn btn-primary btn-lg font-weight-bold"
-                style="background: #242F40;">LET'S DISCUSS!</a>
-        </div>
-    </div>
-    <!-- end jumbotron -->
+    <section class="min-vh-100" style="background-color: #242F40;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-md-12 col-xl-4">
+                    <div class="card shadow-lg" style="border-radius: 15px;">
+                        <div class="card-body">
+                            <div class="mt-3 mb-4 text-center">
+                                <img src="img/me.jpg" class="rounded-circle img-fluid" style="width: 200px;" />
+                            </div>
+                            <h4 class="mb-2">Ramandhika Ilham Pratama</h4>
+                            <p class="mb-2">I'm a college student from STMIK Sinar Nusantara,I have experience in Web
+                                Developer</p>
+                            <hr>
+                            <!-- skill -->
+                            <div>
+                                <h5 class="mb-2">Front-End</h5>
+                                <ul>
+                                    <li>CSS Vanilla</li>
+                                    <li>Bootstrap</li>
+                                    <li>TailWind</li>
+                                </ul>
+                            </div>
 
-    <!-- footer stay on bottom -->
-    <footer class="footer bg-dark text-white fixed-bottom pt-2">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <p class="lead text-center">
-                        <a href="" class="footer-text text-white font-weight-bold" style="font-size: 20px;">Ramandhika
-                            IP</a>
-                    </p>
-                </div>
-                <div class="col-md-6 text-center">
-                    <p>
-                        <a href="https://github.com/ramandhika/" class="text-white">
-                            <i class="fa-brands fa-github fa-2x"></i>
-                        </a>
-                        <a href="https://www.instagram.com/ramandhika.ip/" class="text-white">
-                            <i class="fa-brands fa-instagram fa-2x"></i>
-                        </a>
-                        <a href="https://www.youtube.com/channel/UC4ySbX_b78g4B2z0mjARixA" class="text-white">
-                            <i class="fa-brands fa-youtube fa-2x"></i>
-                        </a>
-                        <a href="https://www.paypal.com/paypalme/ramandhika29" class="text-white">
-                            <i class="fa-brands fa-paypal fa-2x"></i>
-                        </a>
-                    </p>
+                            <div>
+                                <h5 class="mb-2">Back-End</h5>
+                                <ul>
+                                    <li>PHP : Laravel</li>
+                                    <li>JavaScript</li>
+                                    <li>MySql</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h5 class="mb-2">Other experiences:</h5>
+                                <ul>
+                                    <li>Adobe XD</li>
+                                    <li>Figma</li>
+                                </ul>
+                            </div>
+                            <div class="text-center">
+                                <a href="https://www.instagram.com/ramandhika.ip/"
+                                    class="btn btn-primary btn-rounded btn-lg" style="background-color: #242F40;">
+                                    Let's Discuss!
+                                </a>
+                                <hr>
+                                <p class="text-muted mb-4">@ramandhika.ip <span class="mx-2">|</span> <a
+                                        href="https://ramandhika.github.io/">ramandhika.github.io</a>
+                                </p>
+                                <div class="mb-4 pb-2">
+                                    <a href="https://github.com/ramandhika/"
+                                        class="btn btn-outline-primary btn-floating">
+                                        <i class="fa-brands fa-github fa-lg"></i>
+                                    </a>
+                                    <a href="https://www.instagram.com/ramandhika.ip/"
+                                        class="btn btn-outline-primary btn-floating">
+                                        <i class="fa-brands fa-instagram fa-lg"></i>
+                                    </a>
+                                    <a href="https://www.youtube.com/channel/UC4ySbX_b78g4B2z0mjARixA"
+                                        class="btn btn-outline-primary btn-floating">
+                                        <i class="fa-brands fa-youtube fa-lg"></i>
+                                    </a>
+                                    <a href="https://www.paypal.com/paypalme/ramandhika29"
+                                        class="btn btn-outline-primary btn-floating">
+                                        <i class="fa-brands fa-paypal fa-lg"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </footer>
-    <!-- end footer -->
+    </section>
 
-
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://kit.fontawesome.com/984a8c9bbd.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
-    </script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-    -->
 </body>
 
 </html>
+<script src="https://kit.fontawesome.com/984a8c9bbd.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+</script>
