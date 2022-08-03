@@ -1,0 +1,12 @@
+        .btn:hover {
+            background: #EFCB68;
+        }
+
+        a:hover {
+            color: #EFCB68;
+        }
+
+        ul li::marker {
+            content: "✔";
+            /* Your symbol here */
+        }
