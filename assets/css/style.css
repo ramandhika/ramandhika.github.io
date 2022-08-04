@@ -1,12 +1,17 @@
-        .btn:hover {
-            background: #EFCB68;
-        }
+.background {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(344deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 50%, rgba(0, 212, 255, 1) 100%);
+}
 
-        a:hover {
-            color: #EFCB68;
-        }
+.btn:hover {
+    background: #EFCB68;
+}
 
-        ul li::marker {
-            content: "✔";
-            /* Your symbol here */
-        }
+a:hover {
+    color: #EFCB68;
+}
+
+ul li::marker {
+    content: "✔";
+    /* Your symbol here */
+}
