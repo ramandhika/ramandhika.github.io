@@ -3,15 +3,35 @@
     background: linear-gradient(344deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 50%, rgba(0, 212, 255, 1) 100%);
 }
 
+.btn-primary {
+    background-color: #242F40;
+}
+
 .btn:hover {
     background: #EFCB68;
+    color: black;
 }
 
 a:hover {
     color: #EFCB68;
 }
 
-ul li::marker {
+.skill ul li::marker {
     content: "✔";
     /* Your symbol here */
+}
+
+a {
+    color: black;
+    text-decoration: none !important;
+}
+a:hover {
+    color:black; 
+    text-decoration:none !important; 
+    cursor:pointer;  
+}
+
+.about_me {
+    font-size: 30px;
+    font-weight: bold;
 }
