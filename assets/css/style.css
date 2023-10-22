@@ -88,3 +88,13 @@ a:hover {
     font-size: 30px;
     font-weight: bold;
 }
+
+.item-show a {
+    margin-top: 20px;
+    width: 75%;
+    margin-left: 12.5%;
+}
+
+.fs-6 {
+    font-size: 1.1rem !important;
+}
