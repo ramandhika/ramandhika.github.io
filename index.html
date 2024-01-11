@@ -66,8 +66,30 @@
                     }
                 }
 
+                /* Default styles for mobile devices */
                 .w-30 {
-                    width: 30%;
+                    width: 70%;
+                }
+
+                /* Styles for tablets (portrait) */
+                @media (min-width: 600px) {
+                    .w-30 {
+                        width: 70%;
+                    }
+                }
+
+                /* Styles for tablets (landscape) and small desktop/laptop screens */
+                @media (min-width: 900px) {
+                    .w-30 {
+                        width: 50%;
+                    }
+                }
+
+                /* Styles for large desktop screens */
+                @media (min-width: 1200px) {
+                    .w-30 {
+                        width: 30%;
+                    }
                 }
 
                 .biru {
