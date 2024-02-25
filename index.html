@@ -1,174 +1,536 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" x-data="{ openMenu: false, darkMode: false, scrollTo: scrollToFunction }">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Ramandhika IP - Github Profile</title>
-        <link rel="stylesheet" href="style.css" />
-        <script src="https://cdn.tailwindcss.com"></script>
-        <style type="text/tailwindcss">
-            @layer utilities {
-                .gradient-bg {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    background-size: 300% 300%;
-                    background-image: linear-gradient(75deg, #0d1b2a 0%, #1b263b 25%, #415a77 51%, #778da9 100%);
-                    -webkit-animation: AnimateBG 17s ease infinite;
-                    animation: AnimateBG 17s ease infinite;
-                }
+        <title>Portfolio - Ramandhika Ilham Pratama</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+        />
 
-                @-webkit-keyframes AnimateBG {
-                    0% {
-                        background-position: 0% 50%;
-                    }
-                    50% {
-                        background-position: 100% 50%;
-                    }
-                    100% {
-                        background-position: 0% 50%;
-                    }
-                }
-
-                @keyframes AnimateBG {
-                    0% {
-                        background-position: 0% 50%;
-                    }
-                    50% {
-                        background-position: 100% 50%;
-                    }
-                    100% {
-                        background-position: 0% 50%;
-                    }
-                }
-
-                @-webkit-keyframes AnimateBG {
-                    0% {
-                        background-position: 0% 50%;
-                    }
-                    50% {
-                        background-position: 100% 50%;
-                    }
-                    100% {
-                        background-position: 0% 50%;
-                    }
-                }
-
-                @keyframes AnimateBG {
-                    0% {
-                        background-position: 0% 50%;
-                    }
-                    50% {
-                        background-position: 100% 50%;
-                    }
-                    100% {
-                        background-position: 0% 50%;
-                    }
-                }
-
-                /* Default styles for mobile devices */
-                .w-30 {
-                    width: 85%;
-                }
-
-                /* Styles for tablets (portrait) */
-                @media (min-width: 600px) {
-                    .w-30 {
-                        width: 70%;
-                    }
-                }
-
-                /* Styles for tablets (landscape) and small desktop/laptop screens */
-                @media (min-width: 900px) {
-                    .w-30 {
-                        width: 50%;
-                    }
-                }
-
-                /* Styles for large desktop screens */
-                @media (min-width: 1200px) {
-                    .w-30 {
-                        width: 30%;
-                    }
-                }
-
-                .biru {
-                    color: #415a77;
-                    border-color: #415a77;
-                }
-
-                .biru:hover {
-                    color: #fff;
-                    background-color: #415a77;
-                }
-            }
+        <style>
+            /* * {
+                border: 1px solid red;
+            } */
         </style>
     </head>
-    <body>
-        <div class="flex justify-center items-center h-screen lg:h-full gradient-bg">
-            <div class="bg-white flex flex-col justify-center w-30 h-fit rounded-xl mx-auto px-7 py-5 my-10">
-                <img
-                    src="https://avatars.githubusercontent.com/u/64927511?v=4"
-                    alt="Profile picture"
-                    class="rounded-full w-2/4 mx-auto mb-5 mt-5 shadow-2xl"
-                />
-                <h3 class="text-xl">
-                    <b>Hallo. <br />I'am Ramandhika Ilham Pratama 👋</b>
-                </h3>
-                <span class="text-sm">
-                    I am a fifth-semester Information Systems student with a passion for website development. I have
-                    experience in .NET, PHP, JavaScript, Laravel, and RESTful API. Proficient in MySQL and SQL Server.
-                    Familiar with Google Cloud Platform. Eager to learn and improve web development skills.
-                </span>
-                <div class="mx-auto mt-3 mb-3 flex flex-col text-center">
-                    <a
-                        href="https://drive.google.com/file/d/1XbDh4Cw9PaDmTsifvSnEUh8TcwRDg-ei/view?usp=sharing"
-                        class="border biru shadow-lg border-1 w-full px-10 py-1 rounded-md my-2"
-                        target="_blank"
+    <body x-bind:class="darkMode ? 'dark dark:bg-slate-500 dark:text-white' : 'bg-gray-200'">
+        <nav
+            class="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm w-11/12 mt-3 mx-auto rounded-20 shadow-lg fixed top-0 right-0 left-0 sm:rounded-full"
+        >
+            <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+                <div class="relative flex h-16 items-center justify-between">
+                    <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                        <!-- Mobile menu button-->
+                        <button
+                            @click="openMenu = !openMenu"
+                            type="button"
+                            class="relative inline-flex items-center justify-center rounded-20 p-2 dark:text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                            aria-controls="mobile-menu"
+                            aria-expanded="false"
+                        >
+                            <svg
+                                class="block h-6 w-6"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                                />
+                            </svg>
+                            <svg
+                                class="hidden h-6 w-6"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                        <div class="flex flex-shrink-0 items-center">
+                            <img
+                                class="h-8 w-auto"
+                                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                                alt="Your Company"
+                            />
+                            <span class="ml-2 dark:text-white text-xl font-medium">RAMANDHIKA</span>
+                        </div>
+                        <div class="hidden sm:ml-auto sm:block">
+                            <div class="flex space-x-4">
+                                <a
+                                    href="#"
+                                    @click.prevent="scrollTo('#home')"
+                                    class="bg-gray-600 text-white dark:bg-gray-900 rounded-md px-3 py-2 text-sm font-medium"
+                                    aria-current="page"
+                                    >Home</a
+                                >
+                                <a
+                                    href="#"
+                                    @click.prevent="scrollTo('#aboutMe')"
+                                    class="dark:text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                                    >About Me</a
+                                >
+                                <a
+                                    href="#"
+                                    @click.prevent="scrollTo('#portfolio')"
+                                    class="dark:text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                                    >Portfolio</a
+                                >
+                                <a
+                                    href="#"
+                                    class="dark:text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                                    >Certificate</a
+                                >
+                                <a
+                                    href="#"
+                                    class="dark:text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                                    >Contact</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
                     >
-                        <i class="fa-solid fa-file-alt"></i> Let's look at my CV!
-                    </a>
-                    <a
-                        href="https://github.com/ramandhika"
-                        class="border biru shadow-lg border-1 w-full px-10 py-1 rounded-md my-2"
-                        target="_blank"
-                    >
-                        <i class="fa-brands fa-github"></i> Let's look at my work!
-                    </a>
-                    <a
-                        href="https://www.linkedin.com/in/ramandhika-ip"
-                        class="border biru shadow-lg border-1 w-full px-10 py-1 rounded-md my-2"
-                        target="_blank"
-                    >
-                        <i class="fa-brands fa-linkedin"></i> Let's Connect!
-                    </a>
-                    <a
-                        href="https://www.instagram.com/ramandhika.ip"
-                        class="border biru shadow-lg border-1 w-full px-10 py-1 rounded-md my-2"
-                        target="_blank"
-                    >
-                        <i class="fa-brands fa-instagram"></i> Let's Socialize!
-                    </a>
-                    <a
-                        href="mailto:ramandhika.ilham@gmail.com"
-                        class="border biru shadow-lg border-1 w-full px-10 py-1 rounded-md my-2"
-                        target="_blank"
-                    >
-                        <i class="fa-regular fa-envelope"></i> Let's Discuss!
-                    </a>
+                        <button
+                            @click="darkMode = !darkMode"
+                            type="button"
+                            class="relative rounded-full p-1 text-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                class="bi bi-moon"
+                                viewBox="0 0 16 16"
+                            >
+                                <path
+                                    d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"
+                                />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
-                <hr />
-                <p class="text-gray-500 my-5 text-center text-sm">
-                    <i class="fa-brands fa-instagram"></i> ramandhika.ip <span class="mx-2">|</span>
-                    <a href="mailto:ramandhika.ilham@gmail.com" target="_blank"
-                        ><i class="fa-regular fa-envelope"></i> ramandhika.ilham@gmail.com</a
+            </div>
+
+            <!-- Mobile menu, show/hide based on menu state. -->
+            <div
+                class="sm:hidden"
+                id="mobile-menu"
+                x-show="openMenu"
+                x-transition:enter.duration.500ms
+                x-transition:leave.duration.300ms
+            >
+                <div class="space-y-1 px-2 pb-3 pt-2">
+                    <a
+                        href="#"
+                        @click.prevent="scrollTo('#home')"
+                        @click="openMenu = false"
+                        class="bg-gray-700 text-white dark:bg-gray-900 block rounded-md px-3 py-2 text-base font-medium"
+                        aria-current="page"
+                        >Home</a
                     >
+                    <a
+                        href="#"
+                        @click.prevent="scrollTo('#aboutMe')"
+                        @click="openMenu = false"
+                        class="dark:text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                        aria-current="page"
+                        >About Me</a
+                    >
+                    <a
+                        href="#"
+                        @click.prevent="scrollTo('#portfolio')"
+                        @click="openMenu = false"
+                        class="dark:text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                        >Portfolio</a
+                    >
+                    <a
+                        href="#"
+                        @click.prevent="scrollTo('#portfolio')"
+                        @click="openMenu = false"
+                        class="dark:text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                        >Certificate</a
+                    >
+                    <a
+                        href="#"
+                        @click.prevent="scrollTo('#portfolio')"
+                        @click="openMenu = false"
+                        class="dark:text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                        >Contact</a
+                    >
+                </div>
+            </div>
+        </nav>
+        <div class="min-h-screen px-7 sm:mx-0 p-0 sm:p-24 pt-32" id="home">
+            <div class="flex flex-col-reverse sm:flex-row">
+                <div class="w-full sm:w-7/12 my-auto me-5">
+                    <div class="flex flex-col gap-2">
+                        <h1 class="text-xl font-semibold dark:text-white">Hello, I'm Ramandhika Ilham Pratama</h1>
+                        <span class="text-4xl font-bold">WEB DEVELOPER</span>
+                        <p class="text-base dark:text-gray-300">
+                            I'm a software engineer based in Indonesia. I have a passion for software engineering and
+                            creating digital products. I'm currently working at a startup company in Indonesia.
+                        </p>
+                    </div>
+                    <div class="flex gap-3 mt-2">
+                        <a
+                            href="#"
+                            class="border border-white cursor-pointer bg-white text-black font-medium w-fit px-5 py-2 justify-center rounded-sm flex items-center gap-3 hover:bg-transparent hover:text-white duration-300"
+                        >
+                            Hire Me
+                        </a>
+                        <a
+                            href="#"
+                            class="border border-white cursor-pointer font-medium w-fit px-5 py-2 rounded-sm flex items-center gap- gap-33 hover:bg-white duration-300 hover:text-[#060405]"
+                        >
+                            Text Me
+                        </a>
+                    </div>
+                </div>
+                <div class="w-8/12 sm:w-5/12 sm:mt-0 mx-auto my-8 sm:my-0 sm:block">
+                    <img class="w-10/12 mx-auto object-cover" src="img/profile.png" alt="Ramandhika Ilham Pratama" />
+                </div>
+            </div>
+        </div>
+        <div class="min-h-screen bg-white px-7 sm:mx-0 p-0 sm:p-24 py-24" id="aboutMe">
+            <div class="text-center">
+                <h1 class="text-3xl font-bold dark:text-white">About Me</h1>
+                <p class="text-base dark:text-gray-300">
+                    I'm a software engineer based in Indonesia. I have a passion for software engineering and creating
+                    digital products. I'm currently working at a startup company in Indonesia.
                 </p>
-                <a href="https://github.com/ramandhika" class="text-center text-sm" target="_blank"
-                    >Made with 💖 by Ramandhika Ilham Pratama</a
-                >
+                <div class="flex flex-col sm:flex-row mt-10 text-center sm:text-left">
+                    <div class="w-full sm:w-2/3 mx-auto my-auto sm:me-6">
+                        <h3 class="text-2xl font-semibold">Hello 👋, Iam Ramandhika Ilham Pratama</h3>
+                        <p class="text-gray-500 mt-2">
+                            I am a full stack web developer and a sixth semester student in the Information Systems
+                            study program. I have extensive experience in creating and managing web projects using a
+                            wide range of technologies and frameworks, such as PHP, JavaScript, Laravel, CodeIgniter 4,
+                            Express.JS, Node.JS, Tailwind CSS, Boostrap, Wordpress, RESTful API, and more. I also have
+                            strong skills in database management, with practical experience in MySQL, PostgreSQL, and
+                            SQL Server. I am proficient in Google Cloud Platform and Firebase, and have successfully
+                            deployed applications using the platform. I have a passion for learning and always seek to
+                            deepen my knowledge in new technologies and frameworks to improve my web development skills.
+                        </p>
+                    </div>
+                    <div class="w-3/4 sm:w-1/2 mx-auto my-auto mt-5 sm:mt-0">
+                        <div class="flex flex-col">
+                            <h3 class="text-2xl font-bold">📊 Skillset Proficiency</h3>
+                            <!-- Programming Language -->
+                            <h2 class="text-xl font-semibold mt-3">Programming Language</h2>
+                            <span class="my-2"></span>
+                            <div>
+                                <div class="w-3/12 sm:w-1/12 flex sm:gap-1 -mx-20 sm:mx-0">
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg"
+                                    />
+
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg"
+                                    />
+
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg"
+                                    />
+
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+                                    />
+
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg"
+                                    />
+
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-plain-wordmark.svg"
+                                    />
+                                </div>
+                            </div>
+                            <p class="text-gray-500">HTML, CSS, PHP, JavaScript, Java, .NET</p>
+                            <!-- Framework -->
+                            <h2 class="text-xl font-semibold mt-3">Framework</h2>
+                            <span class="my-2"></span>
+                            <div>
+                                <div class="w-3/12 sm:w-1/12 flex sm:gap-6 -mx-6 sm:mx-0">
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg"
+                                    />
+
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+                                    />
+
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg"
+                                    />
+
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/alpinejs/alpinejs-original.svg"
+                                    />
+
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wordpress/wordpress-plain.svg"
+                                    />
+                                </div>
+                            </div>
+                            <p class="text-gray-500">Laravel, Tailwind, Bootstrap, Alpine.JS, Wordpress</p>
+                            <!-- Database & BaaS ( Backend as a Services ) -->
+                            <h2 class="text-xl font-semibold mt-3">Database & BaaS ( Backend as a Services )</h2>
+                            <span class="my-2"></span>
+                            <div class="w-3/12 sm:w-1/12 flex sm:gap-8 -mx-6 sm:mx-0">
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg"
+                                />
+
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original-wordmark.svg"
+                                />
+
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg"
+                                />
+
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg"
+                                />
+
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original-wordmark.svg"
+                                />
+                            </div>
+                            <p class="text-gray-500">MySQL, SQLServer, PostgreSQL, Firebase, Git</p>
+                            <!-- DevOPS -->
+                            <h2 class="text-xl font-semibold mt-3">DevOps</h2>
+                            <span class="my-2"></span>
+                            <div class="w-3/12 sm:w-1/12 flex sm:gap-8 mx-5 sm:mx-0">
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original-wordmark.svg"
+                                />
+
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg"
+                                />
+
+                                <img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg"
+                                />
+                            </div>
+                            <p class="text-gray-500">Docker, Google Cloud, Linux</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-h-screen px-7 sm:mx-0 p-0 sm:p-24 py-24" id="portfolio">
+            <div class="text-center">
+                <h1 class="text-3xl font-bold dark:text-white">Portfolio</h1>
+                <p class="text-base dark:text-gray-300">
+                    I have worked on various projects in different fields and domains. Some of the projects that I have
+                    completed are:
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left mt-10">
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                        <div x-data="{ zoomed: false }">
+                            <img
+                                class="w-full h-52 object-cover cursor-pointer"
+                                src="img/project/petme.png"
+                                alt="Card Image"
+                                @click="zoomed = !zoomed"
+                            />
+
+                            <div
+                                x-show="zoomed"
+                                class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75"
+                            >
+                                <img
+                                    class="max-w-full max-h-full"
+                                    :src="'img/project/petme.png'"
+                                    alt="Zoomed Image"
+                                    @click.away="zoomed = false"
+                                />
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold">PetMe Website Admin</h3>
+                            <hr />
+                            <p class="text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <div class="p-4 bg-gray-100">
+                            <button class="bg-blue-500 text-white px-4 py-2">Button</button>
+                        </div>
+                    </div>
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                        <div x-data="{ zoomed: false }">
+                            <img
+                                class="w-full h-52 object-cover cursor-pointer"
+                                src="img/project/petme.png"
+                                alt="Card Image"
+                                @click="zoomed = !zoomed"
+                            />
+
+                            <div
+                                x-show="zoomed"
+                                class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75"
+                            >
+                                <img
+                                    class="max-w-full max-h-full"
+                                    :src="'img/project/petme.png'"
+                                    alt="Zoomed Image"
+                                    @click.away="zoomed = false"
+                                />
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold">Card 2</h3>
+                            <hr />
+                            <p class="text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <div class="p-4 bg-gray-100">
+                            <button class="bg-blue-500 text-white px-4 py-2">Button</button>
+                        </div>
+                    </div>
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                        <div x-data="{ zoomed: false }">
+                            <img
+                                class="w-full h-52 object-cover cursor-pointer"
+                                src="img/project/petme.png"
+                                alt="Card Image"
+                                @click="zoomed = !zoomed"
+                            />
+
+                            <div
+                                x-show="zoomed"
+                                class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75"
+                            >
+                                <img
+                                    class="max-w-full max-h-full"
+                                    :src="'img/project/petme.png'"
+                                    alt="Zoomed Image"
+                                    @click.away="zoomed = false"
+                                />
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold">Card 3</h3>
+                            <hr />
+                            <p class="text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <div class="p-4 bg-gray-100">
+                            <button class="bg-blue-500 text-white px-4 py-2">Button</button>
+                        </div>
+                    </div>
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                        <div x-data="{ zoomed: false }">
+                            <img
+                                class="w-full h-52 object-cover cursor-pointer"
+                                src="img/project/petme.png"
+                                alt="Card Image"
+                                @click="zoomed = !zoomed"
+                            />
+
+                            <div
+                                x-show="zoomed"
+                                class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75"
+                            >
+                                <img
+                                    class="max-w-full max-h-full"
+                                    :src="'img/project/petme.png'"
+                                    alt="Zoomed Image"
+                                    @click.away="zoomed = false"
+                                />
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold">Card 4</h3>
+                            <hr />
+                            <p class="text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <div class="p-4 bg-gray-100">
+                            <button class="bg-blue-500 text-white px-4 py-2">Button</button>
+                        </div>
+                    </div>
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                        <div x-data="{ zoomed: false }">
+                            <img
+                                class="w-full h-52 object-cover cursor-pointer"
+                                src="img/project/petme.png"
+                                alt="Card Image"
+                                @click="zoomed = !zoomed"
+                            />
+
+                            <div
+                                x-show="zoomed"
+                                class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75"
+                            >
+                                <img
+                                    class="max-w-full max-h-full"
+                                    :src="'img/project/petme.png'"
+                                    alt="Zoomed Image"
+                                    @click.away="zoomed = false"
+                                />
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold">Card 5</h3>
+                            <hr />
+                            <p class="text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <div class="p-4 bg-gray-100">
+                            <button class="bg-blue-500 text-white px-4 py-2">Button</button>
+                        </div>
+                    </div>
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                        <div x-data="{ zoomed: false }">
+                            <img
+                                class="w-full h-52 object-cover cursor-pointer"
+                                src="img/project/petme.png"
+                                alt="Card Image"
+                                @click="zoomed = !zoomed"
+                            />
+
+                            <div
+                                x-show="zoomed"
+                                class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75"
+                            >
+                                <img
+                                    class="max-w-full max-h-full"
+                                    :src="'img/project/petme.png'"
+                                    alt="Zoomed Image"
+                                    @click.away="zoomed = false"
+                                />
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold">Card 6</h3>
+                            <hr />
+                            <p class="text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <div class="p-4 bg-gray-100">
+                            <button class="bg-blue-500 text-white px-4 py-2">Button</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
 </html>
-<script src="https://kit.fontawesome.com/984a8c9bbd.js" crossorigin="anonymous"></script>
+<script>
+    function scrollToFunction(target) {
+        document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
