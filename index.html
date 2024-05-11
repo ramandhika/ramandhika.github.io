@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="/public/img/favicon.ico" type="image/x-icon" />
         <title>Portfolio - Ramandhika Ilham Pratama</title>
         <link rel="stylesheet" href="css/style.css" />
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -61,11 +62,7 @@
                     </div>
                     <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                         <div class="flex flex-shrink-0 items-center">
-                            <img
-                                class="h-8 w-auto"
-                                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                                alt="Your Company"
-                            />
+                            <img class="h-8 w-auto" src="/public/img/icon.png" alt="R" />
                             <span class="ml-2 dark:text-white text-xl font-medium">RAMANDHIKA</span>
                         </div>
                         <div class="hidden sm:ml-auto sm:block">
@@ -73,7 +70,7 @@
                                 <a
                                     href="#"
                                     @click.prevent="scrollTo('#home')"
-                                    class="bg-gray-600 text-white dark:bg-gray-900 rounded-md px-3 py-2 text-sm font-medium"
+                                    class="dark:text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium""
                                     aria-current="page"
                                     >Home</a
                                 >
@@ -190,34 +187,38 @@
                     <div class="flex gap-3 mt-2">
                         <a
                             href="#"
-                            class="border border-white cursor-pointer bg-white text-black font-medium w-fit px-5 py-2 justify-center rounded-sm flex items-center gap-3 hover:bg-transparent hover:text-white duration-300"
+                            class="border-2 border-gray-700 cursor-pointer bg-gray-700 text-white font-medium w-fit px-5 py-2 justify-center rounded-lg flex items-center gap-3 hover:bg-transparent hover:text-gray-700 hover:bg-white hover:border-gray-700 duration-300"
                         >
                             Hire Me
                         </a>
                         <a
                             href="#"
-                            class="border border-white cursor-pointer font-medium w-fit px-5 py-2 rounded-sm flex items-center gap- gap-33 hover:bg-white duration-300 hover:text-[#060405]"
+                            class="border-2 border-gray-300 cursor-pointer bg-gray-300 font-medium w-fit px-5 py-2 rounded-lg flex items-center gap-33 hover:bg-white hover:border-gray-700 duration-300 hover:text-black dark:text-black"
                         >
                             Text Me
                         </a>
                     </div>
                 </div>
                 <div class="w-8/12 sm:w-5/12 sm:mt-0 mx-auto my-8 sm:my-0 sm:block">
-                    <img class="w-10/12 mx-auto object-cover" src="img/profile.png" alt="Ramandhika Ilham Pratama" />
+                    <img
+                        class="w-10/12 mx-auto object-cover"
+                        src="/public/img/profile.png"
+                        alt="Ramandhika Ilham Pratama"
+                    />
                 </div>
             </div>
         </div>
-        <div class="min-h-screen bg-white px-7 sm:mx-0 p-0 sm:p-24 py-24" id="aboutMe">
+        <div class="min-h-screen bg-white dark:bg-gray-200 px-7 sm:mx-0 p-0 sm:p-24 py-24 dark:text-gray-900" id="aboutMe">
             <div class="text-center">
-                <h1 class="text-3xl font-bold dark:text-white">About Me</h1>
-                <p class="text-base dark:text-gray-300">
+                <h1 class="text-3xl font-bold">About Me</h1>
+                <p class="text-base">
                     I'm a software engineer based in Indonesia. I have a passion for software engineering and creating
                     digital products. I'm currently working at a startup company in Indonesia.
                 </p>
                 <div class="flex flex-col sm:flex-row mt-10 text-center sm:text-left">
                     <div class="w-full sm:w-2/3 mx-auto my-auto sm:me-6">
                         <h3 class="text-2xl font-semibold">Hello 👋, Iam Ramandhika Ilham Pratama</h3>
-                        <p class="text-gray-500 mt-2">
+                        <p class="text-gray-900 mt-2">
                             I am a full stack web developer and a sixth semester student in the Information Systems
                             study program. I have extensive experience in creating and managing web projects using a
                             wide range of technologies and frameworks, such as PHP, JavaScript, Laravel, CodeIgniter 4,
@@ -235,7 +236,7 @@
                             <h2 class="text-xl font-semibold mt-3">Programming Language</h2>
                             <span class="my-2"></span>
                             <div>
-                                <div class="w-3/12 sm:w-1/12 flex sm:gap-1 -mx-20 sm:mx-0">
+                                <div class="w-2/12 sm:w-1/12 flex sm:gap-1 -mx-0 sm:mx-0">
                                     <img
                                         src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg"
                                     />
@@ -266,13 +267,20 @@
                             <h2 class="text-xl font-semibold mt-3">Framework</h2>
                             <span class="my-2"></span>
                             <div>
-                                <div class="w-3/12 sm:w-1/12 flex sm:gap-6 -mx-6 sm:mx-0">
+                                <div class="w-2/12 sm:w-1/12 flex sm:gap-6 -mx-0 sm:mx-0">
                                     <img
                                         src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg"
+                                    />
+                                    
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original-wordmark.svg" 
                                     />
 
                                     <img
                                         src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+                                    />
+
+                                    <img 
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" 
                                     />
 
                                     <img
@@ -288,11 +296,34 @@
                                     />
                                 </div>
                             </div>
-                            <p class="text-gray-500">Laravel, Tailwind, Bootstrap, Alpine.JS, Wordpress</p>
+                            <p class="text-gray-500">Laravel, Express.JS, Tailwind, Vue, Bootstrap, Alpine.JS, Wordpress</p>
+                            <!-- Runtime -->
+                            <h2 class="text-xl font-semibold mt-3">Runtime</h2>
+                            <span class="my-2"></span>
+                            <div>
+                                <div class="w-2/12 sm:w-1/12 flex sm:gap-2 gap-4 -mx-0 sm:mx-0">
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg"
+                                    />
+
+                                    <img 
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bun/bun-original.svg" 
+                                    />
+
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apache/apache-original-wordmark.svg"
+                                    />
+
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nginx/nginx-original.svg"
+                                    />
+                                </div>
+                            </div>
+                            <p class="text-gray-500">Node.JS, Bun, Apache, Nginx</p>
                             <!-- Database & BaaS ( Backend as a Services ) -->
                             <h2 class="text-xl font-semibold mt-3">Database & BaaS ( Backend as a Services )</h2>
                             <span class="my-2"></span>
-                            <div class="w-3/12 sm:w-1/12 flex sm:gap-8 -mx-6 sm:mx-0">
+                            <div class="w-2/12 sm:w-1/12 flex sm:gap-8 -mx-0 sm:mx-0">
                                 <img
                                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg"
                                 />
