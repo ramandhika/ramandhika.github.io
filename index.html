@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" x-data="{ openMenu: false, darkMode: false, scrollTo: scrollToFunction }">
+<html lang="en" x-data="{ openMenu: false, darkMode: true, scrollTo: scrollToFunction }">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/public/img/favicon.ico" type="image/x-icon" />
         <title>Portfolio - Ramandhika Ilham Pratama</title>
         <link rel="stylesheet" href="css/style.css" />
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -21,21 +21,21 @@
     </head>
     <body x-bind:class="darkMode ? 'dark dark:bg-slate-500 dark:text-white' : 'bg-gray-200'">
         <nav
-            class="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm w-11/12 mt-3 mx-auto rounded-20 shadow-lg fixed top-0 right-0 left-0 sm:rounded-full"
+            class="fixed top-0 left-0 right-0 w-11/12 mx-auto mt-3 shadow-lg bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-20 sm:rounded-full"
         >
-            <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-                <div class="relative flex h-16 items-center justify-between">
+            <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div class="relative flex items-center justify-between h-16">
                     <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
                         <!-- Mobile menu button-->
                         <button
                             @click="openMenu = !openMenu"
                             type="button"
-                            class="relative inline-flex items-center justify-center rounded-20 p-2 dark:text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                            class="relative inline-flex items-center justify-center p-2 rounded-20 dark:text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                             aria-controls="mobile-menu"
                             aria-expanded="false"
                         >
                             <svg
-                                class="block h-6 w-6"
+                                class="block w-6 h-6"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke-width="1.5"
@@ -49,7 +49,7 @@
                                 />
                             </svg>
                             <svg
-                                class="hidden h-6 w-6"
+                                class="hidden w-6 h-6"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke-width="1.5"
@@ -60,40 +60,40 @@
                             </svg>
                         </button>
                     </div>
-                    <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                        <div class="flex flex-shrink-0 items-center">
-                            <img class="h-8 w-auto" src="/img/icon.png" alt="R" />
-                            <span class="ml-2 dark:text-white text-xl font-medium">RAMANDHIKA</span>
+                    <div class="flex items-center justify-center flex-1 sm:items-stretch sm:justify-start">
+                        <div class="flex items-center flex-shrink-0">
+                            <img class="w-auto h-8" src="/public/img/icon.png" alt="R" />
+                            <span class="ml-2 text-xl font-medium dark:text-white">RAMANDHIKA</span>
                         </div>
                         <div class="hidden sm:ml-auto sm:block">
                             <div class="flex space-x-4">
                                 <a
                                     href="#"
                                     @click.prevent="scrollTo('#home')"
-                                    class="dark:text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium""
+                                    class="px-3 py-2 text-sm font-medium rounded-md dark:text-gray-300 hover:bg-gray-700 hover:text-white""
                                     aria-current="page"
                                     >Home</a
                                 >
                                 <a
                                     href="#"
                                     @click.prevent="scrollTo('#aboutMe')"
-                                    class="dark:text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                                    class="px-3 py-2 text-sm font-medium rounded-md dark:text-gray-300 hover:bg-gray-700 hover:text-white"
                                     >About Me</a
                                 >
                                 <a
                                     href="#"
                                     @click.prevent="scrollTo('#portfolio')"
-                                    class="dark:text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                                    class="px-3 py-2 text-sm font-medium rounded-md dark:text-gray-300 hover:bg-gray-700 hover:text-white"
                                     >Portfolio</a
                                 >
                                 <a
                                     href="#"
-                                    class="dark:text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                                    class="px-3 py-2 text-sm font-medium rounded-md dark:text-gray-300 hover:bg-gray-700 hover:text-white"
                                     >Certificate</a
                                 >
                                 <a
                                     href="#"
-                                    class="dark:text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                                    class="px-3 py-2 text-sm font-medium rounded-md dark:text-gray-300 hover:bg-gray-700 hover:text-white"
                                     >Contact</a
                                 >
                             </div>
@@ -105,7 +105,7 @@
                         <button
                             @click="darkMode = !darkMode"
                             type="button"
-                            class="relative rounded-full p-1 text-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                            class="relative p-1 text-gray-400 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -132,12 +132,12 @@
                 x-transition:enter.duration.500ms
                 x-transition:leave.duration.300ms
             >
-                <div class="space-y-1 px-2 pb-3 pt-2">
+                <div class="px-2 pt-2 pb-3 space-y-1">
                     <a
                         href="#"
                         @click.prevent="scrollTo('#home')"
                         @click="openMenu = false"
-                        class="bg-gray-700 text-white dark:bg-gray-900 block rounded-md px-3 py-2 text-base font-medium"
+                        class="block px-3 py-2 text-base font-medium text-white bg-gray-700 rounded-md dark:bg-gray-900"
                         aria-current="page"
                         >Home</a
                     >
@@ -145,7 +145,7 @@
                         href="#"
                         @click.prevent="scrollTo('#aboutMe')"
                         @click="openMenu = false"
-                        class="dark:text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                        class="block px-3 py-2 text-base font-medium rounded-md dark:text-gray-300 hover:bg-gray-700 hover:text-white"
                         aria-current="page"
                         >About Me</a
                     >
@@ -153,29 +153,29 @@
                         href="#"
                         @click.prevent="scrollTo('#portfolio')"
                         @click="openMenu = false"
-                        class="dark:text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                        class="block px-3 py-2 text-base font-medium rounded-md dark:text-gray-300 hover:bg-gray-700 hover:text-white"
                         >Portfolio</a
                     >
                     <a
                         href="#"
                         @click.prevent="scrollTo('#portfolio')"
                         @click="openMenu = false"
-                        class="dark:text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                        class="block px-3 py-2 text-base font-medium rounded-md dark:text-gray-300 hover:bg-gray-700 hover:text-white"
                         >Certificate</a
                     >
                     <a
                         href="#"
                         @click.prevent="scrollTo('#portfolio')"
                         @click="openMenu = false"
-                        class="dark:text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                        class="block px-3 py-2 text-base font-medium rounded-md dark:text-gray-300 hover:bg-gray-700 hover:text-white"
                         >Contact</a
                     >
                 </div>
             </div>
         </nav>
-        <div class="min-h-screen px-7 sm:mx-0 p-0 sm:p-24 pt-32" id="home">
+        <div class="min-h-screen p-0 pt-32 px-7 sm:mx-0 sm:p-24" id="home">
             <div class="flex flex-col-reverse sm:flex-row">
-                <div class="w-full sm:w-7/12 my-auto me-5">
+                <div class="w-full my-auto sm:w-7/12 me-5">
                     <div class="flex flex-col gap-2">
                         <h1 class="text-xl font-semibold dark:text-white">Hello, I'm Ramandhika Ilham Pratama</h1>
                         <span class="text-4xl font-bold">WEB DEVELOPER</span>
@@ -186,39 +186,39 @@
                     </div>
                     <div class="flex gap-3 mt-2">
                         <a
-                            href="#"
-                            class="border-2 border-gray-700 cursor-pointer bg-gray-700 text-white font-medium w-fit px-5 py-2 justify-center rounded-lg flex items-center gap-3 hover:bg-transparent hover:text-gray-700 hover:bg-white hover:border-gray-700 duration-300"
+                            href="https://www.linkedin.com/in/ramandhika-ip/"
+                            class="flex items-center justify-center gap-3 px-5 py-2 font-medium text-white duration-300 bg-gray-700 border-2 border-gray-700 rounded-lg cursor-pointer w-fit hover:bg-transparent hover:text-gray-700 hover:bg-white hover:border-gray-700" target="_blank"
                         >
                             Hire Me
                         </a>
                         <a
-                            href="#"
-                            class="border-2 border-gray-300 cursor-pointer bg-gray-300 font-medium w-fit px-5 py-2 rounded-lg flex items-center gap-33 hover:bg-white hover:border-gray-700 duration-300 hover:text-black dark:text-black"
+                            href="mailto:ramandhika.ilham@gmail.com"
+                            class="flex items-center px-5 py-2 font-medium duration-300 bg-gray-300 border-2 border-gray-300 rounded-lg cursor-pointer w-fit gap-33 hover:bg-white hover:border-gray-700 hover:text-black dark:text-black"
                         >
                             Text Me
                         </a>
                     </div>
                 </div>
-                <div class="w-8/12 sm:w-5/12 sm:mt-0 mx-auto my-8 sm:my-0 sm:block">
+                <div class="w-8/12 mx-auto my-8 sm:w-5/12 sm:mt-0 sm:my-0 sm:block">
                     <img
-                        class="w-10/12 mx-auto object-cover"
-                        src="/img/profile.png"
+                        class="object-cover w-10/12 mx-auto"
+                        src="/public/img/profile.png"
                         alt="Ramandhika Ilham Pratama"
                     />
                 </div>
             </div>
         </div>
-        <div class="min-h-screen bg-white dark:bg-gray-200 px-7 sm:mx-0 p-0 sm:p-24 py-24 dark:text-gray-900" id="aboutMe">
+        <div class="min-h-screen p-0 py-24 bg-white dark:bg-gray-200 px-7 sm:mx-0 sm:p-24 dark:text-gray-900" id="aboutMe">
             <div class="text-center">
                 <h1 class="text-3xl font-bold">About Me</h1>
                 <p class="text-base">
                     I'm a software engineer based in Indonesia. I have a passion for software engineering and creating
                     digital products. I'm currently working at a startup company in Indonesia.
                 </p>
-                <div class="flex flex-col sm:flex-row mt-10 text-center sm:text-left">
-                    <div class="w-full sm:w-2/3 mx-auto my-auto sm:me-6">
+                <div class="flex flex-col mt-10 text-center sm:flex-row sm:text-left">
+                    <div class="w-full mx-auto my-auto sm:w-2/3 sm:me-6">
                         <h3 class="text-2xl font-semibold">Hello 👋, Iam Ramandhika Ilham Pratama</h3>
-                        <p class="text-gray-900 mt-2">
+                        <p class="mt-2 text-gray-900">
                             I am a full stack web developer and a sixth semester student in the Information Systems
                             study program. I have extensive experience in creating and managing web projects using a
                             wide range of technologies and frameworks, such as PHP, JavaScript, Laravel, CodeIgniter 4,
@@ -229,14 +229,14 @@
                             deepen my knowledge in new technologies and frameworks to improve my web development skills.
                         </p>
                     </div>
-                    <div class="w-3/4 sm:w-1/2 mx-auto my-auto mt-5 sm:mt-0">
+                    <div class="w-3/4 mx-auto my-auto mt-5 sm:w-1/2 sm:mt-0">
                         <div class="flex flex-col">
                             <h3 class="text-2xl font-bold">📊 Skillset Proficiency</h3>
                             <!-- Programming Language -->
-                            <h2 class="text-xl font-semibold mt-3">Programming Language</h2>
+                            <h2 class="mt-3 text-xl font-semibold">Programming Language</h2>
                             <span class="my-2"></span>
                             <div>
-                                <div class="w-2/12 sm:w-1/12 flex sm:gap-1 -mx-0 sm:mx-0">
+                                <div class="flex w-2/12 -mx-0 sm:w-1/12 sm:gap-1 sm:mx-0">
                                     <img
                                         src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg"
                                     />
@@ -264,10 +264,10 @@
                             </div>
                             <p class="text-gray-500">HTML, CSS, PHP, JavaScript, Java, .NET</p>
                             <!-- Framework -->
-                            <h2 class="text-xl font-semibold mt-3">Framework</h2>
+                            <h2 class="mt-3 text-xl font-semibold">Framework</h2>
                             <span class="my-2"></span>
                             <div>
-                                <div class="w-2/12 sm:w-1/12 flex sm:gap-6 -mx-0 sm:mx-0">
+                                <div class="flex w-2/12 -mx-0 sm:w-1/12 sm:gap-6 sm:mx-0">
                                     <img
                                         src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg"
                                     />
@@ -298,10 +298,10 @@
                             </div>
                             <p class="text-gray-500">Laravel, Express.JS, Tailwind, Vue, Bootstrap, Alpine.JS, Wordpress</p>
                             <!-- Runtime -->
-                            <h2 class="text-xl font-semibold mt-3">Runtime</h2>
+                            <h2 class="mt-3 text-xl font-semibold">Runtime</h2>
                             <span class="my-2"></span>
                             <div>
-                                <div class="w-2/12 sm:w-1/12 flex sm:gap-2 gap-4 -mx-0 sm:mx-0">
+                                <div class="flex w-2/12 gap-4 -mx-0 sm:w-1/12 sm:gap-2 sm:mx-0">
                                     <img
                                         src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg"
                                     />
@@ -321,9 +321,9 @@
                             </div>
                             <p class="text-gray-500">Node.JS, Bun, Apache, Nginx</p>
                             <!-- Database & BaaS ( Backend as a Services ) -->
-                            <h2 class="text-xl font-semibold mt-3">Database & BaaS ( Backend as a Services )</h2>
+                            <h2 class="mt-3 text-xl font-semibold">Database & BaaS ( Backend as a Services )</h2>
                             <span class="my-2"></span>
-                            <div class="w-2/12 sm:w-1/12 flex sm:gap-8 -mx-0 sm:mx-0">
+                            <div class="flex w-2/12 -mx-0 sm:w-1/12 sm:gap-8 sm:mx-0">
                                 <img
                                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg"
                                 />
@@ -346,9 +346,9 @@
                             </div>
                             <p class="text-gray-500">MySQL, SQLServer, PostgreSQL, Firebase, Git</p>
                             <!-- DevOPS -->
-                            <h2 class="text-xl font-semibold mt-3">DevOps</h2>
+                            <h2 class="mt-3 text-xl font-semibold">DevOps</h2>
                             <span class="my-2"></span>
-                            <div class="w-3/12 sm:w-1/12 flex sm:gap-8 mx-5 sm:mx-0">
+                            <div class="flex w-3/12 mx-5 sm:w-1/12 sm:gap-8 sm:mx-0">
                                 <img
                                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original-wordmark.svg"
                                 />
@@ -365,20 +365,21 @@
                         </div>
                     </div>
                 </div>
+                <button @click.prevent="scrollTo('#portfolio')" class="w-1/3 px-16 py-2 mt-20 font-semibold text-center text-gray-800 transition duration-300 ease-in-out border-2 rounded-lg bg-gray-800/20 border-gray-800/95 hover:bg-gray-800/95 hover:text-white">Portfolio</button>
             </div>
         </div>
-        <div class="min-h-screen px-7 sm:mx-0 p-0 sm:p-24 py-24" id="portfolio">
+        <div class="min-h-screen p-0 py-24 px-7 sm:mx-0 sm:p-24" id="portfolio">
             <div class="text-center">
                 <h1 class="text-3xl font-bold dark:text-white">Portfolio</h1>
                 <p class="text-base dark:text-gray-300">
                     I have worked on various projects in different fields and domains. Some of the projects that I have
                     completed are:
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left mt-10">
-                    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <div class="grid grid-cols-1 gap-4 mt-10 text-left sm:grid-cols-3">
+                    <div class="overflow-hidden bg-white rounded-lg shadow-lg">
                         <div x-data="{ zoomed: false }">
                             <img
-                                class="w-full h-52 object-cover cursor-pointer"
+                                class="object-cover w-full cursor-pointer h-52"
                                 src="img/project/petme.png"
                                 alt="Card Image"
                                 @click="zoomed = !zoomed"
@@ -386,7 +387,7 @@
 
                             <div
                                 x-show="zoomed"
-                                class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75"
+                                class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
                             >
                                 <img
                                     class="max-w-full max-h-full"
@@ -396,163 +397,13 @@
                                 />
                             </div>
                         </div>
-                        <div class="p-4">
+                        <div class="p-4 dark:text-gray-900">
                             <h3 class="text-xl font-semibold">PetMe Website Admin</h3>
                             <hr />
-                            <p class="text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         </div>
-                        <div class="p-4 bg-gray-100">
-                            <button class="bg-blue-500 text-white px-4 py-2">Button</button>
-                        </div>
-                    </div>
-                    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                        <div x-data="{ zoomed: false }">
-                            <img
-                                class="w-full h-52 object-cover cursor-pointer"
-                                src="img/project/petme.png"
-                                alt="Card Image"
-                                @click="zoomed = !zoomed"
-                            />
-
-                            <div
-                                x-show="zoomed"
-                                class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75"
-                            >
-                                <img
-                                    class="max-w-full max-h-full"
-                                    :src="'img/project/petme.png'"
-                                    alt="Zoomed Image"
-                                    @click.away="zoomed = false"
-                                />
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-xl font-semibold">Card 2</h3>
-                            <hr />
-                            <p class="text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                        <div class="p-4 bg-gray-100">
-                            <button class="bg-blue-500 text-white px-4 py-2">Button</button>
-                        </div>
-                    </div>
-                    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                        <div x-data="{ zoomed: false }">
-                            <img
-                                class="w-full h-52 object-cover cursor-pointer"
-                                src="img/project/petme.png"
-                                alt="Card Image"
-                                @click="zoomed = !zoomed"
-                            />
-
-                            <div
-                                x-show="zoomed"
-                                class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75"
-                            >
-                                <img
-                                    class="max-w-full max-h-full"
-                                    :src="'img/project/petme.png'"
-                                    alt="Zoomed Image"
-                                    @click.away="zoomed = false"
-                                />
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-xl font-semibold">Card 3</h3>
-                            <hr />
-                            <p class="text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                        <div class="p-4 bg-gray-100">
-                            <button class="bg-blue-500 text-white px-4 py-2">Button</button>
-                        </div>
-                    </div>
-                    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                        <div x-data="{ zoomed: false }">
-                            <img
-                                class="w-full h-52 object-cover cursor-pointer"
-                                src="img/project/petme.png"
-                                alt="Card Image"
-                                @click="zoomed = !zoomed"
-                            />
-
-                            <div
-                                x-show="zoomed"
-                                class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75"
-                            >
-                                <img
-                                    class="max-w-full max-h-full"
-                                    :src="'img/project/petme.png'"
-                                    alt="Zoomed Image"
-                                    @click.away="zoomed = false"
-                                />
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-xl font-semibold">Card 4</h3>
-                            <hr />
-                            <p class="text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                        <div class="p-4 bg-gray-100">
-                            <button class="bg-blue-500 text-white px-4 py-2">Button</button>
-                        </div>
-                    </div>
-                    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                        <div x-data="{ zoomed: false }">
-                            <img
-                                class="w-full h-52 object-cover cursor-pointer"
-                                src="img/project/petme.png"
-                                alt="Card Image"
-                                @click="zoomed = !zoomed"
-                            />
-
-                            <div
-                                x-show="zoomed"
-                                class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75"
-                            >
-                                <img
-                                    class="max-w-full max-h-full"
-                                    :src="'img/project/petme.png'"
-                                    alt="Zoomed Image"
-                                    @click.away="zoomed = false"
-                                />
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-xl font-semibold">Card 5</h3>
-                            <hr />
-                            <p class="text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                        <div class="p-4 bg-gray-100">
-                            <button class="bg-blue-500 text-white px-4 py-2">Button</button>
-                        </div>
-                    </div>
-                    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                        <div x-data="{ zoomed: false }">
-                            <img
-                                class="w-full h-52 object-cover cursor-pointer"
-                                src="img/project/petme.png"
-                                alt="Card Image"
-                                @click="zoomed = !zoomed"
-                            />
-
-                            <div
-                                x-show="zoomed"
-                                class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75"
-                            >
-                                <img
-                                    class="max-w-full max-h-full"
-                                    :src="'img/project/petme.png'"
-                                    alt="Zoomed Image"
-                                    @click.away="zoomed = false"
-                                />
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-xl font-semibold">Card 6</h3>
-                            <hr />
-                            <p class="text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                        <div class="p-4 bg-gray-100">
-                            <button class="bg-blue-500 text-white px-4 py-2">Button</button>
+                        <div class="flex justify-end p-4 bg-gray-100">
+                            <button class="w-full px-5 py-2 font-semibold text-gray-800 transition duration-300 ease-in-out border-2 rounded-lg md:w-1/6 bg-gray-800/20 border-gray-800/95 hover:bg-gray-800/95 hover:text-white"><i class="fab fa-github"></i></button>
                         </div>
                     </div>
                 </div>
@@ -565,3 +416,4 @@
         document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
     }
 </script>
+<script src="https://kit.fontawesome.com/984a8c9bbd.js" crossorigin="anonymous"></script>
