@@ -1,422 +1,397 @@
 <!DOCTYPE html>
-<html lang="en" x-data="{ openMenu: false, darkMode: true, scrollTo: scrollToFunction }">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/public/img/favicon.ico" type="image/x-icon" />
-        <title>Portfolio - Ramandhika Ilham Pratama</title>
-        <link rel="stylesheet" href="css/style.css" />
-        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
-        />
-
-        <style>
-            /* * {
-                border: 1px solid red;
-            } */
-        </style>
-    </head>
-    <body x-bind:class="darkMode ? 'dark dark:bg-slate-500 dark:text-white' : 'bg-gray-200'">
-        <nav
-            class="fixed top-0 left-0 right-0 w-11/12 mx-auto mt-3 shadow-lg bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-20 sm:rounded-full"
-        >
-            <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                <div class="relative flex items-center justify-between h-16">
-                    <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                        <!-- Mobile menu button-->
-                        <button
-                            @click="openMenu = !openMenu"
-                            type="button"
-                            class="relative inline-flex items-center justify-center p-2 rounded-20 dark:text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-                            aria-controls="mobile-menu"
-                            aria-expanded="false"
-                        >
-                            <svg
-                                class="block w-6 h-6"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                aria-hidden="true"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                                />
-                            </svg>
-                            <svg
-                                class="hidden w-6 h-6"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                aria-hidden="true"
-                            >
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="flex items-center justify-center flex-1 sm:items-stretch sm:justify-start">
-                        <div class="flex items-center flex-shrink-0">
-                            <img class="w-auto h-8" src="img/icon.png" alt="R" />
-                            <span class="ml-2 text-xl font-medium dark:text-white">RAMANDHIKA</span>
-                        </div>
-                        <div class="hidden sm:ml-auto sm:block">
-                            <div class="flex space-x-4">
-                                <a
-                                    href="#"
-                                    @click.prevent="scrollTo('#home')"
-                                    class="px-3 py-2 text-sm font-medium rounded-md dark:text-gray-300 hover:bg-gray-700 hover:text-white""
-                                    aria-current="page"
-                                    >Home</a
-                                >
-                                <a
-                                    href="#"
-                                    @click.prevent="scrollTo('#aboutMe')"
-                                    class="px-3 py-2 text-sm font-medium rounded-md dark:text-gray-300 hover:bg-gray-700 hover:text-white"
-                                    >About Me</a
-                                >
-                                <a
-                                    href="#"
-                                    @click.prevent="scrollTo('#portfolio')"
-                                    class="px-3 py-2 text-sm font-medium rounded-md dark:text-gray-300 hover:bg-gray-700 hover:text-white"
-                                    >Portfolio</a
-                                >
-                                <a
-                                    href="#"
-                                    class="px-3 py-2 text-sm font-medium rounded-md dark:text-gray-300 hover:bg-gray-700 hover:text-white"
-                                    >Certificate</a
-                                >
-                                <a
-                                    href="#"
-                                    class="px-3 py-2 text-sm font-medium rounded-md dark:text-gray-300 hover:bg-gray-700 hover:text-white"
-                                    >Contact</a
-                                >
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
-                    >
-                        <button
-                            @click="darkMode = !darkMode"
-                            type="button"
-                            class="relative p-1 text-gray-400 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="16"
-                                height="16"
-                                fill="currentColor"
-                                class="bi bi-moon"
-                                viewBox="0 0 16 16"
-                            >
-                                <path
-                                    d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"
-                                />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mobile menu, show/hide based on menu state. -->
-            <div
-                class="sm:hidden"
-                id="mobile-menu"
-                x-show="openMenu"
-                x-transition:enter.duration.500ms
-                x-transition:leave.duration.300ms
-            >
-                <div class="px-2 pt-2 pb-3 space-y-1">
-                    <a
-                        href="#"
-                        @click.prevent="scrollTo('#home')"
-                        @click="openMenu = false"
-                        class="block px-3 py-2 text-base font-medium text-white bg-gray-700 rounded-md dark:bg-gray-900"
-                        aria-current="page"
-                        >Home</a
-                    >
-                    <a
-                        href="#"
-                        @click.prevent="scrollTo('#aboutMe')"
-                        @click="openMenu = false"
-                        class="block px-3 py-2 text-base font-medium rounded-md dark:text-gray-300 hover:bg-gray-700 hover:text-white"
-                        aria-current="page"
-                        >About Me</a
-                    >
-                    <a
-                        href="#"
-                        @click.prevent="scrollTo('#portfolio')"
-                        @click="openMenu = false"
-                        class="block px-3 py-2 text-base font-medium rounded-md dark:text-gray-300 hover:bg-gray-700 hover:text-white"
-                        >Portfolio</a
-                    >
-                    <a
-                        href="#"
-                        @click.prevent="scrollTo('#portfolio')"
-                        @click="openMenu = false"
-                        class="block px-3 py-2 text-base font-medium rounded-md dark:text-gray-300 hover:bg-gray-700 hover:text-white"
-                        >Certificate</a
-                    >
-                    <a
-                        href="#"
-                        @click.prevent="scrollTo('#portfolio')"
-                        @click="openMenu = false"
-                        class="block px-3 py-2 text-base font-medium rounded-md dark:text-gray-300 hover:bg-gray-700 hover:text-white"
-                        >Contact</a
-                    >
-                </div>
-            </div>
-        </nav>
-        <div class="min-h-screen p-0 pt-32 px-7 sm:mx-0 sm:p-24" id="home">
-            <div class="flex flex-col-reverse sm:flex-row">
-                <div class="w-full my-auto sm:w-7/12 me-5">
-                    <div class="flex flex-col gap-2">
-                        <h1 class="text-xl font-semibold dark:text-white">Hello, I'm Ramandhika Ilham Pratama</h1>
-                        <span class="text-4xl font-bold">WEB DEVELOPER</span>
-                        <p class="text-base dark:text-gray-300">
-                            I'm a software engineer based in Indonesia. I have a passion for software engineering and
-                            creating digital products. I'm currently working at a startup company in Indonesia.
-                        </p>
-                    </div>
-                    <div class="flex gap-3 mt-2">
-                        <a
-                            href="https://www.linkedin.com/in/ramandhika-ip/"
-                            class="flex items-center justify-center gap-3 px-5 py-2 font-medium text-white duration-300 bg-gray-700 border-2 border-gray-700 rounded-lg cursor-pointer w-fit hover:bg-transparent hover:text-gray-700 hover:bg-white hover:border-gray-700" target="_blank"
-                        >
-                            Hire Me
-                        </a>
-                        <a
-                            href="mailto:ramandhika.ilham@gmail.com"
-                            class="flex items-center px-5 py-2 font-medium duration-300 bg-gray-300 border-2 border-gray-300 rounded-lg cursor-pointer w-fit gap-33 hover:bg-white hover:border-gray-700 hover:text-black dark:text-black"
-                        >
-                            Text Me
-                        </a>
-                    </div>
-                </div>
-                <div class="w-8/12 mx-auto my-8 sm:w-5/12 sm:mt-0 sm:my-0 sm:block">
-                    <img
-                        class="object-cover w-10/12 mx-auto"
-                        src="img/profile.png"
-                        alt="Ramandhika Ilham Pratama"
-                    />
-                </div>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Ramandhika Ilham Pratama</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+        
+        .typewriter {
+            display: inline-block;
+            overflow: hidden;
+            border-right: 3px solid;
+            white-space: nowrap;
+            animation: typewriter 3s steps(24) 1s forwards, blink 0.75s step-end infinite;
+            width: 0;
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300" x-data="portfolioApp()">
+    
+    <!-- Navbar -->
+    <nav class="fixed w-full top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-red-900 to-red-800 bg-clip-text text-transparent">Ramandhika</h1>
+            <div class="flex gap-3 sm:gap-6 items-center text-sm sm:text-base">
+                <a href="#home" class="hover:text-red-700 dark:hover:text-red-400 transition">Home</a>
+                <a href="#about" class="hover:text-red-700 dark:hover:text-red-400 transition">About</a>
+                <a href="#portfolio" class="hover:text-red-700 dark:hover:text-red-400 transition">Portfolio</a>
+                <button @click="toggleDarkMode()" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                    <svg x-show="!darkMode" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                    </svg>
+                    <svg x-show="darkMode" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                </button>
             </div>
         </div>
-        <div class="min-h-screen p-0 py-24 bg-white dark:bg-gray-200 px-7 sm:mx-0 sm:p-24 dark:text-gray-900" id="aboutMe">
-            <div class="text-center">
-                <h1 class="text-3xl font-bold">About Me</h1>
-                <p class="text-base">
-                    I'm a software engineer based in Indonesia. I have a passion for software engineering and creating
-                    digital products. I'm currently working at a startup company in Indonesia.
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20 px-4 sm:px-6">
+        <div class="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div class="space-y-4 sm:space-y-6 opacity-0 fade-in-up order-2 md:order-1">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                    Hi, I'm <span class="bg-gradient-to-r from-red-900 to-red-700 bg-clip-text text-transparent">Ramandhika</span>
+                </h2>
+                <div class="text-xl sm:text-2xl md:text-3xl text-gray-600 dark:text-gray-200">
+                    <span class="typewriter">Backend Developer</span>
+                </div>
+                <p class="text-base sm:text-lg text-gray-600 dark:text-gray-200 opacity-0 fade-in-up delay-300">
+                    Experienced backend developer proficient in TypeScript, Express.js, and Elysia with strong skills in MySQL and PostgreSQL. Passionate about creating scalable, user-centric web solutions.
                 </p>
-                <div class="flex flex-col mt-10 text-center sm:flex-row sm:text-left">
-                    <div class="w-full mx-auto my-auto sm:w-2/3 sm:me-6">
-                        <h3 class="text-2xl font-semibold">Hello 👋, Iam Ramandhika Ilham Pratama</h3>
-                        <p class="mt-2 text-gray-900">
-                            I am a full stack web developer and a sixth semester student in the Information Systems
-                            study program. I have extensive experience in creating and managing web projects using a
-                            wide range of technologies and frameworks, such as PHP, JavaScript, Laravel, CodeIgniter 4,
-                            Express.JS, Node.JS, Tailwind CSS, Boostrap, Wordpress, RESTful API, and more. I also have
-                            strong skills in database management, with practical experience in MySQL, PostgreSQL, and
-                            SQL Server. I am proficient in Google Cloud Platform and Firebase, and have successfully
-                            deployed applications using the platform. I have a passion for learning and always seek to
-                            deepen my knowledge in new technologies and frameworks to improve my web development skills.
-                        </p>
-                    </div>
-                    <div class="w-3/4 mx-auto my-auto mt-5 sm:w-1/2 sm:mt-0">
-                        <div class="flex flex-col">
-                            <h3 class="text-2xl font-bold">📊 Skillset Proficiency</h3>
-                            <!-- Programming Language -->
-                            <h2 class="mt-3 text-xl font-semibold">Programming Language</h2>
-                            <span class="my-2"></span>
-                            <div>
-                                <div class="flex w-2/12 -mx-0 sm:w-1/12 sm:gap-1 sm:mx-0">
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg"
-                                    />
-
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg"
-                                    />
-
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg"
-                                    />
-
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-                                    />
-
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg"
-                                    />
-
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-plain-wordmark.svg"
-                                    />
-                                </div>
-                            </div>
-                            <p class="text-gray-500">HTML, CSS, PHP, JavaScript, Java, .NET</p>
-                            <!-- Framework -->
-                            <h2 class="mt-3 text-xl font-semibold">Framework</h2>
-                            <span class="my-2"></span>
-                            <div>
-                                <div class="flex w-2/12 -mx-0 sm:w-1/12 sm:gap-6 sm:mx-0">
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg"
-                                    />
-                                    
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original-wordmark.svg" 
-                                    />
-
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
-                                    />
-
-                                    <img 
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" 
-                                    />
-
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg"
-                                    />
-
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/alpinejs/alpinejs-original.svg"
-                                    />
-
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wordpress/wordpress-plain.svg"
-                                    />
-                                </div>
-                            </div>
-                            <p class="text-gray-500">Laravel, Express.JS, Tailwind, Vue, Bootstrap, Alpine.JS, Wordpress</p>
-                            <!-- Runtime -->
-                            <h2 class="mt-3 text-xl font-semibold">Runtime</h2>
-                            <span class="my-2"></span>
-                            <div>
-                                <div class="flex w-2/12 gap-4 -mx-0 sm:w-1/12 sm:gap-2 sm:mx-0">
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg"
-                                    />
-
-                                    <img 
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bun/bun-original.svg" 
-                                    />
-
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apache/apache-original-wordmark.svg"
-                                    />
-
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nginx/nginx-original.svg"
-                                    />
-                                </div>
-                            </div>
-                            <p class="text-gray-500">Node.JS, Bun, Apache, Nginx</p>
-                            <!-- Database & BaaS ( Backend as a Services ) -->
-                            <h2 class="mt-3 text-xl font-semibold">Database & BaaS ( Backend as a Services )</h2>
-                            <span class="my-2"></span>
-                            <div class="flex w-2/12 -mx-0 sm:w-1/12 sm:gap-8 sm:mx-0">
-                                <img
-                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg"
-                                />
-
-                                <img
-                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original-wordmark.svg"
-                                />
-
-                                <img
-                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg"
-                                />
-
-                                <img
-                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg"
-                                />
-
-                                <img
-                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original-wordmark.svg"
-                                />
-                            </div>
-                            <p class="text-gray-500">MySQL, SQLServer, PostgreSQL, Firebase, Git</p>
-                            <!-- DevOPS -->
-                            <h2 class="mt-3 text-xl font-semibold">DevOps</h2>
-                            <span class="my-2"></span>
-                            <div class="flex w-3/12 mx-5 sm:w-1/12 sm:gap-8 sm:mx-0">
-                                <img
-                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original-wordmark.svg"
-                                />
-
-                                <img
-                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg"
-                                />
-
-                                <img
-                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg"
-                                />
-                            </div>
-                            <p class="text-gray-500">Docker, Google Cloud, Linux</p>
-                        </div>
-                    </div>
+                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 opacity-0 fade-in-up delay-400">
+                    <a href="#portfolio" class="px-6 py-3 bg-gradient-to-r from-red-900 to-red-700 text-white rounded-lg hover:shadow-lg transition transform hover:scale-105 text-center">
+                        View Projects
+                    </a>
+                    <a href="https://linkedin.com/in/ramandhika-ip" target="_blank" class="px-6 py-3 border-2 border-red-800 dark:border-red-700 text-red-800 dark:text-red-400 rounded-lg hover:bg-red-50 dark:hover:bg-gray-800 transition text-center">
+                        Contact Me
+                    </a>
                 </div>
-                <button @click.prevent="scrollTo('#portfolio')" class="w-1/3 px-16 py-2 mt-20 font-semibold text-center text-gray-800 transition duration-300 ease-in-out border-2 rounded-lg bg-gray-800/20 border-gray-800/95 hover:bg-gray-800/95 hover:text-white">Portfolio</button>
             </div>
-        </div>
-        <div class="min-h-screen p-0 py-24 px-7 sm:mx-0 sm:p-24" id="portfolio">
-            <div class="text-center">
-                <h1 class="text-3xl font-bold dark:text-white">Portfolio</h1>
-                <p class="text-base dark:text-gray-300">
-                    I have worked on various projects in different fields and domains. Some of the projects that I have
-                    completed are:
-                </p>
-                <!-- <div class="grid grid-cols-1 gap-4 mt-10 text-left sm:grid-cols-3">
-                    <div class="overflow-hidden bg-white rounded-lg shadow-lg">
-                        <div x-data="{ zoomed: false }">
-                            <img
-                                class="object-cover w-full cursor-pointer h-52"
-                                src="img/project/petme.png"
-                                alt="Card Image"
-                                @click="zoomed = !zoomed"
-                            />
-
-                            <div
-                                x-show="zoomed"
-                                class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
-                            >
-                                <img
-                                    class="max-w-full max-h-full"
-                                    :src="'img/project/petme.png'"
-                                    alt="Zoomed Image"
-                                    @click.away="zoomed = false"
-                                />
-                            </div>
-                        </div>
-                        <div class="p-4 dark:text-gray-900">
-                            <h3 class="text-xl font-semibold">PetMe Website Admin</h3>
-                            <hr />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                        <div class="flex justify-end p-4 bg-gray-100">
-                            <button class="w-full px-5 py-2 font-semibold text-gray-800 transition duration-300 ease-in-out border-2 rounded-lg md:w-1/6 bg-gray-800/20 border-gray-800/95 hover:bg-gray-800/95 hover:text-white"><i class="fab fa-github"></i></button>
-                        </div>
-                    </div>
-                </div> -->
-                <div class="text-center mt-20">
-                    <h2 class="text-5xl font-semibold dark:text-white">Coming Soon</h2>
+            <div class="flex justify-center opacity-0 fade-in-up delay-200 order-1 md:order-2">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-red-900 to-red-700 rounded-full blur-2xl opacity-30 animate-pulse"></div>
+                    <img src="https://avatars.githubusercontent.com/u/64927511?v=4" 
+                         alt="Ramandhika Ilham Pratama" 
+                         class="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-2xl">
                 </div>
             </div>
         </div>
-    </body>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="min-h-screen flex items-center py-16 sm:py-20 px-4 sm:px-6 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-6xl mx-auto w-full">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center">About Me</h2>
+            <div class="grid md:grid-cols-2 gap-8 sm:gap-12">
+                <div class="space-y-4 sm:space-y-6">
+                    <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400">
+                        I'm Ramandhika Ilham Pratama, a prospective graduate in Information Systems from Tiga Serangkai University with a GPA of 3.83/4.00. I specialize in backend development with expertise in TypeScript, Express.js, and modern JavaScript frameworks.
+                    </p>
+                    <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400">
+                        With experience as a Backend Engineer at ADS Digital Partner and currently working at Megalogic, I'm passionate about emerging technologies, AI, automation, and creating scalable web solutions. I've successfully completed 20+ freelance projects and was honored as a Distinction Graduate from Bangkit Academy 2023 by Google.
+                    </p>
+                    <div class="space-y-4">
+                        <h3 class="text-xl sm:text-2xl font-bold">Technical Skills</h3>
+                        
+                        <!-- Frontend Skills -->
+                        <div class="space-y-3">
+                            <h4 class="text-base sm:text-lg font-semibold text-gray-700 dark:text-gray-300">Frontend</h4>
+                            <img src="https://skillicons.dev/icons?i=html,css,js,ts,tailwind,bootstrap,vue,alpine&perline=8" alt="Frontend Skills" class="w-full max-w-md" />
+                        </div>
+                        
+                        <!-- Backend Skills -->
+                        <div class="space-y-3">
+                            <h4 class="text-base sm:text-lg font-semibold text-gray-700 dark:text-gray-300">Backend</h4>
+                            <img src="https://skillicons.dev/icons?i=nodejs,express,bun,php,laravel,go&perline=6" alt="Backend Skills" class="w-full max-w-md" />
+                        </div>
+                        
+                        <!-- Database & Tools -->
+                        <div class="space-y-3">
+                            <h4 class="text-base sm:text-lg font-semibold text-gray-700 dark:text-gray-300">Database & Tools</h4>
+                            <img src="https://skillicons.dev/icons?i=mysql,postgres,prisma,firebase,git,github,gcp,wordpress&perline=8" alt="Database & Tools" class="w-full max-w-md" />
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-4 sm:space-y-6">
+                    <div class="p-4 sm:p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg">
+                        <h3 class="text-lg sm:text-xl font-bold mb-4">Experience</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-base sm:text-lg">Backend Engineer</h4>
+                                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400">ADS Digital Partner • Sep 2024 - Dec 2024</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-500 mt-1">Implemented automated API testing and developed features using TypeScript and modern technologies</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-base sm:text-lg">Full Stack Developer</h4>
+                                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400">Megalogic • Jan 2024 - Present</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-500 mt-1">Led backend team in developing RESTful APIs using Laravel, Express.js, and Elysia.js</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-base sm:text-lg">Cloud Computing Cohort</h4>
+                                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400">Bangkit Academy by Google • Aug 2023 - Dec 2023</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-500 mt-1">Distinction Graduate among 4520+ participants, mastered GCP and cloud architecture</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 sm:p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg">
+                        <h3 class="text-lg sm:text-xl font-bold mb-4">Education</h3>
+                        <div>
+                            <h4 class="font-semibold text-base sm:text-lg">Bachelor in Information Systems</h4>
+                            <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400">Tiga Serangkai University • 2021 - Present</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-500 mt-1">GPA: 3.83/4.00</p>
+                        </div>
+                    </div>
+                    <div class="p-4 sm:p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg">
+                        <h3 class="text-lg sm:text-xl font-bold mb-4">Achievements</h3>
+                        <ul class="space-y-2 text-sm sm:text-base text-gray-600 dark:text-gray-400">
+                            <li>• Distinction Graduate - Bangkit Academy 2023</li>
+                            <li>• 3rd Place - Surakarta Student Competency Competition</li>
+                            <li>• 20+ Completed Freelance Projects</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="min-h-screen py-16 sm:py-20 px-4 sm:px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center">My Portfolio</h2>
+            
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
+                <button @click="filterTag = 'all'" 
+                        :class="filterTag === 'all' ? 'bg-gradient-to-r from-red-900 to-red-700 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'"
+                        class="filter-btn px-4 sm:px-6 py-2 rounded-lg font-medium text-sm sm:text-base">
+                    All
+                </button>
+                <template x-for="tag in uniqueTags" :key="tag">
+                    <button @click="filterTag = tag" 
+                            :class="filterTag === tag ? 'bg-gradient-to-r from-red-900 to-red-700 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'"
+                            class="filter-btn px-4 sm:px-6 py-2 rounded-lg font-medium text-sm sm:text-base"
+                            x-text="tag">
+                    </button>
+                </template>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <template x-for="project in filteredProjects" :key="project.id">
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+                        <div class="h-40 sm:h-48 bg-gradient-to-br from-red-900 to-red-700 relative overflow-hidden">
+                            <template x-if="project.image">
+                                <img :src="project.image" :alt="project.title" class="w-full h-full object-cover">
+                            </template>
+                            <template x-if="!project.image">
+                                <div class="absolute inset-0 flex items-center justify-center text-white text-5xl sm:text-6xl font-bold opacity-20" x-text="project.title.charAt(0)"></div>
+                            </template>
+                        </div>
+                        <div class="p-4 sm:p-6">
+                            <h3 class="text-lg sm:text-xl font-bold mb-2" x-text="project.title"></h3>
+                            <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4" x-text="project.description"></p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <template x-for="tag in project.tags" :key="tag">
+                                    <span class="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400 rounded-full text-xs sm:text-sm" x-text="tag"></span>
+                                </template>
+                            </div>
+                            <a :href="project.link" target="_blank" class="inline-flex items-center text-red-800 dark:text-red-400 hover:underline text-sm sm:text-base">
+                                View Project
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 dark:bg-gray-800 py-8 sm:py-12 px-4 sm:px-6">
+        <div class="max-w-6xl mx-auto text-center">
+            <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Let's Connect</h3>
+            <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4 sm:mb-6">Feel free to reach out for collaborations or just a friendly hello</p>
+            <div class="flex justify-center gap-4 sm:gap-6 mb-4 sm:mb-6">
+                <a href="https://linkedin.com/in/ramandhika-ip" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-red-700 dark:hover:text-red-400 transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+                <a href="https://github.com/ramandhika" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-red-700 dark:hover:text-red-400 transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="mailto:ramandhika.ilham@gmail.com" class="text-gray-600 dark:text-gray-400 hover:text-red-700 dark:hover:text-red-400 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                </a>
+            </div>
+            <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400">© 2025 Ramandhika Ilham Pratama. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function portfolioApp() {
+            return {
+                darkMode: false,
+                filterTag: 'all',
+                projects: [
+                    {
+                        id: 1,
+                        title: 'Telegram Repo Watcher',
+                        description: 'GitHub monitoring bot that sends commit updates to Telegram. Built with Elysia (Bun runtime) supporting webhooks and private repo access.',
+                        tags: ['Bun', 'Elysia', 'Telegram', 'GitHub'],
+                        link: 'https://github.com/ramandhika',
+                        image: ''
+                    },
+                    {
+                        id: 2,
+                        title: 'AssetSync',
+                        description: 'Company asset tracking system using QR codes. Built with Laravel RESTful API for backend and Bootstrap with Laravel Blade for frontend.',
+                        tags: ['Laravel', 'Bootstrap', 'MySQL'],
+                        link: 'https://github.com/ramandhika',
+                        image: ''
+                    },
+                    {
+                        id: 3,
+                        title: 'Eco Travel Backend',
+                        description: 'Travel platform backend service supporting user authentication, destination history, and location sharing. Built with Golang and Gin framework.',
+                        tags: ['Golang', 'Gin', 'REST API'],
+                        link: 'https://github.com/ramandhika',
+                        image: ''
+                    },
+                    {
+                        id: 4,
+                        title: 'Data Monitoring System',
+                        description: 'Web platform for tracking regional development indicators with interactive maps and dashboards using TypeScript, Express.js, and Prisma.',
+                        tags: ['TypeScript', 'Express', 'Prisma', 'PostgreSQL'],
+                        link: 'https://github.com/ramandhika',
+                        image: ''
+                    },
+                    {
+                        id: 5,
+                        title: 'PetMe',
+                        description: 'Animal adoption mobile app enabling users to search, offer, and adopt pets. A marketplace platform for pet adoption with seamless user experience.',
+                        tags: ['Mobile', 'Express', 'MySQL'],
+                        link: 'https://github.com/ramandhika',
+                        image: ''
+                    },
+                    {
+                        id: 6,
+                        title: 'ShortURL',
+                        description: 'Link shortening tool with Laravel backend and Tailwind frontend. Simplifies long URLs for easy sharing across platforms.',
+                        tags: ['Laravel', 'Tailwind', 'MySQL'],
+                        link: 'https://github.com/ramandhika',
+                        image: ''
+                    },
+                    {
+                        id: 7,
+                        title: 'Bookshelf API',
+                        description: 'Library management tool created with Hapi Framework to manage book data. Easy-to-use API interface for accessing and updating book information.',
+                        tags: ['Hapi', 'Node.js', 'REST API'],
+                        link: 'https://github.com/ramandhika',
+                        image: ''
+                    },
+                    {
+                        id: 8,
+                        title: 'Fixjob.id Company Profile',
+                        description: 'Corporate website showcasing company services and contact information. Built with WordPress and Elementor for clean and responsive layout.',
+                        tags: ['WordPress', 'Elementor'],
+                        link: 'https://github.com/ramandhika',
+                        image: ''
+                    },
+                    {
+                        id: 9,
+                        title: 'PPDB Online',
+                        description: 'Online student admission management system eliminating the need for physical school visits. Built with PHP for convenient registration process.',
+                        tags: ['PHP', 'MySQL'],
+                        link: 'https://github.com/ramandhika',
+                        image: ''
+                    }
+                ],
+                
+                init() {
+                    // Check for saved dark mode preference
+                    if (localStorage.getItem('darkMode') === 'true') {
+                        this.darkMode = true;
+                        document.documentElement.classList.add('dark');
+                    }
+                },
+                
+                toggleDarkMode() {
+                    this.darkMode = !this.darkMode;
+                    document.documentElement.classList.toggle('dark');
+                    localStorage.setItem('darkMode', this.darkMode);
+                },
+                
+                get uniqueTags() {
+                    const tags = this.projects.flatMap(p => p.tags);
+                    return [...new Set(tags)];
+                },
+                
+                get filteredProjects() {
+                    if (this.filterTag === 'all') {
+                        return this.projects;
+                    }
+                    return this.projects.filter(p => p.tags.includes(this.filterTag));
+                }
+            }
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
 </html>
-<script>
-    function scrollToFunction(target) {
-        document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
-    }
-</script>
-<script src="https://kit.fontawesome.com/984a8c9bbd.js" crossorigin="anonymous"></script>
