@@ -1,281 +1,290 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Ramandhika Ilham Pratama</title>
+    <title>Ramandhika | Backend & Business Process</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class'
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        accent: {
+                            DEFAULT: '#06B6D4', // Modern Teal
+                            hover: '#0891B2',
+                        },
+                        secondary: '#059669', // Emerald Green
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    boxShadow: {
+                        'neo': '5px 5px 0px 0px rgba(0,0,0,1)',
+                        'neo-hover': '2px 2px 0px 0px rgba(0,0,0,1)',
+                        'neo-dark': '5px 5px 0px 0px rgba(255,255,255,1)',
+                    }
+                }
+            }
         }
     </script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
     <style>
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .neo-card {
+            border: 3px solid #000;
+            transition: all 0.2s ease-in-out;
+        }
+        .dark .neo-card {
+            border: 3px solid #fff;
         }
         
-        @keyframes typewriter {
-            from { width: 0; }
-            to { width: 100%; }
+        .neo-shadow {
+            box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
         }
-        
-        @keyframes blink {
-            50% { border-color: transparent; }
+        .dark .neo-shadow {
+            box-shadow: 6px 6px 0px 0px rgba(255,255,255,1);
         }
-        
-        .typewriter {
-            display: inline-block;
-            overflow: hidden;
-            border-right: 3px solid;
-            white-space: nowrap;
-            animation: typewriter 3s steps(24) 1s forwards, blink 0.75s step-end infinite;
-            width: 0;
+
+        .neo-click:active {
+            transform: translate(3px, 3px);
+            box-shadow: 3px 3px 0px 0px rgba(0,0,0,1) !important;
         }
-        
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
+        .dark .neo-click:active {
+            box-shadow: 3px 3px 0px 0px rgba(255,255,255,1) !important;
         }
-        
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
-        .delay-400 { animation-delay: 0.4s; }
-        
-        .project-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        .bg-dots {
+            background-image: radial-gradient(#000 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.1;
         }
-        
-        .project-card:hover {
-            transform: translateY(-8px);
-        }
-        
-        .filter-btn {
-            transition: all 0.3s ease;
+        .dark .bg-dots {
+            background-image: radial-gradient(#fff 1px, transparent 1px);
         }
     </style>
 </head>
-<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300" x-data="portfolioApp()">
-    
-    <!-- Navbar -->
-    <nav class="fixed w-full top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-            <h1 class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-red-900 to-red-800 bg-clip-text text-transparent">Ramandhika</h1>
-            <div class="flex gap-3 sm:gap-6 items-center text-sm sm:text-base">
-                <a href="#home" class="hover:text-red-700 dark:hover:text-red-400 transition">Home</a>
-                <a href="#about" class="hover:text-red-700 dark:hover:text-red-400 transition">About</a>
-                <a href="#portfolio" class="hover:text-red-700 dark:hover:text-red-400 transition">Portfolio</a>
-                <button @click="toggleDarkMode()" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition">
-                    <svg x-show="!darkMode" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                    </svg>
-                    <svg x-show="darkMode" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                    </svg>
+<body class="bg-[#f0f0f0] dark:bg-zinc-900 text-black dark:text-white transition-colors duration-300 font-sans selection:bg-accent selection:text-white" x-data="app()">
+
+    <div class="fixed inset-0 bg-dots pointer-events-none z-0"></div>
+
+    <nav class="fixed w-full top-0 z-50 bg-[#f0f0f0]/90 dark:bg-zinc-900/90 border-b-4 border-black dark:border-white backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold font-mono tracking-tighter hover:text-accent transition">
+                &lt;Ramandhika/&gt;
+            </a>
+            
+            <div class="flex items-center gap-4">
+                <button @click="toggleDarkMode()" class="neo-card p-2 rounded-lg bg-white dark:bg-zinc-800 hover:bg-gray-100 transition neo-click">
+                    <svg x-show="!darkMode" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    <svg x-show="darkMode" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                 </button>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center pt-20 px-4 sm:px-6">
-        <div class="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div class="space-y-4 sm:space-y-6 opacity-0 fade-in-up order-2 md:order-1">
-                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                    Hi, I'm <span class="bg-gradient-to-r from-red-900 to-red-700 bg-clip-text text-transparent">Ramandhika</span>
-                </h2>
-                <div class="text-xl sm:text-2xl md:text-3xl text-gray-600 dark:text-gray-200">
-                    <span class="typewriter">Backend Developer</span>
-                </div>
-                <p class="text-base sm:text-lg text-gray-600 dark:text-gray-200 opacity-0 fade-in-up delay-300">
-                    Experienced backend developer proficient in TypeScript, Express.js, and Elysia with strong skills in MySQL and PostgreSQL. Passionate about creating scalable, user-centric web solutions.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 opacity-0 fade-in-up delay-400">
-                    <a href="#portfolio" class="px-6 py-3 bg-gradient-to-r from-red-900 to-red-700 text-white rounded-lg hover:shadow-lg transition transform hover:scale-105 text-center">
-                        View Projects
-                    </a>
-                    <a href="https://linkedin.com/in/ramandhika-ip" target="_blank" class="px-6 py-3 border-2 border-red-800 dark:border-red-700 text-red-800 dark:text-red-400 rounded-lg hover:bg-red-50 dark:hover:bg-gray-800 transition text-center">
-                        Contact Me
-                    </a>
-                </div>
-            </div>
-            <div class="flex justify-center opacity-0 fade-in-up delay-200 order-1 md:order-2">
-                <div class="relative">
-                    <div class="absolute inset-0 bg-gradient-to-r from-red-900 to-red-700 rounded-full blur-2xl opacity-30 animate-pulse"></div>
-                    <img src="https://avatars.githubusercontent.com/u/64927511?v=4" 
-                         alt="Ramandhika Ilham Pratama" 
-                         class="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-2xl">
-                </div>
-            </div>
-        </div>
-    </section>
+    <main class="relative z-10 pt-28 pb-12 px-4 sm:px-6 max-w-7xl mx-auto space-y-24">
 
-    <!-- About Section -->
-    <section id="about" class="min-h-screen flex items-center py-16 sm:py-20 px-4 sm:px-6 bg-gray-50 dark:bg-gray-800">
-        <div class="max-w-6xl mx-auto w-full">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center">About Me</h2>
-            <div class="grid md:grid-cols-2 gap-8 sm:gap-12">
-                <div class="space-y-4 sm:space-y-6">
-                    <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400">
-                        I'm Ramandhika Ilham Pratama, a prospective graduate in Information Systems from Tiga Serangkai University with a GPA of 3.83/4.00. I specialize in backend development with expertise in TypeScript, Express.js, and modern JavaScript frameworks.
-                    </p>
-                    <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400">
-                        With experience as a Backend Engineer at ADS Digital Partner and currently working at Megalogic, I'm passionate about emerging technologies, AI, automation, and creating scalable web solutions. I've successfully completed 20+ freelance projects and was honored as a Distinction Graduate from Bangkit Academy 2023 by Google.
-                    </p>
-                    <div class="space-y-4">
-                        <h3 class="text-xl sm:text-2xl font-bold">Technical Skills</h3>
-                        
-                        <!-- Frontend Skills -->
-                        <div class="space-y-3">
-                            <h4 class="text-base sm:text-lg font-semibold text-gray-700 dark:text-gray-300">Frontend</h4>
-                            <img src="https://skillicons.dev/icons?i=html,css,js,ts,tailwind,bootstrap,vue,alpine&perline=8" alt="Frontend Skills" class="w-full max-w-md" />
-                        </div>
-                        
-                        <!-- Backend Skills -->
-                        <div class="space-y-3">
-                            <h4 class="text-base sm:text-lg font-semibold text-gray-700 dark:text-gray-300">Backend</h4>
-                            <img src="https://skillicons.dev/icons?i=nodejs,express,bun,php,laravel,go&perline=6" alt="Backend Skills" class="w-full max-w-md" />
-                        </div>
-                        
-                        <!-- Database & Tools -->
-                        <div class="space-y-3">
-                            <h4 class="text-base sm:text-lg font-semibold text-gray-700 dark:text-gray-300">Database & Tools</h4>
-                            <img src="https://skillicons.dev/icons?i=mysql,postgres,prisma,firebase,git,github,gcp,wordpress&perline=8" alt="Database & Tools" class="w-full max-w-md" />
-                        </div>
-                    </div>
-                </div>
-                <div class="space-y-4 sm:space-y-6">
-                    <div class="p-4 sm:p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg">
-                        <h3 class="text-lg sm:text-xl font-bold mb-4">Experience</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <h4 class="font-semibold text-base sm:text-lg">Backend Engineer</h4>
-                                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400">ADS Digital Partner • Sep 2024 - Dec 2024</p>
-                                <p class="text-sm text-gray-500 dark:text-gray-500 mt-1">Implemented automated API testing and developed features using TypeScript and modern technologies</p>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-base sm:text-lg">Full Stack Developer</h4>
-                                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400">Megalogic • Jan 2024 - Present</p>
-                                <p class="text-sm text-gray-500 dark:text-gray-500 mt-1">Led backend team in developing RESTful APIs using Laravel, Express.js, and Elysia.js</p>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-base sm:text-lg">Cloud Computing Cohort</h4>
-                                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400">Bangkit Academy by Google • Aug 2023 - Dec 2023</p>
-                                <p class="text-sm text-gray-500 dark:text-gray-500 mt-1">Distinction Graduate among 4520+ participants, mastered GCP and cloud architecture</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4 sm:p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg">
-                        <h3 class="text-lg sm:text-xl font-bold mb-4">Education</h3>
-                        <div>
-                            <h4 class="font-semibold text-base sm:text-lg">Bachelor in Information Systems</h4>
-                            <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400">Tiga Serangkai University • 2021 - Present</p>
-                            <p class="text-sm text-gray-500 dark:text-gray-500 mt-1">GPA: 3.83/4.00</p>
-                        </div>
-                    </div>
-                    <div class="p-4 sm:p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg">
-                        <h3 class="text-lg sm:text-xl font-bold mb-4">Achievements</h3>
-                        <ul class="space-y-2 text-sm sm:text-base text-gray-600 dark:text-gray-400">
-                            <li>• Distinction Graduate - Bangkit Academy 2023</li>
-                            <li>• 3rd Place - Surakarta Student Competency Competition</li>
-                            <li>• 20+ Completed Freelance Projects</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="min-h-screen py-16 sm:py-20 px-4 sm:px-6">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center">My Portfolio</h2>
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-6">
             
-            <!-- Filter Buttons -->
-            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
-                <button @click="filterTag = 'all'" 
-                        :class="filterTag === 'all' ? 'bg-gradient-to-r from-red-900 to-red-700 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'"
-                        class="filter-btn px-4 sm:px-6 py-2 rounded-lg font-medium text-sm sm:text-base">
-                    All
-                </button>
-                <template x-for="tag in uniqueTags" :key="tag">
-                    <button @click="filterTag = tag" 
-                            :class="filterTag === tag ? 'bg-gradient-to-r from-red-900 to-red-700 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'"
-                            class="filter-btn px-4 sm:px-6 py-2 rounded-lg font-medium text-sm sm:text-base"
-                            x-text="tag">
-                    </button>
-                </template>
+            <div class="md:col-span-8 neo-card neo-shadow bg-white dark:bg-zinc-900 p-8 rounded-xl flex flex-col justify-center">
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="px-3 py-1 border-2 border-black dark:border-white rounded-full text-xs font-bold font-mono bg-accent text-white">
+                        BACKEND
+                    </span>
+                    <span class="px-3 py-1 border-2 border-black dark:border-white rounded-full text-xs font-bold font-mono bg-secondary text-white">
+                        BUSINESS PROCESS
+                    </span>
+                </div>
+                
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-none mb-6">
+                    SYSTEMS. LOGIC.<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">OPTIMIZATION.</span>
+                </h1>
+                
+                <p class="text-lg text-gray-700 dark:text-gray-300 font-medium leading-relaxed max-w-2xl">
+                    I'm <strong>Ramandhika Ilham Pratama</strong>. I bridge the gap between complex technical architecture and streamlined business processes. Currently driving operational excellence at <strong class="underline decoration-secondary decoration-4 underline-offset-4">LightHouse Group</strong> while building scalable backend solutions.
+                </p>
+
+                <div class="mt-8 flex gap-4">
+                    <a href="#projects" class="neo-card neo-shadow bg-black dark:bg-white text-white dark:text-black px-8 py-3 font-bold hover:-translate-y-1 transition neo-click">
+                        View Portfolio
+                    </a>
+                    <a href="https://linkedin.com/in/ramandhika-ip" target="_blank" class="px-8 py-3 font-bold underline decoration-2 underline-offset-4 hover:text-accent decoration-black dark:decoration-white">
+                        LinkedIn
+                    </a>
+                </div>
             </div>
 
-            <!-- Projects Grid -->
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                <template x-for="project in filteredProjects" :key="project.id">
-                    <div class="project-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
-                        <div class="h-40 sm:h-48 bg-gradient-to-br from-red-900 to-red-700 relative overflow-hidden">
-                            <template x-if="project.image">
-                                <img :src="project.image" :alt="project.title" class="w-full h-full object-cover">
-                            </template>
-                            <template x-if="!project.image">
-                                <div class="absolute inset-0 flex items-center justify-center text-white text-5xl sm:text-6xl font-bold opacity-20" x-text="project.title.charAt(0)"></div>
-                            </template>
+            <div class="md:col-span-4 neo-card neo-shadow bg-accent rounded-xl overflow-hidden relative group">
+                <img src="https://avatars.githubusercontent.com/u/64927511?v=4" alt="Ramandhika" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
+                <div class="absolute bottom-0 left-0 w-full bg-black border-t-4 border-white p-3">
+                    <p class="text-white font-mono text-xs">STATUS:</p>
+                    <p class="text-green-400 font-bold animate-pulse">● ACTIVE @ LIGHTHOUSE GROUP</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-4 md:row-span-2 neo-card neo-shadow bg-cyan-50 dark:bg-cyan-900/20 p-4 sm:p-6 rounded-xl overflow-hidden">
+                <div class="flex items-center gap-2 mb-4 sm:mb-6 border-b-2 border-black dark:border-white pb-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    <h3 class="font-bold text-xl uppercase">Experience</h3>
+                </div>
+                
+                <div class="space-y-4 sm:space-y-6 relative">
+                    <div class="absolute left-2 top-2 bottom-2 w-1 bg-black dark:bg-white opacity-20"></div>
+
+                    <div class="relative pl-6 sm:pl-8">
+                        <div class="absolute left-0 top-1.5 w-4 h-4 sm:w-5 sm:h-5 bg-black dark:bg-white rounded-full border-3 sm:border-4 border-cyan-50 dark:border-cyan-900"></div>
+                        <p class="text-sm font-bold text-secondary dark:text-purple-300">Business Process</p>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 leading-snug">Optimasi operasional & process improvement</p>
+                        <p class="text-xs font-mono opacity-70 mt-2">Present</p>
+                    </div>
+
+                    <div class="relative pl-6 sm:pl-8">
+                        <div class="absolute left-0 top-1.5 w-4 h-4 sm:w-5 sm:h-5 bg-black dark:bg-white rounded-full border-3 sm:border-4 border-cyan-50 dark:border-cyan-900"></div>
+                        <p class="text-sm font-bold text-accent dark:text-blue-300">Full Stack Developer</p>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 leading-snug">Backend systems & scalable architecture</p>
+                        <p class="text-xs font-mono opacity-70 mt-2">Jan 2024 - Present</p>
+                    </div>
+
+                    <div class="relative pl-6 sm:pl-8">
+                        <div class="absolute left-0 top-1.5 w-4 h-4 sm:w-5 sm:h-5 bg-gray-500 rounded-full border-3 sm:border-4 border-cyan-50 dark:border-cyan-900"></div>
+                        <p class="text-sm font-bold text-gray-600 dark:text-gray-400">Backend Engineer</p>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 leading-snug">API development & database optimization</p>
+                        <p class="text-xs font-mono opacity-70 mt-2">Sep 2024 - Dec 2024</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:col-span-8 neo-card neo-shadow bg-emerald-50 dark:bg-emerald-900/20 p-6 rounded-xl">
+                <div class="flex items-center gap-2 mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
+                    <h3 class="font-bold text-xl uppercase">Education & Honors</h3>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-bold text-lg">Tiga Serangkai University</h4>
+                        <p class="text-sm">Bachelor of Information Systems</p>
+                        <div class="inline-block bg-black text-white px-2 py-0.5 text-xs font-bold font-mono mt-2 transform rotate-1">
+                            GPA: 3.85 / 4.00
                         </div>
-                        <div class="p-4 sm:p-6">
-                            <h3 class="text-lg sm:text-xl font-bold mb-2" x-text="project.title"></h3>
-                            <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4" x-text="project.description"></p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <template x-for="tag in project.tags" :key="tag">
-                                    <span class="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400 rounded-full text-xs sm:text-sm" x-text="tag"></span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-2">
+                            <span class="text-xl">🏆</span>
+                            <div>
+                                <p class="font-bold text-sm">Distinction Graduate</p>
+                                <p class="text-xs opacity-70">Bangkit Academy 2023 by Google</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-xl">🥉</span>
+                            <div>
+                                <p class="font-bold text-sm">3rd Place</p>
+                                <p class="text-xs opacity-70">Student Competency Competition (LKS)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:col-span-8 neo-card neo-shadow bg-white dark:bg-zinc-900 p-4 sm:p-6 rounded-xl">
+                <h3 class="font-bold text-sm uppercase mb-4 text-black dark:text-gray-100">Technical Arsenal</h3>
+                <div class="flex flex-wrap gap-2">
+                    <template x-for="tech in ['TypeScript', 'Express.js', 'Elysia', 'Laravel', 'Go', 'MySQL', 'PostgreSQL', 'GCP', 'Prisma']">
+                        <span class="px-3 py-1.5 border-2 border-black dark:border-white text-sm font-bold shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)] hover:-translate-y-0.5 hover:shadow-none transition-all cursor-default bg-white dark:bg-zinc-800" x-text="tech"></span>
+                    </template>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="projects">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 border-b-4 border-black dark:border-white pb-6">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-extrabold uppercase">
+                        Portfolio
+                    </h2>
+                    <p class="mt-2 font-mono text-sm">20+ Projects Completed. Here are the highlights.</p>
+                </div>
+                
+                <div class="flex flex-wrap gap-2">
+                    <button @click="filterTag = 'all'" :class="filterTag === 'all' ? 'bg-black text-white dark:bg-white dark:text-black' : 'bg-transparent text-black dark:text-white hover:bg-gray-200 dark:hover:bg-zinc-800'" class="px-4 py-2 border-2 border-black dark:border-white font-bold text-sm transition neo-click">All</button>
+                    <template x-for="tag in uniqueTags">
+                        <button @click="filterTag = tag" :class="filterTag === tag ? 'bg-accent text-white border-accent' : 'bg-transparent text-black dark:text-white hover:bg-gray-200 dark:hover:bg-zinc-800'" class="px-4 py-2 border-2 border-black dark:border-white font-bold text-sm transition neo-click" x-text="tag"></button>
+                    </template>
+                </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <template x-for="project in filteredProjects" :key="project.id">
+                    <div class="neo-card neo-shadow bg-white dark:bg-zinc-900 flex flex-col h-full hover:-translate-y-2 transition-transform duration-200">
+                        <div class="p-4 border-b-2 border-black dark:border-white bg-gray-100 dark:bg-zinc-800 flex justify-between items-center">
+                            <span class="font-mono text-xs font-bold" x-text="`PRJ-${project.id.toString().padStart(2, '0')}`"></span>
+                            <div class="flex gap-1">
+                                <div class="w-3 h-3 rounded-full border border-black bg-red-400"></div>
+                                <div class="w-3 h-3 rounded-full border border-black bg-yellow-400"></div>
+                                <div class="w-3 h-3 rounded-full border border-black bg-green-400"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-extrabold mb-3 leading-tight" x-text="project.title"></h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mb-6 flex-grow leading-relaxed font-medium" x-text="project.description"></p>
+                            
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <template x-for="tag in project.tags">
+                                    <span class="px-2 py-1 bg-white dark:bg-zinc-800 text-xs font-bold border border-black dark:border-white text-black dark:text-white" x-text="tag"></span>
                                 </template>
                             </div>
-                            <a :href="project.link" target="_blank" class="inline-flex items-center text-red-800 dark:text-red-400 hover:underline text-sm sm:text-base">
-                                View Project
-                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                                </svg>
+
+                            <a :href="project.link" target="_blank" class="block w-full py-3 text-center border-2 border-black dark:border-white font-bold hover:bg-accent hover:text-white hover:border-accent transition group">
+                                View Project <span class="group-hover:ml-1 transition-all">-></span>
                             </a>
                         </div>
                     </div>
                 </template>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-50 dark:bg-gray-800 py-8 sm:py-12 px-4 sm:px-6">
-        <div class="max-w-6xl mx-auto text-center">
-            <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Let's Connect</h3>
-            <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4 sm:mb-6">Feel free to reach out for collaborations or just a friendly hello</p>
-            <div class="flex justify-center gap-4 sm:gap-6 mb-4 sm:mb-6">
-                <a href="https://linkedin.com/in/ramandhika-ip" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-red-700 dark:hover:text-red-400 transition">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                    </svg>
-                </a>
-                <a href="https://github.com/ramandhika" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-red-700 dark:hover:text-red-400 transition">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                </a>
-                <a href="mailto:ramandhika.ilham@gmail.com" class="text-gray-600 dark:text-gray-400 hover:text-red-700 dark:hover:text-red-400 transition">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                    </svg>
-                </a>
+        <section id="contact" class="neo-card neo-shadow bg-accent text-white p-6 sm:p-10 md:p-16 text-center relative overflow-hidden">
+            <div class="relative z-10">
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-extrabold mb-4 sm:mb-6 uppercase leading-tight">
+                    Need scalable systems? <br> Let's optimize together.
+                </h2>
+                <p class="text-base sm:text-lg md:text-xl font-medium max-w-2xl mx-auto mb-6 sm:mb-10 opacity-90">
+                    Open for collaboration on Backend Architecture and Process Improvement.
+                </p>
+                <div class="flex flex-wrap justify-center gap-3 sm:gap-6">
+                    <a href="mailto:ramandhika.ilham@gmail.com" class="neo-card bg-white text-black px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-lg hover:bg-gray-100 transition neo-click shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                        Email Me
+                    </a>
+                    <a href="https://github.com/ramandhika" target="_blank" class="neo-card bg-black text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-lg border-white hover:bg-zinc-900 transition neo-click shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
+                        GitHub Profile
+                    </a>
+                </div>
             </div>
-            <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400">© 2025 Ramandhika Ilham Pratama. All rights reserved.</p>
+        </section>
+
+    </main>
+
+    <footer class="border-t-4 border-black dark:border-white bg-white dark:bg-zinc-900 py-12 mt-20">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <p class="font-bold text-lg">Ramandhika Ilham Pratama</p>
+                <p class="font-mono text-sm opacity-60">Backend & Analyst</p>
+            </div>
+            <p class="font-mono text-sm text-center">
+                © 2025. Crafted with Neo-Brutalism style.
+            </p>
         </div>
     </footer>
 
     <script>
-        function portfolioApp() {
+        function app() {
             return {
                 darkMode: false,
                 filterTag: 'all',
@@ -285,77 +294,67 @@
                         title: 'Telegram Repo Watcher',
                         description: 'GitHub monitoring bot that sends commit updates to Telegram. Built with Elysia (Bun runtime) supporting webhooks and private repo access.',
                         tags: ['Bun', 'Elysia', 'Telegram', 'GitHub'],
-                        link: 'https://github.com/ramandhika',
-                        image: ''
+                        link: 'https://github.com/ramandhika'
                     },
                     {
                         id: 2,
                         title: 'AssetSync',
                         description: 'Company asset tracking system using QR codes. Built with Laravel RESTful API for backend and Bootstrap with Laravel Blade for frontend.',
                         tags: ['Laravel', 'Bootstrap', 'MySQL'],
-                        link: 'https://github.com/ramandhika',
-                        image: ''
+                        link: 'https://github.com/ramandhika'
                     },
                     {
                         id: 3,
                         title: 'Eco Travel Backend',
                         description: 'Travel platform backend service supporting user authentication, destination history, and location sharing. Built with Golang and Gin framework.',
                         tags: ['Golang', 'Gin', 'REST API'],
-                        link: 'https://github.com/ramandhika',
-                        image: ''
+                        link: 'https://github.com/ramandhika'
                     },
                     {
                         id: 4,
                         title: 'Data Monitoring System',
                         description: 'Web platform for tracking regional development indicators with interactive maps and dashboards using TypeScript, Express.js, and Prisma.',
                         tags: ['TypeScript', 'Express', 'Prisma', 'PostgreSQL'],
-                        link: 'https://github.com/ramandhika',
-                        image: ''
+                        link: 'https://github.com/ramandhika'
                     },
                     {
                         id: 5,
                         title: 'PetMe',
                         description: 'Animal adoption mobile app enabling users to search, offer, and adopt pets. A marketplace platform for pet adoption with seamless user experience.',
                         tags: ['Mobile', 'Express', 'MySQL'],
-                        link: 'https://github.com/ramandhika',
-                        image: ''
+                        link: 'https://github.com/ramandhika'
                     },
                     {
                         id: 6,
                         title: 'ShortURL',
                         description: 'Link shortening tool with Laravel backend and Tailwind frontend. Simplifies long URLs for easy sharing across platforms.',
                         tags: ['Laravel', 'Tailwind', 'MySQL'],
-                        link: 'https://github.com/ramandhika',
-                        image: ''
+                        link: 'https://github.com/ramandhika'
                     },
                     {
                         id: 7,
                         title: 'Bookshelf API',
                         description: 'Library management tool created with Hapi Framework to manage book data. Easy-to-use API interface for accessing and updating book information.',
                         tags: ['Hapi', 'Node.js', 'REST API'],
-                        link: 'https://github.com/ramandhika',
-                        image: ''
+                        link: 'https://github.com/ramandhika'
                     },
                     {
                         id: 8,
                         title: 'Fixjob.id Company Profile',
                         description: 'Corporate website showcasing company services and contact information. Built with WordPress and Elementor for clean and responsive layout.',
                         tags: ['WordPress', 'Elementor'],
-                        link: 'https://github.com/ramandhika',
-                        image: ''
+                        link: 'https://github.com/ramandhika'
                     },
                     {
                         id: 9,
                         title: 'PPDB Online',
                         description: 'Online student admission management system eliminating the need for physical school visits. Built with PHP for convenient registration process.',
                         tags: ['PHP', 'MySQL'],
-                        link: 'https://github.com/ramandhika',
-                        image: ''
+                        link: 'https://github.com/ramandhika'
                     }
                 ],
                 
                 init() {
-                    // Check for saved dark mode preference
                     if (localStorage.getItem('darkMode') === 'true') {
                         this.darkMode = true;
                         document.documentElement.classList.add('dark');
@@ -374,24 +373,11 @@
                 },
                 
                 get filteredProjects() {
-                    if (this.filterTag === 'all') {
-                        return this.projects;
-                    }
+                    if (this.filterTag === 'all') return this.projects;
                     return this.projects.filter(p => p.tags.includes(this.filterTag));
                 }
             }
         }
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
     </script>
 </body>
 </html>
