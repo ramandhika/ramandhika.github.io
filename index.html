@@ -12,10 +12,12 @@
                 extend: {
                     colors: {
                         accent: {
-                            DEFAULT: '#06B6D4', 
-                            hover: '#0891B2',
+                            DEFAULT: '#2563EB', // Electric Blue (Professional & Tech)
+                            hover: '#1d4ed8',
+                            light: '#DBEAFE',
                         },
-                        secondary: '#059669',
+                        secondary: '#A855F7', // Purple
+                        warning: '#FBBF24',   // Yellow
                     },
                     fontFamily: {
                         sans: ['Plus Jakarta Sans', 'sans-serif'],
@@ -30,18 +32,20 @@
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
     <style>
+        /* Base Neo-Brutalism Styles */
         .neo-card {
             border: 3px solid #000;
-            transition: all 0.2s ease-in-out;
+            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .dark .neo-card {
             border: 3px solid #fff;
         }
         
+        /* Hard Shadows */
         .neo-shadow {
             box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
         }
@@ -49,203 +53,222 @@
             box-shadow: 6px 6px 0px 0px rgba(255,255,255,1);
         }
 
+        /* Click Interaction */
         .neo-click:active {
-            transform: translate(3px, 3px);
-            box-shadow: 3px 3px 0px 0px rgba(0,0,0,1) !important;
+            transform: translate(4px, 4px);
+            box-shadow: 2px 2px 0px 0px rgba(0,0,0,1) !important;
         }
         .dark .neo-click:active {
-            box-shadow: 3px 3px 0px 0px rgba(255,255,255,1) !important;
+            box-shadow: 2px 2px 0px 0px rgba(255,255,255,1) !important;
         }
 
+        /* Dot Pattern Background */
         .bg-dots {
             background-image: radial-gradient(#000 1px, transparent 1px);
-            background-size: 20px 20px;
-            opacity: 0.1;
+            background-size: 24px 24px;
+            opacity: 0.08;
         }
         .dark .bg-dots {
             background-image: radial-gradient(#fff 1px, transparent 1px);
+            opacity: 0.08;
         }
     </style>
 </head>
-<body class="bg-[#f0f0f0] dark:bg-zinc-900 text-black dark:text-white transition-colors duration-300 font-sans selection:bg-accent selection:text-white" x-data="app()">
+<body class="bg-[#f4f4f5] dark:bg-zinc-950 text-black dark:text-white transition-colors duration-300 font-sans selection:bg-accent selection:text-white" x-data="app()">
 
     <div class="fixed inset-0 bg-dots pointer-events-none z-0"></div>
 
-    <nav class="fixed w-full top-0 z-50 bg-[#f0f0f0]/90 dark:bg-zinc-900/90 border-b-4 border-black dark:border-white backdrop-blur-sm">
+    <nav class="fixed w-full top-0 z-50 bg-[#f4f4f5]/90 dark:bg-zinc-950/90 border-b-4 border-black dark:border-white backdrop-blur-md transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-xl font-bold font-mono tracking-tighter hover:text-accent transition">
                 &lt;Ramandhika/&gt;
             </a>
             
-            <div class="flex items-center gap-4">
-                <button @click="toggleDarkMode()" class="neo-card p-2 rounded-lg bg-white dark:bg-zinc-800 hover:bg-gray-100 transition neo-click">
+            <div class="flex items-center gap-3">
+                <button @click="toggleDarkMode()" class="neo-card p-2 rounded-lg bg-white dark:bg-zinc-900 hover:bg-gray-100 transition neo-click">
                     <svg x-show="!darkMode" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                     <svg x-show="darkMode" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                 </button>
+                <a href="#projects" class="hidden sm:block neo-card bg-black dark:bg-white text-white dark:text-black px-4 py-2 font-bold text-sm hover:-translate-y-1 transition neo-click shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
+                    Work
+                </a>
             </div>
         </div>
     </nav>
 
-    <main class="relative z-10 pt-28 pb-12 px-4 sm:px-6 max-w-7xl mx-auto space-y-24">
+    <main class="relative z-10 pt-28 pb-12 px-4 sm:px-6 max-w-7xl mx-auto space-y-20">
 
         <section class="grid grid-cols-1 md:grid-cols-12 gap-6">
             
-            <div class="md:col-span-8 neo-card neo-shadow bg-white dark:bg-zinc-900 p-8 rounded-xl flex flex-col justify-center">
-                <div class="flex flex-wrap gap-2 mb-6">
-                    <span class="px-3 py-1 border-2 border-black dark:border-white rounded-full text-xs font-bold font-mono bg-accent text-white">
-                        BACKEND
+            <div class="md:col-span-8 neo-card neo-shadow bg-white dark:bg-zinc-900 p-6 sm:p-10 rounded-xl flex flex-col justify-center relative overflow-hidden group">
+                <div class="absolute -right-10 -top-10 w-40 h-40 bg-accent/10 rounded-full blur-3xl group-hover:bg-accent/20 transition duration-500"></div>
+
+                <div class="flex flex-wrap gap-2 mb-6 relative z-10">
+                    <span class="px-3 py-1 border-2 border-black dark:border-white rounded-full text-xs font-bold font-mono bg-green-400 text-black">
+                        OPEN TO WORK
                     </span>
-                    <span class="px-3 py-1 border-2 border-black dark:border-white rounded-full text-xs font-bold font-mono bg-secondary text-white">
-                        BUSINESS PROCESS
+                    <span class="px-3 py-1 border-2 border-black dark:border-white rounded-full text-xs font-bold font-mono bg-accent/20 text-accent dark:text-blue-300">
+                        BACKEND DEV
                     </span>
                 </div>
                 
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-none mb-6">
-                    SYSTEMS. LOGIC.<br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">OPTIMIZATION.</span>
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[0.9] mb-6 tracking-tight relative z-10">
+                    SYSTEMS.<br>
+                    LOGIC.<br>
+                    <span class="text-accent dark:text-blue-400">OPTIMIZATION.</span>
                 </h1>
                 
-                <p class="text-lg text-gray-700 dark:text-gray-300 font-medium leading-relaxed max-w-2xl">
-                    I'm <strong>Ramandhika Ilham Pratama</strong>. I bridge the gap between complex technical architecture and streamlined business processes. Currently driving operational excellence at <strong class="underline decoration-secondary decoration-4 underline-offset-4">LightHouse Group</strong> while building scalable backend solutions.
+                <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 font-medium leading-relaxed max-w-2xl relative z-10">
+                    I architect scalable backend solutions and streamline complex business workflows. Currently driving efficiency at <strong class="bg-yellow-200 dark:bg-yellow-900/50 dark:text-yellow-100 px-1">LightHouse Group</strong>.
                 </p>
 
-                <div class="mt-8 flex gap-4">
-                    <a href="#projects" class="neo-card neo-shadow bg-black dark:bg-white text-white dark:text-black px-8 py-3 font-bold hover:-translate-y-1 transition neo-click">
-                        View Portfolio
+                <div class="mt-8 flex flex-wrap gap-4 relative z-10">
+                    <a href="#contact" class="neo-card neo-shadow bg-accent text-white px-8 py-3.5 font-bold hover:-translate-y-1 transition neo-click text-sm sm:text-base">
+                        Let's Talk
                     </a>
-                    <a href="https://linkedin.com/in/ramandhika-ip" target="_blank" class="px-8 py-3 font-bold underline decoration-2 underline-offset-4 hover:text-accent decoration-black dark:decoration-white">
-                        LinkedIn
+                    <a href="https://linkedin.com/in/ramandhika-ip" target="_blank" class="px-6 py-3.5 font-bold underline decoration-4 underline-offset-4 hover:text-accent decoration-black dark:decoration-white transition">
+                        LinkedIn Profile
                     </a>
                 </div>
             </div>
 
-            <div class="md:col-span-4 neo-card neo-shadow bg-accent rounded-xl overflow-hidden relative group">
-                <img src="https://avatars.githubusercontent.com/u/64927511?v=4" alt="Ramandhika" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
-                <div class="absolute bottom-0 left-0 w-full bg-black border-t-4 border-white p-3">
-                    <p class="text-white font-mono text-xs">STATUS:</p>
-                    <p class="text-green-400 font-bold animate-pulse">● ACTIVE @ LIGHTHOUSE GROUP</p>
+            <div class="md:col-span-4 neo-card neo-shadow bg-black dark:bg-white rounded-xl overflow-hidden relative group h-96 md:h-auto">
+                <img src="https://avatars.githubusercontent.com/u/64927511?v=4" alt="Ramandhika" class="w-full h-full object-cover transition duration-700 group-hover:scale-105 filter grayscale group-hover:grayscale-0">
+                
+                <div class="absolute bottom-0 left-0 w-full bg-accent border-t-4 border-black dark:border-white p-4">
+                    <div class="flex items-center gap-3">
+                        <div class="relative">
+                            <span class="absolute inline-flex h-3 w-3 rounded-full bg-green-400 opacity-75 animate-ping"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500 border border-black"></span>
+                        </div>
+                        <div>
+                            <p class="font-mono text-[10px] sm:text-xs font-bold text-white uppercase leading-none mb-1">CURRENTLY:</p>
+                            <p class="font-black text-xs sm:text-sm text-white leading-none">ACTIVE @ LIGHTHOUSE GROUP</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="md:col-span-4 md:row-span-2 neo-card neo-shadow bg-cyan-50 dark:bg-cyan-900/20 p-4 sm:p-6 rounded-xl overflow-hidden">
-                <div class="flex items-center gap-2 mb-4 sm:mb-6 border-b-2 border-black dark:border-white pb-2">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    <h3 class="font-bold text-xl uppercase">Experience</h3>
+            <div class="md:col-span-4 md:row-span-2 neo-card neo-shadow bg-white dark:bg-zinc-900 p-6 sm:p-8 rounded-xl flex flex-col relative overflow-hidden">
+                <div class="flex items-center gap-3 mb-8 border-b-4 border-black dark:border-white pb-4">
+                    <div class="p-2 bg-yellow-400 border-2 border-black dark:border-white rounded-md">
+                        <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="font-black text-xl uppercase tracking-tight">Experience</h3>
                 </div>
                 
-                <div class="space-y-6 relative">
-                    <div class="absolute left-2 top-2 bottom-2 w-1 bg-black dark:bg-white opacity-20"></div>
+                <div class="space-y-8 relative pl-2">
+                    <div class="absolute left-[11px] top-2 bottom-2 w-[2px] bg-gray-200 dark:bg-zinc-700"></div>
 
-                    <div class="relative pl-8">
-                        <div class="absolute left-0 top-1.5 w-5 h-5 bg-black dark:bg-white rounded-full border-4 border-yellow-100 dark:border-zinc-800"></div>
-                        <h4 class="font-bold text-lg leading-tight">LightHouse Group</h4>
-                        <p class="text-sm font-bold text-secondary dark:text-purple-300">Business Process</p>
-                        <p class="text-xs font-mono text-gray-600 dark:text-gray-200 mt-1">Optimasi operasional & process improvement</p>
-                        <p class="text-xs font-mono opacity-70 mt-1">Present</p>
+                    <div class="relative pl-8 group">
+                        <div class="absolute left-0 top-1.5 w-6 h-6 bg-accent border-2 border-black dark:border-white rounded-full z-10 group-hover:scale-110 transition"></div>
+                        <h4 class="font-bold text-lg leading-tight group-hover:text-accent transition">LightHouse Group</h4>
+                        <p class="text-xs font-bold font-mono text-gray-500 uppercase mt-1">Present</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2 leading-snug">
+                            Streamlining operational workflows through data-driven analysis and system integration to maximize efficiency.
+                        </p>
                     </div>
 
-                    <div class="relative pl-8">
-                        <div class="absolute left-0 top-1.5 w-5 h-5 bg-black dark:bg-white rounded-full border-4 border-yellow-100 dark:border-zinc-800"></div>
-                        <h4 class="font-bold text-lg leading-tight">Megalogic</h4>
-                        <p class="text-sm font-bold text-accent dark:text-blue-300">Full Stack Developer</p>
-                        <p class="text-xs font-mono text-gray-600 dark:text-gray-200 mt-1">Backend systems & scalable architecture</p>
-                        <p class="text-xs font-mono opacity-70 mt-1">Jan 2024 - Present</p>
+                    <div class="relative pl-8 group">
+                        <div class="absolute left-0 top-1.5 w-6 h-6 bg-white dark:bg-zinc-800 border-2 border-black dark:border-white rounded-full z-10 group-hover:bg-black dark:group-hover:bg-white transition"></div>
+                        <h4 class="font-bold text-lg leading-tight group-hover:text-accent transition">Megalogic</h4>
+                        <p class="text-xs font-bold font-mono text-gray-500 uppercase mt-1">2024 - Present</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2 leading-snug">
+                            Leading full-stack development, architecting REST APIs, and managing database performance for client solutions.
+                        </p>
                     </div>
 
-                    <div class="relative pl-8">
-                        <div class="absolute left-0 top-1.5 w-5 h-5 bg-gray-500 rounded-full border-4 border-yellow-100 dark:border-zinc-800"></div>
-                        <h4 class="font-bold text-lg leading-tight">ADS Digital Partner</h4>
-                        <p class="text-sm font-bold text-gray-600 dark:text-gray-400">Backend Engineer</p>
-                        <p class="text-xs font-mono text-gray-600 dark:text-gray-200 mt-1">API development & database optimization</p>
-                        <p class="text-xs font-mono opacity-70 mt-1">Sep 2024 - Dec 2024</p>
+                    <div class="relative pl-8 group">
+                        <div class="absolute left-0 top-1.5 w-6 h-6 bg-white dark:bg-zinc-800 border-2 border-black dark:border-white rounded-full z-10 group-hover:bg-black dark:group-hover:bg-white transition"></div>
+                        <h4 class="font-bold text-lg leading-tight group-hover:text-accent transition">ADS Digital Partner</h4>
+                        <p class="text-xs font-bold font-mono text-gray-500 uppercase mt-1">2024</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2 leading-snug">
+                            Built automated testing pipelines and optimized backend services for high-traffic environments.
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <div class="md:col-span-8 neo-card neo-shadow bg-emerald-50 dark:bg-emerald-900/20 p-6 rounded-xl">
-                <div class="flex items-center gap-2 mb-4">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
-                    <h3 class="font-bold text-xl uppercase">Education & Honors</h3>
+            <div class="md:col-span-8 neo-card neo-shadow bg-accent/5 dark:bg-zinc-900 p-6 sm:p-8 rounded-xl">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="font-black text-xl uppercase flex items-center gap-2">
+                        <span class="text-2xl">🎓</span> Education
+                    </h3>
+                    <div class="bg-black dark:bg-white text-white dark:text-black px-3 py-1 font-mono text-xs font-bold border-2 border-transparent">
+                        3.85 / 4.00
+                    </div>
                 </div>
-                <div class="grid sm:grid-cols-2 gap-6">
+                
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
                     <div>
                         <h4 class="font-bold text-lg">Tiga Serangkai University</h4>
-                        <p class="text-sm">Bachelor of Information Systems</p>
-                        <div class="inline-block bg-black text-white px-2 py-0.5 text-xs font-bold font-mono mt-2 transform rotate-1">
-                            GPA: 3.85 / 4.00
-                        </div>
+                        <p class="text-sm font-medium opacity-80">Bachelor of Information Systems</p>
                     </div>
-                    <div class="space-y-3">
-                        <div class="flex items-start gap-2">
-                            <span class="text-xl">🏆</span>
+                    
+                    <div class="flex flex-col gap-2">
+                        <div class="flex items-center gap-2 px-3 py-2 bg-white dark:bg-zinc-800 border-2 border-black dark:border-white rounded-lg shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]">
+                            <span class="text-lg">🏆</span>
                             <div>
-                                <p class="font-bold text-sm">Distinction Graduate</p>
-                                <p class="text-xs opacity-70">Bangkit Academy 2023 by Google</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-2">
-                            <span class="text-xl">🥉</span>
-                            <div>
-                                <p class="font-bold text-sm">3rd Place</p>
-                                <p class="text-xs opacity-70">Student Competency Competition (LKS)</p>
+                                <p class="font-bold text-xs">Distinction Graduate</p>
+                                <p class="text-[10px] font-mono opacity-60">Bangkit Academy (Google)</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="md:col-span-8 neo-card neo-shadow bg-white dark:bg-zinc-900 p-6 rounded-xl">
-                <h3 class="font-bold text-sm uppercase mb-4 text-black dark:text-gray-100">Technical Arsenal</h3>
-                <div class="flex flex-wrap gap-2">
-                    <template x-for="tech in ['TypeScript', 'Express.js', 'Elysia', 'Laravel', 'Go', 'MySQL', 'PostgreSQL', 'GCP', 'Prisma']">
-                        <span class="px-3 py-1.5 border-2 border-black dark:border-white text-sm font-bold shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)] hover:-translate-y-0.5 hover:shadow-none transition-all cursor-default bg-white dark:bg-zinc-800" x-text="tech"></span>
-                    </template>
+            <div class="md:col-span-8 neo-card neo-shadow bg-black dark:bg-white text-white dark:text-black p-6 rounded-xl">
+                <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                    <h3 class="font-bold text-sm font-mono uppercase whitespace-nowrap border-b-2 sm:border-b-0 sm:border-r-2 border-white dark:border-black pb-2 sm:pb-0 sm:pr-4">
+                        Core Stack
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <template x-for="tech in ['TypeScript', 'Golang', 'Laravel', 'Express', 'Elysia', 'SQL', 'GCP', 'Prisma']">
+                            <span class="px-2 py-1 border border-white dark:border-black text-xs font-bold rounded hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white transition cursor-default" x-text="tech"></span>
+                        </template>
+                    </div>
                 </div>
             </div>
 
         </section>
 
         <section id="projects">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 border-b-4 border-black dark:border-white pb-6">
-                <div>
-                    <h2 class="text-4xl md:text-5xl font-extrabold uppercase">
-                        Portfolio
-                    </h2>
-                    <p class="mt-2 font-mono text-sm">20+ Projects Completed. Here are the highlights.</p>
-                </div>
+            <div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-6 border-b-4 border-black dark:border-white pb-4">
+                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter">
+                    Selected Works
+                </h2>
                 
                 <div class="flex flex-wrap gap-2">
-                    <button @click="filterTag = 'all'" :class="filterTag === 'all' ? 'bg-black text-white dark:bg-white dark:text-black' : 'bg-transparent text-black dark:text-white hover:bg-gray-200 dark:hover:bg-zinc-800'" class="px-4 py-2 border-2 border-black dark:border-white font-bold text-sm transition neo-click">All</button>
+                    <button @click="filterTag = 'all'" :class="filterTag === 'all' ? 'bg-accent text-white border-accent' : 'bg-transparent text-black dark:text-white hover:bg-gray-200 dark:hover:bg-zinc-800'" class="px-4 py-2 border-2 border-black dark:border-white font-bold text-sm transition neo-click">All</button>
                     <template x-for="tag in uniqueTags">
                         <button @click="filterTag = tag" :class="filterTag === tag ? 'bg-accent text-white border-accent' : 'bg-transparent text-black dark:text-white hover:bg-gray-200 dark:hover:bg-zinc-800'" class="px-4 py-2 border-2 border-black dark:border-white font-bold text-sm transition neo-click" x-text="tag"></button>
                     </template>
                 </div>
             </div>
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <template x-for="project in filteredProjects" :key="project.id">
-                    <div class="neo-card neo-shadow bg-white dark:bg-zinc-900 flex flex-col h-full hover:-translate-y-2 transition-transform duration-200">
-                        <div class="p-4 border-b-2 border-black dark:border-white bg-gray-100 dark:bg-zinc-800 flex justify-between items-center">
-                            <span class="font-mono text-xs font-bold" x-text="`PRJ-${project.id.toString().padStart(2, '0')}`"></span>
-                            <div class="flex gap-1">
-                                <div class="w-3 h-3 rounded-full border border-black bg-red-400"></div>
-                                <div class="w-3 h-3 rounded-full border border-black bg-yellow-400"></div>
-                                <div class="w-3 h-3 rounded-full border border-black bg-green-400"></div>
+                    <div class="neo-card neo-shadow bg-white dark:bg-zinc-900 flex flex-col h-full hover:-translate-y-1 transition-transform duration-200 rounded-xl overflow-hidden group">
+                        <div class="p-4 border-b-2 border-black dark:border-white bg-[#f4f4f5] dark:bg-zinc-800 flex justify-between items-center">
+                            <div class="flex gap-2">
+                                <span class="w-3 h-3 rounded-full bg-red-500 border border-black"></span>
+                                <span class="w-3 h-3 rounded-full bg-yellow-500 border border-black"></span>
                             </div>
+                            <span class="font-mono text-xs font-bold opacity-50" x-text="`PRJ-${project.id}`"></span>
                         </div>
                         
                         <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-extrabold mb-3 leading-tight" x-text="project.title"></h3>
+                            <h3 class="text-xl font-extrabold mb-3 leading-tight group-hover:text-accent transition" x-text="project.title"></h3>
                             <p class="text-sm text-gray-600 dark:text-gray-400 mb-6 flex-grow leading-relaxed font-medium" x-text="project.description"></p>
                             
                             <div class="flex flex-wrap gap-2 mb-6">
                                 <template x-for="tag in project.tags">
-                                    <span class="px-2 py-1 bg-white dark:bg-zinc-800 text-xs font-bold border border-black dark:border-white text-black dark:text-white" x-text="tag"></span>
+                                    <span class="px-2 py-1 bg-gray-100 dark:bg-zinc-800 text-[10px] uppercase font-bold border border-black dark:border-zinc-600 rounded" x-text="tag"></span>
                                 </template>
                             </div>
 
-                            <a :href="project.link" target="_blank" class="block w-full py-3 text-center border-2 border-black dark:border-white font-bold hover:bg-accent hover:text-white hover:border-accent transition group">
-                                View Project <span class="group-hover:ml-1 transition-all">-></span>
+                            <a :href="project.link" target="_blank" class="block w-full py-3 text-center border-2 border-black dark:border-white font-bold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition">
+                                View Project
                             </a>
                         </div>
                     </div>
@@ -253,20 +276,22 @@
             </div>
         </section>
 
-        <section id="contact" class="neo-card neo-shadow bg-accent text-white p-10 md:p-16 text-center relative overflow-hidden">
+        <section id="contact" class="neo-card neo-shadow bg-accent text-white p-8 md:p-16 text-center relative overflow-hidden rounded-xl">
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4yKSIvPjwvc3ZnPg==')] opacity-50"></div>
+            
             <div class="relative z-10">
-                <h2 class="text-3xl md:text-5xl font-extrabold mb-6 uppercase leading-tight">
-                    Need scalable systems? <br> Let's optimize together.
+                <h2 class="text-3xl md:text-5xl font-black mb-6 uppercase leading-none">
+                    Have a complex system?<br>Let's optimize it.
                 </h2>
-                <p class="text-lg md:text-xl font-medium max-w-2xl mx-auto mb-10 opacity-90">
-                    Open for collaboration on Backend Architecture and Process Improvement.
+                <p class="text-lg font-medium max-w-2xl mx-auto mb-10 text-blue-100">
+                    Always open for challenges in Backend Architecture and Process Improvement.
                 </p>
-                <div class="flex flex-wrap justify-center gap-6">
+                <div class="flex flex-wrap justify-center gap-4">
                     <a href="mailto:ramandhika.ilham@gmail.com" class="neo-card bg-white text-black px-8 py-4 font-bold text-lg hover:bg-gray-100 transition neo-click shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                         Email Me
                     </a>
-                    <a href="https://github.com/ramandhika" target="_blank" class="neo-card bg-black text-white px-8 py-4 font-bold text-lg border-white hover:bg-zinc-900 transition neo-click shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
-                        GitHub Profile
+                    <a href="https://github.com/ramandhika" target="_blank" class="neo-card bg-black text-white px-8 py-4 font-bold text-lg border-white hover:bg-gray-900 transition neo-click shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
+                        GitHub
                     </a>
                 </div>
             </div>
@@ -274,14 +299,14 @@
 
     </main>
 
-    <footer class="border-t-4 border-black dark:border-white bg-white dark:bg-zinc-900 py-12 mt-20">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-center md:text-left">
-                <p class="font-bold text-lg">Ramandhika Ilham Pratama</p>
-                <p class="font-mono text-sm opacity-60">Backend & Analyst</p>
+    <footer class="border-t-4 border-black dark:border-white bg-white dark:bg-zinc-900 py-10 mt-20">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <div>
+                <p class="font-black text-lg">Ramandhika Ilham P.</p>
+                <p class="font-mono text-sm opacity-60">Systems. Logic. Optimization.</p>
             </div>
-            <p class="font-mono text-sm text-center">
-                © 2025. Crafted with Neo-Brutalism style.
+            <p class="font-mono text-xs font-bold">
+                © 2025. BUILT WITH NEO-BRUTALISM.
             </p>
         </div>
     </footer>
@@ -322,14 +347,14 @@
                     },
                     {
                         id: 5,
-                        title: 'PetMe',
+                        title: 'PetMe Marketplace',
                         description: 'Animal adoption mobile app enabling users to search, offer, and adopt pets. A marketplace platform for pet adoption with seamless user experience.',
                         tags: ['Mobile', 'Express', 'MySQL'],
                         link: 'https://github.com/ramandhika'
                     },
                     {
                         id: 6,
-                        title: 'ShortURL',
+                        title: 'ShortURL Service',
                         description: 'Link shortening tool with Laravel backend and Tailwind frontend. Simplifies long URLs for easy sharing across platforms.',
                         tags: ['Laravel', 'Tailwind', 'MySQL'],
                         link: 'https://github.com/ramandhika'
