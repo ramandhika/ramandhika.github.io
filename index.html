@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ramandhika | Backend & Business Process</title>
+    <title>Ramandhika | Senior Backend & System Architect</title>
+    
+    <meta name="description" content="Senior Backend Engineer specializing in scalable architectures and business process optimization. Transforming complex logic into high-performance systems.">
+    
+    <!-- Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -11,527 +20,309 @@
             theme: {
                 extend: {
                     colors: {
-                        accent: {
-                            DEFAULT: '#06B6D4', 
-                            hover: '#0891B2',
-                        },
-                        secondary: '#059669',
+                        nitro: '#0070f3',
+                        obsidian: '#0a0a0a',
+                        surface: '#111111',
+                        border: 'rgba(255, 255, 255, 0.1)',
                     },
                     fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
                         mono: ['JetBrains Mono', 'monospace'],
                     },
+                    animation: {
+                        'shimmer': 'shimmer 2s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
                 }
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
+
     <style>
-        .glass-card {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: transform 0.5s ease, background 0.3s ease;
-            transform-style: preserve-3d;
-        }
-        .dark .glass-card {
-            background: rgba(30, 30, 30, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .aurora-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+        :root { --nitro: #0070f3; }
+        body { background: #000; color: #fff; }
+        
+        .glow-card {
+            background: rgba(17, 17, 17, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
             overflow: hidden;
+            transition: all 0.3s ease;
         }
-
-        .aurora-circle {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(120px);
-            will-change: transform;
-            transition: transform 1s ease-out;
-        }
-
-        .aurora-1 {
-            width: 400px;
-            height: 400px;
-            background-color: #06B6D4;
-            opacity: 0.2;
-        }
-
-        .aurora-2 {
-            width: 300px;
-            height: 300px;
-            background-color: #059669;
-            opacity: 0.2;
+        .glow-card:hover {
+            border-color: var(--nitro);
+            box-shadow: 0 0 20px rgba(0, 112, 243, 0.2);
         }
         
-        .dark .aurora-circle {
-            opacity: 0.15;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--nitro); }
+
+        .text-gradient {
+            background: linear-gradient(to right, #fff 20%, #666 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
-<body class="bg-[#f7f7f7] dark:bg-zinc-900 text-black dark:text-white transition-colors duration-300 font-sans selection:bg-accent selection:text-white" x-data="app()">
+<body class="bg-obsidian selection:bg-nitro selection:text-white" x-data="app()">
 
-    <div class="aurora-bg">
-        <div class="aurora-circle aurora-1" style="transform: translate(20vw, 20vh);"></div>
-        <div class="aurora-circle aurora-2" style="transform: translate(60vw, 70vh);"></div>
-    </div>
-
-    <nav class="fixed w-full top-0 z-50 bg-white/50 dark:bg-zinc-900/50 border-b-2 border-white/10 dark:border-white/5 backdrop-blur-xl">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold font-mono tracking-tighter hover:text-accent transition">
-                &lt;Ramandhika/&gt;
+    <!-- Header / Nav -->
+    <nav class="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-lg border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="font-mono font-bold text-lg tracking-tighter">
+                RAMANDHIKA<span class="text-nitro">.dev</span>
             </a>
-            
-            <div class="flex items-center gap-4">
-                <button @click="toggleDarkMode()" class="p-2 rounded-lg hover:bg-gray-200/70 dark:hover:bg-zinc-800/70 transition-colors">
-                    <svg x-show="!darkMode" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                    <svg x-show="darkMode" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                </button>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
+                <a href="#work" class="hover:text-white transition">Work</a>
+                <a href="#stack" class="hover:text-white transition">Stack</a>
+                <a href="#contact" class="hover:text-white transition">Contact</a>
+                <a href="mailto:ramandhika.ilham@gmail.com" class="px-4 py-2 bg-white text-black rounded-full font-bold hover:bg-nitro hover:text-white transition">Hire Me</a>
             </div>
+            <button @click="mobileMenu = !mobileMenu" class="md:hidden text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
         </div>
     </nav>
 
-    <main class="relative z-10 pt-28 pb-12 px-4 sm:px-6 max-w-7xl mx-auto">
+    <!-- Mobile Menu -->
+    <div x-show="mobileMenu" class="fixed inset-0 z-[60] bg-black p-8 flex flex-col gap-8 text-2xl font-bold" x-transition>
+        <button @click="mobileMenu = false" class="absolute top-6 right-6">✕</button>
+        <a @click="mobileMenu = false" href="#work">Work</a>
+        <a @click="mobileMenu = false" href="#stack">Stack</a>
+        <a @click="mobileMenu = false" href="#contact">Contact</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="relative pt-40 pb-20 px-6 flex flex-col items-center text-center overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-nitro/10 blur-[120px] rounded-full"></div>
         
-        <section class="grid grid-cols-1 md:grid-cols-4 gap-6" id="bento-grid">
-            
-            <div class="bento-item md:col-span-3 md:row-span-2 glass-card p-8 rounded-2xl flex flex-col justify-center">
-                <div class="flex flex-wrap gap-2 mb-6">
-                    <span class="px-3 py-1 rounded-full text-xs font-bold font-mono bg-accent text-white">
-                        BACKEND
-                    </span>
-                    <span class="px-3 py-1 rounded-full text-xs font-bold font-mono bg-secondary text-white">
-                        BUSINESS PROCESS
-                    </span>
-                </div>
-                
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-none mb-6">
-                    SYSTEMS. LOGIC.<br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">OPTIMIZATION.</span>
-                </h1>
-                
-                <p class="text-lg text-gray-700 dark:text-gray-300 font-medium leading-relaxed max-w-2xl">
-                    I'm <strong>Ramandhika Ilham Pratama</strong>. I bridge the gap between complex technical architecture and streamlined business processes. Currently driving operational excellence at <strong class="underline decoration-secondary decoration-4 underline-offset-4">LightHouse Group</strong> while building scalable backend solutions.
-                </p>
-
-                <div class="mt-8 flex gap-4">
-                    <a href="#projects" class="rounded-lg bg-black dark:bg-white text-white dark:text-black px-8 py-3 font-bold hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors shadow-lg hover:shadow-accent/40">
-                        View Portfolio
-                    </a>
-                    <a href="https://linkedin.com/in/ramandhika-ip" target="_blank" class="px-8 py-3 font-bold underline decoration-2 underline-offset-4 hover:text-accent decoration-black/40 dark:decoration-white/40 transition">
-                        LinkedIn
-                    </a>
-                </div>
-            </div>
-
-            <div class="bento-item md:col-span-1 md:row-span-2 bg-accent rounded-2xl overflow-hidden relative group">
-                <img src="https://avatars.githubusercontent.com/u/64927511?v=4" alt="Ramandhika" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
-                <div class="absolute bottom-0 left-0 w-full bg-black/50 backdrop-blur-sm border-t border-white/10 p-3">
-                    <p class="text-white font-mono text-xs opacity-80">STATUS:</p>
-                    <p class="text-green-400 font-bold animate-pulse">● ACTIVE @ LIGHTHOUSE GROUP</p>
-                </div>
+        <div class="reveal">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-nitro/30 bg-nitro/5 text-nitro text-[10px] font-black uppercase tracking-widest mb-8">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-nitro opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-nitro"></span>
+                </span>
+                Available for high-scale projects
             </div>
             
-            <div class="bento-item md:col-span-2 glass-card p-6 rounded-2xl">
-                <h3 class="font-bold text-sm uppercase mb-4 text-gray-500 dark:text-gray-400">Technical Arsenal</h3>
-                <div class="flex flex-wrap gap-2">
-                    <template x-for="tech in ['TypeScript', 'Express.js', 'Elysia', 'Laravel', 'Go', 'MySQL', 'PostgreSQL', 'GCP', 'Prisma']">
-                        <span class="px-3 py-1.5 bg-gray-100/50 dark:bg-zinc-700/50 rounded-md text-sm font-bold cursor-default" x-text="tech"></span>
-                    </template>
-                </div>
-            </div>
+            <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-8 leading-[0.9] text-gradient">
+                Building Systems <br> That Don't Break.
+            </h1>
             
-            <div class="bento-item md:col-span-2 md:row-span-2 glass-card p-6 rounded-2xl">
-                 <div class="flex items-center gap-3 mb-4">
-                    <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    <h3 class="font-bold text-xl">Experience</h3>
-                </div>
-                
-                <div class="space-y-6 relative">
-                    <div class="absolute left-3 top-2 bottom-2 w-0.5 bg-black/10 dark:bg-white/10"></div>
+            <p class="text-xl text-zinc-400 max-w-2xl mx-auto mb-12 leading-relaxed">
+                I'm <span class="text-white font-bold">Ramandhika</span>. I architect high-performance backend infrastructures and optimize business processes for maximum efficiency.
+            </p>
 
-                    <div class="relative pl-10">
-                        <div class="absolute left-0 top-1 w-6 h-6 bg-yellow-100/70 dark:bg-zinc-700/70 rounded-full flex items-center justify-center">
-                            <div class="w-3 h-3 bg-black dark:bg-white rounded-full"></div>
-                        </div>
-                        <h4 class="font-bold text-lg leading-tight">LightHouse Group</h4>
-                        <p class="text-sm font-bold text-secondary">Business Process</p>
-                        <p class="text-xs font-mono text-gray-500 dark:text-gray-400 mt-1">Present</p>
-                    </div>
-
-                    <div class="relative pl-10">
-                        <div class="absolute left-0 top-1 w-6 h-6 bg-yellow-100/70 dark:bg-zinc-700/70 rounded-full flex items-center justify-center">
-                            <div class="w-3 h-3 bg-black dark:bg-white rounded-full"></div>
-                        </div>
-                        <h4 class="font-bold text-lg leading-tight">Megalogic</h4>
-                        <p class="text-sm font-bold text-accent">Full Stack Developer</p>
-                        <p class="text-xs font-mono text-gray-500 dark:text-gray-400 mt-1">Jan 2024 - Present</p>
-                    </div>
-
-                    <div class="relative pl-10">
-                        <div class="absolute left-0 top-1 w-6 h-6 bg-gray-200/70 dark:bg-zinc-700/70 rounded-full flex items-center justify-center">
-                             <div class="w-3 h-3 bg-gray-500 rounded-full"></div>
-                        </div>
-                        <h4 class="font-bold text-lg leading-tight">ADS Digital Partner</h4>
-                        <p class="text-sm font-bold text-gray-600 dark:text-gray-400">Backend Engineer</p>
-                        <p class="text-xs font-mono text-gray-500 dark:text-gray-400 mt-1">Sep 2024 - Dec 2024</p>
-                    </div>
-                </div>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <a href="#work" class="group relative px-8 py-4 bg-nitro rounded-xl font-bold text-lg overflow-hidden transition-all hover:shadow-[0_0_30px_rgba(0,112,243,0.4)]">
+                    <span class="relative z-10">Explore Work</span>
+                </a>
+                <a href="https://linkedin.com/in/ramandhika-ip" class="px-8 py-4 bg-zinc-900 border border-white/10 rounded-xl font-bold text-lg hover:bg-zinc-800 transition">
+                    LinkedIn
+                </a>
             </div>
+        </div>
 
-            <div class="bento-item md:col-span-2 glass-card p-6 rounded-2xl">
-                <div class="flex items-center gap-3 mb-4">
-                     <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
-                    <h3 class="font-bold text-xl">Education & Honors</h3>
-                </div>
-                <div class="grid sm:grid-cols-2 gap-6">
-                    <div>
-                        <h4 class="font-bold text-lg">Tiga Serangkai University</h4>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">Bachelor of Information Systems</p>
-                        <div class="inline-block bg-black text-white px-2 py-0.5 text-xs font-bold font-mono mt-2 rounded-sm">
-                            GPA: 3.85 / 4.00
-                        </div>
-                    </div>
-                    <div class="space-y-3">
-                        <div class="flex items-start gap-2">
-                            <span class="text-xl mt-[-2px]">🏆</span>
-                            <div>
-                                <p class="font-bold text-sm">Distinction Graduate</p>
-                                <p class="text-xs text-gray-500 dark:text-gray-400">Bangkit Academy 2023 by Google</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-2">
-                            <span class="text-xl mt-[-2px]">🥉</span>
-                            <div>
-                                <p class="font-bold text-sm">3rd Place</p>
-                                <p class="text-xs text-gray-500 dark:text-gray-400">Student Competency Competition (LKS)</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Hero Graphic (Numbers) -->
+        <div class="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl w-full reveal" style="transition-delay: 200ms">
+            <div class="text-center">
+                <p class="text-4xl font-black text-white">20+</p>
+                <p class="text-xs font-mono text-zinc-500 uppercase tracking-widest mt-2">Projects Delivered</p>
             </div>
-        </section>
+            <div class="text-center">
+                <p class="text-4xl font-black text-white">99.9%</p>
+                <p class="text-xs font-mono text-zinc-500 uppercase tracking-widest mt-2">Uptime Goal</p>
+            </div>
+            <div class="text-center">
+                <p class="text-4xl font-black text-white">3.85</p>
+                <p class="text-xs font-mono text-zinc-500 uppercase tracking-widest mt-2">Academic GPA</p>
+            </div>
+            <div class="text-center">
+                <p class="text-4xl font-black text-white">5+</p>
+                <p class="text-xs font-mono text-zinc-500 uppercase tracking-widest mt-2">Tech Stacks</p>
+            </div>
+        </div>
+    </section>
 
-        <section id="services" class="mt-24">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl md:text-5xl font-extrabold">Layanan Saya</h2>
-                <p class="mt-2 font-mono text-sm text-gray-500 dark:text-gray-400">Area fokus dan keahlian utama saya.</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bento-item glass-card p-8 rounded-2xl text-center">
-                    <div class="inline-block bg-accent/20 text-accent p-4 rounded-full mb-4">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Backend Development</h3>
-                    <p class="text-gray-600 dark:text-gray-400">Membangun API yang kuat, sistem yang terukur, dan arsitektur mikroservis yang efisien.</p>
-                </div>
-                 <div class="bento-item glass-card p-8 rounded-2xl text-center">
-                    <div class="inline-block bg-secondary/20 text-secondary p-4 rounded-full mb-4">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Business Process Automation</h3>
-                    <p class="text-gray-600 dark:text-gray-400">Menganalisis dan mengoptimalkan alur kerja untuk meningkatkan efisiensi operasional.</p>
-                </div>
-                 <div class="bento-item glass-card p-8 rounded-2xl text-center">
-                    <div class="inline-block bg-purple-500/20 text-purple-500 p-4 rounded-full mb-4">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V5c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2v2"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Database Optimization</h3>
-                    <p class="text-gray-600 dark:text-gray-400">Merancang skema database yang efisien dan mengoptimalkan query untuk performa maksimal.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="mt-24">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 border-b-2 border-black/5 dark:border-white/5 pb-6">
+    <!-- Bento About -->
+    <section class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Experience -->
+            <div class="md:col-span-2 glow-card p-8 rounded-[2rem] flex flex-col justify-between reveal">
                 <div>
-                    <h2 class="text-4xl md:text-5xl font-extrabold">
-                        Portfolio
-                    </h2>
-                    <p class="mt-2 font-mono text-sm text-gray-500 dark:text-gray-400">20+ Projects Completed. Here are the highlights.</p>
-                </div>
-                
-                <div class="flex flex-wrap gap-2">
-                    <button @click="filterTag = 'all'" :class="filterTag === 'all' ? 'bg-black text-white dark:bg-white dark:text-black' : 'bg-transparent hover:bg-gray-200/50 dark:hover:bg-zinc-800/50'" class="px-4 py-2 border border-black/10 dark:border-white/10 rounded-lg font-bold text-sm transition">All</button>
-                    <template x-for="tag in uniqueTags">
-                        <button @click="filterTag = tag" :class="filterTag === tag ? 'bg-accent text-white border-accent' : 'bg-transparent hover:bg-gray-200/50 dark:hover:bg-zinc-800/50 border-black/10 dark:border-white/10'" class="px-4 py-2 border rounded-lg font-bold text-sm transition" x-text="tag"></button>
-                    </template>
+                    <h2 class="text-2xl font-bold mb-8">Professional Trajectory</h2>
+                    <div class="space-y-8">
+                        <div class="flex gap-6">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center font-bold text-zinc-500">LG</div>
+                            <div>
+                                <h4 class="font-bold">LightHouse Group</h4>
+                                <p class="text-sm text-zinc-400">Business Process Specialist • Present</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center font-bold text-zinc-500">ML</div>
+                            <div>
+                                <h4 class="font-bold">Megalogic</h4>
+                                <p class="text-sm text-zinc-400">Full Stack Developer • Present</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6 opacity-50">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center font-bold text-zinc-500">AD</div>
+                            <div>
+                                <h4 class="font-bold">ADS Digital</h4>
+                                <p class="text-sm text-zinc-400">Backend Engineer • 2024</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <template x-for="project in filteredProjects" :key="project.id">
-                    <div class="bento-item glass-card flex flex-col h-full overflow-hidden rounded-2xl">
-                        
-                        <div class="p-6 flex flex-col flex-grow">
-                            <div class="flex justify-between items-start mb-4">
-                                <h3 class="text-xl font-extrabold leading-tight" x-text="project.title"></h3>
-                                <span class="font-mono text-xs font-bold text-gray-400 dark:text-gray-500" x-text="`PRJ-${project.id.toString().padStart(2, '0')}`"></span>
-                            </div>
+            <!-- Profile & Bio -->
+            <div class="glow-card p-4 rounded-[2rem] reveal" style="transition-delay: 100ms">
+                <div class="relative h-64 rounded-2xl overflow-hidden mb-6">
+                    <img src="https://avatars.githubusercontent.com/u/64927511?v=4" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                </div>
+                <div class="px-4 pb-4">
+                    <h3 class="text-xl font-bold mb-2">Ramandhika I.P.</h3>
+                    <p class="text-sm text-zinc-500 leading-relaxed font-medium">
+                        I specialize in Golang, TypeScript, and Laravel. I build systems that solve real business problems at scale.
+                    </p>
+                </div>
+            </div>
 
-                            <p class="text-sm text-gray-600 dark:text-gray-400 mb-6 flex-grow leading-relaxed font-medium" x-text="project.description"></p>
-                            
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <template x-for="tag in project.tags">
-                                    <span class="px-2 py-1 bg-gray-100/50 dark:bg-zinc-700/50 text-xs font-bold rounded-md" x-text="tag"></span>
-                                </template>
-                            </div>
+            <!-- Skills - Arsenal -->
+            <div class="md:col-span-3 glow-card p-8 rounded-[2rem] reveal">
+                <h3 class="text-sm font-mono text-zinc-500 uppercase tracking-[0.3em] mb-8">Technical Arsenal</h3>
+                <div class="flex flex-wrap gap-3">
+                    <template x-for="tech in ['Golang', 'TypeScript', 'Node.js', 'Laravel', 'PostgreSQL', 'Redis', 'Docker', 'GCP', 'Bun', 'Elysia', 'Prisma']">
+                        <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm font-bold hover:bg-white hover:text-black transition cursor-default" x-text="tech"></span>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                            <a :href="project.link" target="_blank" class="block w-full mt-auto py-3 text-center bg-gray-50/50 dark:bg-zinc-700/50 font-bold hover:bg-accent hover:text-white transition-colors group rounded-lg">
-                                View Project <span class="group-hover:ml-1 transition-all inline-block">-></span>
-                            </a>
-                        </div>
-                    </div>
+    <!-- Work -->
+    <section id="work" class="max-w-7xl mx-auto px-6 py-20">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div>
+                <h2 class="text-xs font-mono text-nitro uppercase tracking-[0.4em] mb-4">Case Studies</h2>
+                <h3 class="text-5xl font-black tracking-tighter">Featured Projects</h3>
+            </div>
+            <div class="flex gap-2">
+                <template x-for="tag in ['all', ...uniqueTags.slice(0, 3)]">
+                    <button @click="filterTag = tag" :class="filterTag === tag ? 'bg-white text-black' : 'bg-white/5 hover:bg-white/10 text-zinc-400'" class="px-5 py-2 rounded-full text-xs font-bold transition uppercase tracking-widest" x-text="tag"></button>
                 </template>
             </div>
-        </section>
+        </div>
 
-        <section id="testimonials" class="mt-24" x-data="{ activeTestimonial: 0 }">
-             <div class="text-center mb-12">
-                <h2 class="text-4xl md:text-5xl font-extrabold">Testimoni</h2>
-                <p class="mt-2 font-mono text-sm text-gray-500 dark:text-gray-400">Apa kata mereka yang pernah bekerja sama dengan saya.</p>
-            </div>
-            <div class="relative max-w-3xl mx-auto">
-                <div class="bento-item glass-card p-8 sm:p-12 rounded-2xl text-center transition-all duration-300">
-                    <template x-for="(testimonial, index) in testimonials" :key="index">
-                        <div x-show="activeTestimonial === index" class="flex flex-col items-center">
-                            <p class="text-xl italic font-medium mb-6" x-text="`“${testimonial.quote}”`"></p>
-                            <p class="font-bold text-lg" x-text="testimonial.author"></p>
-                            <p class="text-sm text-gray-500" x-text="testimonial.company"></p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <template x-for="project in filteredProjects" :key="project.id">
+                <div class="glow-card rounded-[2.5rem] p-8 flex flex-col group reveal">
+                    <div class="flex justify-between items-start mb-12">
+                        <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-nitro">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
                         </div>
-                    </template>
-                </div>
-                <button @click="activeTestimonial = (activeTestimonial - 1 + testimonials.length) % testimonials.length" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 p-2 rounded-full bg-white/50 dark:bg-zinc-800/50 hover:bg-white dark:hover:bg-zinc-700 transition shadow-md">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                </button>
-                <button @click="activeTestimonial = (activeTestimonial + 1) % testimonials.length" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 p-2 rounded-full bg-white/50 dark:bg-zinc-800/50 hover:bg-white dark:hover:bg-zinc-700 transition shadow-md">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                </button>
-            </div>
-        </section>
+                        <span class="text-[10px] font-mono text-zinc-600 font-bold tracking-widest uppercase">ID-0<span x-text="project.id"></span></span>
+                    </div>
+                    
+                    <h4 class="text-2xl font-black mb-4 group-hover:text-nitro transition" x-text="project.title"></h4>
+                    <p class="text-zinc-500 text-sm leading-relaxed mb-8 flex-grow" x-text="project.description"></p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <template x-for="tag in project.tags">
+                            <span class="text-[9px] font-black uppercase tracking-widest px-2 py-1 bg-white/5 rounded-md text-zinc-400" x-text="tag"></span>
+                        </template>
+                    </div>
 
-        <section id="contact" class="bento-item bg-gradient-to-br from-accent to-secondary text-white p-10 md:p-16 text-center relative overflow-hidden rounded-2xl mt-24">
-            <div class="relative z-10">
-                <h2 class="text-3xl md:text-5xl font-extrabold mb-6 uppercase leading-tight">
-                    Need scalable systems? <br> Let's optimize together.
-                </h2>
-                <p class="text-lg md:text-xl font-medium max-w-2xl mx-auto mb-10 opacity-90">
-                    Open for collaboration on Backend Architecture and Process Improvement.
-                </p>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="mailto:ramandhika.ilham@gmail.com" class="rounded-lg bg-white text-black px-8 py-4 font-bold text-lg hover:bg-gray-200 transition-colors transform hover:scale-105">
-                        Email Me
-                    </a>
-                    <a href="https://github.com/ramandhika" target="_blank" class="rounded-lg bg-black/20 text-white px-8 py-4 font-bold text-lg border border-white/20 hover:bg-black/40 transition-colors transform hover:scale-105">
-                        GitHub Profile
+                    <a :href="project.link" target="_blank" class="w-full py-4 bg-zinc-900 rounded-2xl flex items-center justify-center gap-2 font-bold text-xs uppercase tracking-[0.2em] group-hover:bg-nitro group-hover:text-white transition">
+                        Inspect
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
                     </a>
                 </div>
-            </div>
-        </section>
+            </template>
+        </div>
+    </section>
 
-    </main>
-
-    <footer class="border-t-2 border-black/5 dark:border-white/5 bg-transparent py-12 mt-20">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-center md:text-left">
-                <p class="font-bold text-lg">Ramandhika Ilham Pratama</p>
-                <p class="font-mono text-sm opacity-60">Backend & Analyst</p>
-            </div>
-            <p class="font-mono text-sm text-center opacity-60">
-                © 2025. Redesigned with Interactive Glassmorphism.
+    <!-- Contact CTA -->
+    <section id="contact" class="max-w-5xl mx-auto px-6 py-40 text-center">
+        <div class="reveal">
+            <h2 class="text-6xl md:text-8xl font-black tracking-tighter mb-12">Ready to <br> <span class="text-nitro">Optimize?</span></h2>
+            <p class="text-xl text-zinc-400 mb-16 max-w-xl mx-auto">
+                Currently looking for interesting backend challenges or process optimization projects.
             </p>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+                <a href="mailto:ramandhika.ilham@gmail.com" class="text-3xl font-black hover:text-nitro transition break-all">ramandhika.ilham@gmail.com</a>
+                <div class="flex gap-8 font-mono text-sm uppercase tracking-widest text-zinc-500">
+                    <a href="https://github.com/ramandhika" class="hover:text-white transition">GitHub</a>
+                    <a href="https://linkedin.com/in/ramandhika-ip" class="hover:text-white transition">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-white/5 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-zinc-600 text-[10px] font-mono uppercase tracking-[0.2em]">
+            <p>© 2025 Ramandhika Ilham Pratama</p>
+            <p>Designed for High Performance</p>
         </div>
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Alpine.js & Custom Script -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script>
         function app() {
             return {
-                darkMode: false,
+                darkMode: true,
+                mobileMenu: false,
                 filterTag: 'all',
                 projects: [
-                    {
-                        id: 1,
-                        title: 'Telegram Repo Watcher',
-                        description: 'GitHub monitoring bot that sends commit updates to Telegram. Built with Elysia (Bun runtime) supporting webhooks and private repo access.',
-                        tags: ['Bun', 'Elysia', 'Telegram', 'GitHub'],
-                        link: 'https://github.com/ramandhika'
-                    },
-                    {
-                        id: 2,
-                        title: 'AssetSync',
-                        description: 'Company asset tracking system using QR codes. Built with Laravel RESTful API for backend and Bootstrap with Laravel Blade for frontend.',
-                        tags: ['Laravel', 'Bootstrap', 'MySQL'],
-                        link: 'https://github.com/ramandhika'
-                    },
-                    {
-                        id: 3,
-                        title: 'Eco Travel Backend',
-                        description: 'Travel platform backend service supporting user authentication, destination history, and location sharing. Built with Golang and Gin framework.',
-                        tags: ['Golang', 'Gin', 'REST API'],
-                        link: 'https://github.com/ramandhika'
-                    },
-                    {
-                        id: 4,
-                        title: 'Data Monitoring System',
-                        description: 'Web platform for tracking regional development indicators with interactive maps and dashboards using TypeScript, Express.js, and Prisma.',
-                        tags: ['TypeScript', 'Express', 'Prisma', 'PostgreSQL'],
-                        link: 'https://github.com/ramandhika'
-                    },
-                    {
-                        id: 5,
-                        title: 'PetMe',
-                        description: 'Animal adoption mobile app enabling users to search, offer, and adopt pets. A marketplace platform for pet adoption with seamless user experience.',
-                        tags: ['Mobile', 'Express', 'MySQL'],
-                        link: 'https://github.com/ramandhika'
-                    },
-                    {
-                        id: 6,
-                        title: 'ShortURL',
-                        description: 'Link shortening tool with Laravel backend and Tailwind frontend. Simplifies long URLs for easy sharing across platforms.',
-                        tags: ['Laravel', 'Tailwind', 'MySQL'],
-                        link: 'https://github.com/ramandhika'
-                    },
-                    {
-                        id: 7,
-                        title: 'Bookshelf API',
-                        description: 'Library management tool created with Hapi Framework to manage book data. Easy-to-use API interface for accessing and updating book information.',
-                        tags: ['Hapi', 'Node.js', 'REST API'],
-                        link: 'https://github.com/ramandhika'
-                    },
-                    {
-                        id: 8,
-                        title: 'Fixjob.id Company Profile',
-                        description: 'Corporate website showcasing company services and contact information. Built with WordPress and Elementor for clean and responsive layout.',
-                        tags: ['WordPress', 'Elementor'],
-                        link: 'https://github.com/ramandhika'
-                    },
-                    {
-                        id: 9,
-                        title: 'PPDB Online',
-                        description: 'Online student admission management system eliminating the need for physical school visits. Built with PHP for convenient registration process.',
-                        tags: ['PHP', 'MySQL'],
-                        link: 'https://github.com/ramandhika'
-                    }
-                ],
-                testimonials: [
-                    {
-                        quote: "Ramandhika has a remarkable ability to transform complex requirements into elegant, functional, and highly scalable backend systems. A true asset to any engineering team.",
-                        author: "Placeholder Name",
-                        company: "CEO at a Tech Company"
-                    },
-                    {
-                        quote: "Working with Ramandhika was a breeze. His deep understanding of business processes helped us streamline our operations and significantly improve efficiency.",
-                        author: "Another Placeholder",
-                        company: "Project Manager"
-                    }
+                    { id: 1, title: 'Telegram Repo Watcher', description: 'GitHub monitoring bot that sends commit updates to Telegram. Built with Elysia (Bun runtime) supporting webhooks and private repo access.', tags: ['Bun', 'Elysia', 'Telegram', 'GitHub'], link: 'https://github.com/ramandhika' },
+                    { id: 2, title: 'AssetSync', description: 'Company asset tracking system using QR codes. Built with Laravel RESTful API for backend and Bootstrap with Laravel Blade for frontend.', tags: ['Laravel', 'Bootstrap', 'MySQL'], link: 'https://github.com/ramandhika' },
+                    { id: 3, title: 'Eco Travel Backend', description: 'Travel platform backend service supporting user authentication, destination history, and location sharing. Built with Golang and Gin framework.', tags: ['Golang', 'Gin', 'REST API'], link: 'https://github.com/ramandhika' },
+                    { id: 4, title: 'Data Monitoring System', description: 'Web platform for tracking regional development indicators with interactive maps and dashboards using TypeScript, Express.js, and Prisma.', tags: ['TypeScript', 'Express', 'Prisma', 'PostgreSQL'], link: 'https://github.com/ramandhika' },
+                    { id: 5, title: 'PetMe', description: 'Animal adoption mobile app enabling users to search, offer, and adopt pets. A marketplace platform for pet adoption with seamless user experience.', tags: ['Mobile', 'Express', 'MySQL'], link: 'https://github.com/ramandhika' },
+                    { id: 6, title: 'ShortURL', description: 'Link shortening tool with Laravel backend and Tailwind frontend. Simplifies long URLs for easy sharing across platforms.', tags: ['Laravel', 'Tailwind', 'MySQL'], link: 'https://github.com/ramandhika' },
+                    { id: 7, title: 'Bookshelf API', description: 'Library management tool created with Hapi Framework to manage book data. Easy-to-use API interface for accessing and updating book information.', tags: ['Hapi', 'Node.js', 'REST API'], link: 'https://github.com/ramandhika' },
+                    { id: 8, title: 'Fixjob.id Company Profile', description: 'Corporate website showcasing company services and contact information. Built with WordPress and Elementor for clean and responsive layout.', tags: ['WordPress', 'Elementor'], link: 'https://github.com/ramandhika' },
+                    { id: 9, title: 'PPDB Online', description: 'Online student admission management system eliminating the need for physical school visits. Built with PHP for convenient registration process.', tags: ['PHP', 'MySQL'], link: 'https://github.com/ramandhika' }
                 ],
                 
                 init() {
-                    this.setupDarkMode();
-                    this.setupGsapAnimations();
-                    this.setupInteractiveAurora();
-                    this.setup3DTilt();
+                    this.setupReveals();
                 },
 
-                setupDarkMode() {
-                    if (localStorage.getItem('darkMode') === 'true') {
-                        this.darkMode = true;
-                        document.documentElement.classList.add('dark');
-                    }
-                },
-                
-                setupGsapAnimations() {
-                    this.$nextTick(() => {
-                        gsap.registerPlugin(ScrollTrigger);
-                        gsap.utils.toArray('.bento-item').forEach((item, index) => {
-                            gsap.from(item, {
-                                opacity: 0,
-                                y: 50,
-                                scale: 0.95,
-                                duration: 0.5,
-                                delay: index * 0.05,
-                                scrollTrigger: {
-                                    trigger: item,
-                                    start: 'top 90%',
-                                    toggleActions: 'play none none none',
-                                }
-                            });
+                setupReveals() {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('active');
+                            }
                         });
-                    });
+                    }, { threshold: 0.1 });
+
+                    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
                 },
 
-                setupInteractiveAurora() {
-                    const aurora1 = document.querySelector('.aurora-1');
-                    const aurora2 = document.querySelector('.aurora-2');
-                    window.addEventListener('mousemove', (e) => {
-                        const { clientX, clientY } = e;
-                        gsap.to(aurora1, {
-                            x: clientX * 0.1,
-                            y: clientY * 0.1,
-                            duration: 1
-                        });
-                        gsap.to(aurora2, {
-                            x: clientX * -0.05,
-                            y: clientY * -0.05,
-                            duration: 1
-                        });
-                    });
-                },
-
-                setup3DTilt() {
-                    this.$nextTick(() => {
-                        const items = document.querySelectorAll('.bento-item');
-                        items.forEach(item => {
-                            item.addEventListener('mousemove', (e) => {
-                                const rect = item.getBoundingClientRect();
-                                const x = e.clientX - rect.left;
-                                const y = e.clientY - rect.top;
-                                const centerX = rect.width / 2;
-                                const centerY = rect.height / 2;
-                                const rotateX = (y - centerY) / 20;
-                                const rotateY = (centerX - x) / 20;
-
-                                gsap.to(item, {
-                                    rotationX: rotateX,
-                                    rotationY: rotateY,
-                                    scale: 1.03,
-                                    duration: 0.5,
-                                    ease: 'power2.out'
-                                });
-                            });
-                            item.addEventListener('mouseleave', () => {
-                                gsap.to(item, {
-                                    rotationX: 0,
-                                    rotationY: 0,
-                                    scale: 1,
-                                    duration: 0.5,
-                                    ease: 'power2.out'
-                                });
-                            });
-                        });
-                    });
-                },
-                
-                toggleDarkMode() {
-                    this.darkMode = !this.darkMode;
-                    document.documentElement.classList.toggle('dark');
-                    localStorage.setItem('darkMode', this.darkMode);
-                },
-                
                 get uniqueTags() {
-                    const tags = this.projects.flatMap(p => p.tags);
-                    return [...new Set(tags)];
+                    return [...new Set(this.projects.flatMap(p => p.tags))];
                 },
                 
                 get filteredProjects() {
