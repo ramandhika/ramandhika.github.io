@@ -8,13 +8,67 @@
 
     <meta name="description"
         content="Business Process & IT Professional bridging ERP systems, process documentation, and backend development. Currently driving ERP migration across 6 companies at Lighthouse Group.">
+    <meta name="keywords" content="Ramandhika Ilham Pratama, Backend Developer, Business Process, IT Professional, ERP, Odoo, Laravel, Go, TypeScript, System Integration">
+    <meta name="author" content="Ramandhika Ilham Pratama">
+    <meta name="robots" content="index, follow">
 
-    <!-- Fonts: Inter & JetBrains Mono -->
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ramandhika.github.io/">
+
+    <!-- Open Graph (Facebook, LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ramandhika.github.io/">
+    <meta property="og:title" content="Ramandhika | Business Process & IT Professional">
+    <meta property="og:description" content="Business Process & IT Professional bridging ERP systems, process documentation, and backend development.">
+    <!-- Using GitHub Avatar as fallback OG Image -->
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/64927511?v=4">
+    <meta property="og:locale" content="id_ID">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://ramandhika.github.io/">
+    <meta name="twitter:title" content="Ramandhika | Business Process & IT Professional">
+    <meta name="twitter:description" content="Business Process & IT Professional bridging ERP systems, process documentation, and backend development.">
+    <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/64927511?v=4">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ramandhika Ilham Pratama",
+        "url": "https://ramandhika.github.io/",
+        "sameAs": [
+            "https://github.com/ramandhika",
+            "https://linkedin.com/in/ramandhika-ip"
+        ],
+        "jobTitle": "Business Process & IT Professional",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Lighthouse Group"
+        },
+        "image": "https://avatars.githubusercontent.com/u/64927511?v=4",
+        "description": "Bridging ERP systems, process documentation, and backend development."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "https://ramandhika.github.io/",
+        "name": "Ramandhika Portfolio",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://ramandhika.github.io/?s={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+
+    <!-- Fonts: Plus Jakarta Sans & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -25,37 +79,49 @@
                 extend: {
                     colors: {
                         accent: {
-                            DEFAULT: '#06B6D4',
-                            hover: '#0891B2',
+                            DEFAULT: '#6366f1', // Indigo
+                            hover: '#4f46e5',
                         },
-                        secondary: '#059669',
+                        secondary: '#f43f5e', // Rose
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
                         mono: ['JetBrains Mono', 'monospace'],
                     },
                 }
             }
         }
     </script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap"
-        rel="stylesheet">
+    
+    <!-- Alpine Plugins -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <style>
         .glass-card {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: transform 0.5s ease, background 0.3s ease;
-            transform-style: preserve-3d;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px -4px rgba(99, 102, 241, 0.15);
+            border-color: rgba(99, 102, 241, 0.3);
         }
 
         .dark .glass-card {
-            background: rgba(30, 30, 30, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(24, 24, 27, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark .glass-card:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.3);
         }
 
         .aurora-bg {
@@ -66,311 +132,338 @@
             height: 100%;
             z-index: -1;
             overflow: hidden;
+            background: #fafafa;
+            transition: background 0.3s ease;
+        }
+
+        .dark .aurora-bg {
+            background: #09090b;
         }
 
         .aurora-circle {
             position: absolute;
             border-radius: 50%;
-            filter: blur(120px);
+            filter: blur(100px);
             will-change: transform;
-            transition: transform 1s ease-out;
         }
 
         .aurora-1 {
-            width: 400px;
-            height: 400px;
-            background-color: #06B6D4;
-            opacity: 0.2;
+            width: 50vw;
+            height: 50vw;
+            background-color: rgba(99, 102, 241, 0.25);
+            top: -10%;
+            left: -10%;
         }
 
         .aurora-2 {
-            width: 300px;
-            height: 300px;
-            background-color: #059669;
-            opacity: 0.2;
+            width: 40vw;
+            height: 40vw;
+            background-color: rgba(244, 63, 94, 0.15);
+            bottom: -10%;
+            right: -10%;
         }
 
         .dark .aurora-circle {
             opacity: 0.15;
         }
+
+        /* Pure CSS Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Delay utilities */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
     </style>
 </head>
 
 <body
-    class="bg-[#f7f7f7] dark:bg-zinc-900 text-black dark:text-white transition-colors duration-300 font-sans selection:bg-accent selection:text-white"
+    class="text-zinc-900 dark:text-zinc-100 transition-colors duration-300 font-sans selection:bg-accent selection:text-white"
     x-data="app()">
 
     <div class="aurora-bg">
-        <div class="aurora-circle aurora-1" style="transform: translate(20vw, 20vh);"></div>
-        <div class="aurora-circle aurora-2" style="transform: translate(60vw, 70vh);"></div>
+        <div class="aurora-circle aurora-1" x-ref="aurora1"></div>
+        <div class="aurora-circle aurora-2" x-ref="aurora2"></div>
     </div>
 
-    <nav
-        class="fixed w-full top-0 z-50 bg-white/50 dark:bg-zinc-900/50 border-b-2 border-white/10 dark:border-white/5 backdrop-blur-xl">
+    <nav class="fixed w-full top-0 z-50 bg-white/70 dark:bg-zinc-900/70 border-b border-zinc-200 dark:border-zinc-800 backdrop-blur-xl transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold font-mono tracking-tighter hover:text-accent transition">
+            <a href="#" class="text-xl font-extrabold font-mono tracking-tighter hover:text-accent transition">
                 &lt;Ramandhika/&gt;
             </a>
 
+            <div class="hidden md:flex items-center gap-8 font-semibold text-sm text-zinc-600 dark:text-zinc-300">
+                <a href="#services" class="hover:text-accent transition-colors">Services</a>
+                <a href="#projects" class="hover:text-accent transition-colors">Portfolio</a>
+                <a href="#contact" class="hover:text-accent transition-colors">Contact</a>
+            </div>
+
             <div class="flex items-center gap-4">
-                <button @click="toggleDarkMode()"
-                    class="p-2 rounded-lg hover:bg-gray-200/70 dark:hover:bg-zinc-800/70 transition-colors">
+                <button @click="toggleDarkMode()" aria-label="Toggle Dark Mode"
+                    class="p-2 rounded-lg hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50 transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100">
                     <svg x-show="!darkMode" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
                         </path>
                     </svg>
-                    <svg x-show="darkMode" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg x-show="darkMode" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display: none;">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
                         </path>
                     </svg>
                 </button>
             </div>
-            <button @click="mobileMenu = !mobileMenu" class="md:hidden text-white">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
         </div>
     </nav>
 
-    <main class="relative z-10 pt-28 pb-12 px-4 sm:px-6 max-w-7xl mx-auto">
+    <main class="relative z-10 pt-28 pb-12 px-4 sm:px-6 max-w-7xl mx-auto overflow-x-hidden">
 
         <section class="grid grid-cols-1 md:grid-cols-4 gap-6" id="bento-grid">
-
-            <div class="bento-item md:col-span-3 md:row-span-2 glass-card p-8 rounded-2xl flex flex-col justify-center">
+            <div x-intersect.once="$el.classList.add('active')" class="reveal bento-item md:col-span-3 md:row-span-2 glass-card p-8 rounded-3xl flex flex-col justify-center">
                 <div class="flex flex-wrap gap-2 mb-6">
-                    <span class="px-3 py-1 rounded-full text-xs font-bold font-mono bg-accent text-white">
+                    <span class="px-3 py-1 rounded-full text-xs font-bold font-mono bg-accent/10 text-accent dark:bg-accent/20">
                         BUSINESS PROCESS
                     </span>
-                    <span class="px-3 py-1 rounded-full text-xs font-bold font-mono bg-secondary text-white">
+                    <span class="px-3 py-1 rounded-full text-xs font-bold font-mono bg-secondary/10 text-secondary dark:bg-secondary/20">
                         IT & BACKEND
                     </span>
                 </div>
 
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-none mb-6">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-zinc-900 dark:text-white">
                     PROCESS. SYSTEMS.<br>
-                    <span
-                        class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">IMPACT.</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">IMPACT.</span>
                 </h1>
 
-                <p class="text-lg text-gray-700 dark:text-gray-300 font-medium leading-relaxed max-w-4xl">
+                <p class="text-lg text-zinc-600 dark:text-zinc-300 font-medium leading-relaxed max-w-4xl">
                     I'm <strong>Ramandhika Ilham Pratama</strong>. I started building systems - APIs, databases, automated
                     reporting. What I found most fulfilling wasn't the code itself; it was seeing how well-designed
                     systems change the way people work. Now I do both: currently documenting and standardizing core
-                    business flows for <strong class="underline decoration-secondary decoration-4 underline-offset-4">6
+                    business flows for <strong class="underline decoration-secondary/50 decoration-4 underline-offset-4">6
                         companies under Lighthouse Group</strong> as part of an ERP migration to Odoo, while keeping my
                     backend roots sharp.
                 </p>
 
-                <div class="mt-8 flex gap-4">
+                <div class="mt-8 flex flex-wrap gap-4">
                     <a href="#projects"
-                        class="rounded-lg bg-black dark:bg-white text-white dark:text-black px-8 py-3 font-bold hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors shadow-lg hover:shadow-accent/40">
+                        class="rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 px-8 py-3 font-bold hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-transform active:scale-95 shadow-lg shadow-zinc-900/20 dark:shadow-white/20">
                         View Portfolio
                     </a>
                     <a href="https://linkedin.com/in/ramandhika-ip" target="_blank"
-                        class="px-8 py-3 font-bold underline decoration-2 underline-offset-4 hover:text-accent decoration-black/40 dark:decoration-white/40 transition">
+                        class="px-8 py-3 font-bold text-zinc-600 dark:text-zinc-300 hover:text-accent dark:hover:text-accent transition-colors flex items-center gap-2 group">
                         LinkedIn
+                        <svg class="w-4 h-4 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     </a>
                 </div>
             </div>
 
-            <div class="bento-item md:col-span-1 md:row-span-2 bg-accent rounded-2xl overflow-hidden relative group">
-                <img src="https://avatars.githubusercontent.com/u/64927511?v=4" alt="Ramandhika"
-                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
-                <div class="absolute bottom-0 left-0 w-full bg-black/50 backdrop-blur-sm border-t border-white/10 p-3">
-                    <p class="text-white font-mono text-xs opacity-80">STATUS:</p>
-                    <p class="text-green-400 font-bold animate-pulse">● ACTIVE @ LIGHTHOUSE GROUP</p>
+            <div x-intersect.once="$el.classList.add('active')" class="reveal delay-100 bento-item md:col-span-1 md:row-span-2 bg-zinc-100 dark:bg-zinc-800 rounded-3xl overflow-hidden relative group">
+<img src="https://avatars.githubusercontent.com/u/64927511?v=4" alt="Ramandhika Ilham Pratama - Business Process & IT Professional" loading="lazy"
+                     class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700 ease-out transform group-hover:scale-105">
+                <div class="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-md border-t border-white/10 p-4 transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                    <p class="text-zinc-300 font-mono text-[10px] tracking-wider mb-1">STATUS</p>
+                    <div class="flex items-center gap-2">
+                        <span class="relative flex h-2.5 w-2.5">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                        </span>
+                        <p class="text-white font-bold text-xs tracking-wide">ACTIVE @ LIGHTHOUSE</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="bento-item md:col-span-2 glass-card p-6 rounded-2xl">
-                <h3 class="font-bold text-sm uppercase mb-4 text-gray-500 dark:text-gray-400">Tech & Tools</h3>
+            <div x-intersect.once="$el.classList.add('active')" class="reveal delay-200 bento-item md:col-span-2 glass-card p-6 rounded-3xl">
+                <h3 class="font-bold text-sm uppercase tracking-wider mb-4 text-zinc-500">Tech & Tools</h3>
                 <div class="flex flex-wrap gap-2">
                     <template
                         x-for="tech in ['Odoo ERP', 'MS Visio', 'TypeScript', 'Laravel', 'Express.js', 'Go', 'MySQL', 'PostgreSQL', 'GCP', 'Postman']">
                         <span
-                            class="px-3 py-1.5 bg-gray-100/50 dark:bg-zinc-700/50 rounded-md text-sm font-bold cursor-default"
+                            class="px-3 py-1.5 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg text-sm font-semibold text-zinc-700 dark:text-zinc-300 hover:border-accent dark:hover:border-accent transition-colors cursor-default"
                             x-text="tech"></span>
                     </template>
                 </div>
             </div>
 
-            <div class="bento-item md:col-span-2 md:row-span-2 glass-card p-6 rounded-2xl">
-                <div class="flex items-center gap-3 mb-4">
-                    <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                        </path>
-                    </svg>
+            <div x-intersect.once="$el.classList.add('active')" class="reveal delay-300 bento-item md:col-span-2 md:row-span-2 glass-card p-8 rounded-3xl">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="p-2 bg-accent/10 text-accent rounded-lg">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </div>
                     <h3 class="font-bold text-xl">Experience</h3>
                 </div>
 
-                <div class="space-y-6 relative">
-                    <div class="absolute left-3 top-2 bottom-2 w-0.5 bg-black/10 dark:bg-white/10"></div>
-
-                    <div class="relative pl-10">
-                        <div
-                            class="absolute left-0 top-1 w-6 h-6 bg-yellow-100/70 dark:bg-zinc-700/70 rounded-full flex items-center justify-center">
-                            <div class="w-3 h-3 bg-black dark:bg-white rounded-full"></div>
+                <div class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-zinc-300 dark:before:via-zinc-700 before:to-transparent">
+                    
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white dark:border-zinc-900 bg-accent text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                         </div>
-                        <h4 class="font-bold text-lg leading-tight">Lighthouse Group</h4>
-                        <p class="text-sm font-bold text-secondary">Business Process Project Staff</p>
-                        <p class="text-xs font-mono text-gray-500 dark:text-gray-400 mt-1">Oct 2025 – Present</p>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-2xl bg-white dark:bg-zinc-800 border border-zinc-100 dark:border-zinc-700 shadow-sm group-hover:border-accent/50 transition-colors">
+                            <div class="flex flex-col gap-1">
+                                <h4 class="font-bold text-base">Lighthouse Group</h4>
+                                <span class="text-sm font-semibold text-accent">Business Process Project Staff</span>
+                                <time class="text-xs font-mono text-zinc-500">Oct 2025 – Present</time>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="relative pl-10">
-                        <div
-                            class="absolute left-0 top-1 w-6 h-6 bg-yellow-100/70 dark:bg-zinc-700/70 rounded-full flex items-center justify-center">
-                            <div class="w-3 h-3 bg-black dark:bg-white rounded-full"></div>
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white dark:border-zinc-900 bg-zinc-200 dark:bg-zinc-700 text-zinc-500 dark:text-zinc-400 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-colors group-hover:bg-accent group-hover:text-white">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
                         </div>
-                        <h4 class="font-bold text-lg leading-tight">Megalogic</h4>
-                        <p class="text-sm font-bold text-accent">Full Stack Developer</p>
-                        <p class="text-xs font-mono text-gray-500 dark:text-gray-400 mt-1">Jan 2024 – Mar 2026</p>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-2xl bg-white dark:bg-zinc-800 border border-zinc-100 dark:border-zinc-700 shadow-sm group-hover:border-accent/50 transition-colors">
+                            <div class="flex flex-col gap-1">
+                                <h4 class="font-bold text-base">Megalogic</h4>
+                                <span class="text-sm font-semibold text-zinc-600 dark:text-zinc-300">Full Stack Developer</span>
+                                <time class="text-xs font-mono text-zinc-500">Jan 2024 – Mar 2026</time>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="relative pl-10">
-                        <div
-                            class="absolute left-0 top-1 w-6 h-6 bg-gray-200/70 dark:bg-zinc-700/70 rounded-full flex items-center justify-center">
-                            <div class="w-3 h-3 bg-gray-500 rounded-full"></div>
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white dark:border-zinc-900 bg-zinc-200 dark:bg-zinc-700 text-zinc-500 dark:text-zinc-400 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-colors group-hover:bg-accent group-hover:text-white">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" /></svg>
                         </div>
-                        <h4 class="font-bold text-lg leading-tight">CV Dexza Purnama</h4>
-                        <p class="text-sm font-bold text-gray-600 dark:text-gray-400">Backend Developer</p>
-                        <p class="text-xs font-mono text-gray-500 dark:text-gray-400 mt-1">Aug 2025 – Sep 2025</p>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-2xl bg-white dark:bg-zinc-800 border border-zinc-100 dark:border-zinc-700 shadow-sm group-hover:border-accent/50 transition-colors">
+                            <div class="flex flex-col gap-1">
+                                <h4 class="font-bold text-base">CV Dexza Purnama</h4>
+                                <span class="text-sm font-semibold text-zinc-600 dark:text-zinc-300">Backend Developer</span>
+                                <time class="text-xs font-mono text-zinc-500">Aug 2025 – Sep 2025</time>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
 
-            <div class="bento-item md:col-span-2 glass-card p-6 rounded-2xl">
-                <div class="flex items-center gap-3 mb-4">
-                    <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z">
-                        </path>
-                    </svg>
+            <div x-intersect.once="$el.classList.add('active')" class="reveal delay-100 bento-item md:col-span-2 glass-card p-8 rounded-3xl">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="p-2 bg-secondary/10 text-secondary rounded-lg">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                        </svg>
+                    </div>
                     <h3 class="font-bold text-xl">Education & Honors</h3>
                 </div>
-                <div class="grid sm:grid-cols-2 gap-6">
-                    <div>
-                        <h4 class="font-bold text-lg">Tiga Serangkai University</h4>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">Bachelor of Information Systems</p>
-                        <div
-                            class="inline-block bg-black text-white px-2 py-0.5 text-xs font-bold font-mono mt-2 rounded-sm">
-                            GPA: 3.85 / 4.00
-                        </div>
+                
+                <div class="bg-zinc-50 dark:bg-zinc-800/50 rounded-2xl p-5 mb-5 border border-zinc-100 dark:border-zinc-700">
+                    <h4 class="font-bold text-lg text-zinc-900 dark:text-white">Tiga Serangkai University</h4>
+                    <p class="text-sm font-medium text-zinc-600 dark:text-zinc-400 mt-1">Bachelor of Information Systems</p>
+                    <div class="inline-flex items-center gap-2 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 px-3 py-1 text-xs font-bold font-mono mt-3 rounded-lg text-accent shadow-sm">
+                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        GPA: 3.85 / 4.00
                     </div>
-                    <div class="space-y-3">
-                        <div class="flex items-start gap-2">
-                            <span class="text-xl mt-[-2px]">🏆</span>
-                            <div>
-                                <p class="font-bold text-sm">Distinction Graduate</p>
-                                <p class="text-xs text-gray-500 dark:text-gray-400">Bangkit Academy 2023 by Google</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-2">
-                            <span class="text-xl mt-[-2px]">🥉</span>
-                            <div>
-                                <p class="font-bold text-sm">3rd Place</p>
-                                <p class="text-xs text-gray-500 dark:text-gray-400">Student Competency Competition (LKS)
-                                </p>
-                            </div>
-                        </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-zinc-50 dark:bg-zinc-800/50 p-4 rounded-2xl border border-zinc-100 dark:border-zinc-700">
+                        <div class="text-2xl mb-2">🏆</div>
+                        <p class="font-bold text-sm text-zinc-900 dark:text-white">Distinction Graduate</p>
+                        <p class="text-xs text-zinc-500 mt-1">Bangkit Academy '23</p>
+                    </div>
+                    <div class="bg-zinc-50 dark:bg-zinc-800/50 p-4 rounded-2xl border border-zinc-100 dark:border-zinc-700">
+                        <div class="text-2xl mb-2">🥉</div>
+                        <p class="font-bold text-sm text-zinc-900 dark:text-white">3rd Place</p>
+                        <p class="text-xs text-zinc-500 mt-1">Student Competency (LKS)</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="services" class="mt-24">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl md:text-5xl font-extrabold">Layanan Saya</h2>
-                <p class="mt-2 font-mono text-sm text-gray-500 dark:text-gray-400">Dua dunia, satu orang - business process dan IT.</p>
+        <section id="services" class="mt-32">
+            <div x-intersect.once="$el.classList.add('active')" class="reveal text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight">Layanan Saya</h2>
+                <p class="mt-4 font-mono text-sm text-zinc-500 dark:text-zinc-400">Dua dunia, satu orang - business process dan IT.</p>
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bento-item glass-card p-8 rounded-2xl text-center">
-                    <div class="inline-block bg-accent/20 text-accent p-4 rounded-full mb-4">
+            <div class="grid md:grid-cols-3 gap-6">
+                <div x-intersect.once="$el.classList.add('active')" class="reveal bento-item glass-card p-8 rounded-3xl text-center group">
+                    <div class="mx-auto w-16 h-16 bg-accent/10 text-accent rounded-2xl flex items-center justify-center mb-6 transform group-hover:-translate-y-2 group-hover:rotate-6 transition-all duration-300">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M8 9l4-4 4 4m0 6l-4 4-4-4"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Backend Development</h3>
-                    <p class="text-gray-600 dark:text-gray-400">Membangun REST API yang handal, sistem pelaporan otomatis, dan solusi backend yang berdampak langsung pada efisiensi operasional bisnis.</p>
+                    <h3 class="text-xl font-bold mb-3 text-zinc-900 dark:text-white">Backend Development</h3>
+                    <p class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">Membangun REST API yang handal, sistem pelaporan otomatis, dan solusi backend yang berdampak langsung pada efisiensi operasional bisnis.</p>
                 </div>
-                <div class="bento-item glass-card p-8 rounded-2xl text-center">
-                    <div class="inline-block bg-secondary/20 text-secondary p-4 rounded-full mb-4">
+                
+                <div x-intersect.once="$el.classList.add('active')" class="reveal delay-100 bento-item glass-card p-8 rounded-3xl text-center group">
+                    <div class="mx-auto w-16 h-16 bg-secondary/10 text-secondary rounded-2xl flex items-center justify-center mb-6 transform group-hover:-translate-y-2 group-hover:-rotate-6 transition-all duration-300">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Business Process Management</h3>
-                    <p class="text-gray-600 dark:text-gray-400">Memetakan, mendokumentasikan, dan menstandardisasi alur bisnis (P2P, O2C, R2R, FA) agar siap diimplementasikan di sistem ERP.</p>
+                    <h3 class="text-xl font-bold mb-3 text-zinc-900 dark:text-white">Business Process</h3>
+                    <p class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">Memetakan, mendokumentasikan, dan menstandardisasi alur bisnis (P2P, O2C, R2R, FA) agar siap diimplementasikan di sistem ERP.</p>
                 </div>
-                <div class="bento-item glass-card p-8 rounded-2xl text-center">
-                    <div class="inline-block bg-purple-500/20 text-purple-500 p-4 rounded-full mb-4">
+                
+                <div x-intersect.once="$el.classList.add('active')" class="reveal delay-200 bento-item glass-card p-8 rounded-3xl text-center group">
+                    <div class="mx-auto w-16 h-16 bg-emerald-500/10 text-emerald-500 rounded-2xl flex items-center justify-center mb-6 transform group-hover:-translate-y-2 group-hover:rotate-6 transition-all duration-300">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 7v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M8 7V5c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2v2"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V5c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2v2"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Process & System Integration</h3>
-                    <p class="text-gray-600 dark:text-gray-400">Menjembatani kebutuhan bisnis dengan implementasi sistem - dari analisis alur kerja lintas divisi hingga koordinasi migrasi ERP bersama konsultan dan vendor.</p>
+                    <h3 class="text-xl font-bold mb-3 text-zinc-900 dark:text-white">System Integration</h3>
+                    <p class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">Menjembatani kebutuhan bisnis dengan implementasi sistem - dari analisis alur lintas divisi hingga koordinasi migrasi ERP.</p>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="mt-24">
-            <div
-                class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 border-b-2 border-black/5 dark:border-white/5 pb-6">
+        <section id="projects" class="mt-32">
+            <div x-intersect.once="$el.classList.add('active')" class="reveal flex flex-col md:flex-row justify-between items-end mb-12 gap-6 border-b border-zinc-200 dark:border-zinc-800 pb-8">
                 <div>
-                    <h2 class="text-4xl md:text-5xl font-extrabold">
-                        Portfolio
-                    </h2>
-                    <p class="mt-2 font-mono text-sm text-gray-500 dark:text-gray-400">20+ Projects. From ERP migration to backend APIs - here are the highlights.</p>
+                    <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight">Portfolio</h2>
+                    <p class="mt-4 font-mono text-sm text-zinc-500 dark:text-zinc-400">20+ Projects. From ERP migration to backend APIs.</p>
                 </div>
 
                 <div class="flex flex-wrap gap-2">
                     <button @click="filterTag = 'all'"
-                        :class="filterTag === 'all' ? 'bg-black text-white dark:bg-white dark:text-black' : 'bg-transparent hover:bg-gray-200/50 dark:hover:bg-zinc-800/50'"
-                        class="px-4 py-2 border border-black/10 dark:border-white/10 rounded-lg font-bold text-sm transition">All</button>
-                    <template x-for="tag in uniqueTags">
+                        :class="filterTag === 'all' ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900' : 'bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800'"
+                        class="px-5 py-2 border border-zinc-200 dark:border-zinc-700 rounded-xl font-bold text-sm transition-colors shadow-sm">All</button>
+                    <template x-for="tag in uniqueTags" :key="tag">
                         <button @click="filterTag = tag"
-                            :class="filterTag === tag ? 'bg-accent text-white border-accent' : 'bg-transparent hover:bg-gray-200/50 dark:hover:bg-zinc-800/50 border-black/10 dark:border-white/10'"
-                            class="px-4 py-2 border rounded-lg font-bold text-sm transition" x-text="tag"></button>
+                            :class="filterTag === tag ? 'bg-accent text-white border-accent' : 'bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 border-zinc-200 dark:border-zinc-700'"
+                            class="px-5 py-2 border rounded-xl font-bold text-sm transition-colors shadow-sm" x-text="tag"></button>
                     </template>
                 </div>
             </div>
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <template x-for="project in filteredProjects" :key="project.id">
-                    <div class="bento-item glass-card flex flex-col h-full overflow-hidden rounded-2xl">
-
-                        <div class="p-6 flex flex-col flex-grow">
-                            <div class="flex justify-between items-start mb-4">
-                                <h3 class="text-xl font-extrabold leading-tight" x-text="project.title"></h3>
-                                <span class="font-mono text-xs font-bold text-gray-400 dark:text-gray-500"
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <template x-for="(project, index) in filteredProjects" :key="project.id">
+                    <div x-intersect.once="$el.classList.add('active')" class="reveal glass-card flex flex-col h-full overflow-hidden rounded-3xl group" :style="`transition-delay: ${(index % 3) * 100}ms`">
+                        <div class="p-8 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-6">
+                                <h3 class="text-xl font-bold leading-tight text-zinc-900 dark:text-white group-hover:text-accent transition-colors" x-text="project.title"></h3>
+                                <span class="font-mono text-[10px] font-bold text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded-md"
                                     x-text="`PRJ-${project.id.toString().padStart(2, '0')}`"></span>
                             </div>
 
-                            <p class="text-sm text-gray-600 dark:text-gray-400 mb-6 flex-grow leading-relaxed font-medium"
+                            <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-8 flex-grow leading-relaxed"
                                 x-text="project.description"></p>
 
-                            <div class="flex flex-wrap gap-2 mb-6">
+                            <div class="flex flex-wrap gap-2 mb-8">
                                 <template x-for="tag in project.tags">
-                                    <span
-                                        class="px-2 py-1 bg-gray-100/50 dark:bg-zinc-700/50 text-xs font-bold rounded-md"
-                                        x-text="tag"></span>
+                                    <span class="px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-[11px] font-bold text-zinc-600 dark:text-zinc-400 rounded-md" x-text="tag"></span>
                                 </template>
                             </div>
 
                             <a :href="project.link" target="_blank"
-                                class="block w-full mt-auto py-3 text-center bg-gray-50/50 dark:bg-zinc-700/50 font-bold hover:bg-accent hover:text-white transition-colors group rounded-lg">
-                                View Project <span class="group-hover:ml-1 transition-all inline-block">-></span>
+                                class="inline-flex items-center justify-center w-full mt-auto py-3.5 text-sm bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold hover:bg-accent dark:hover:bg-accent hover:text-white transition-colors rounded-xl gap-2">
+                                View Project 
+                                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                             </a>
                         </div>
                     </div>
@@ -378,80 +471,53 @@
             </div>
         </section>
 
-        <!-- <section id="testimonials" class="mt-24" x-data="{ activeTestimonial: 0 }">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl md:text-5xl font-extrabold">Testimoni</h2>
-                <p class="mt-2 font-mono text-sm text-gray-500 dark:text-gray-400">Apa kata mereka yang pernah bekerja
-                    sama dengan saya.</p>
-            </div>
-            <div class="relative max-w-3xl mx-auto">
-                <div class="bento-item glass-card p-8 sm:p-12 rounded-2xl text-center transition-all duration-300">
-                    <template x-for="(testimonial, index) in testimonials" :key="index">
-                        <div x-show="activeTestimonial === index" class="flex flex-col items-center">
-                            <p class="text-xl italic font-medium mb-6" x-text="`“${testimonial.quote}”`"></p>
-                            <p class="font-bold text-lg" x-text="testimonial.author"></p>
-                            <p class="text-sm text-gray-500" x-text="testimonial.company"></p>
-                        </div>
-                    </template>
+        <section id="contact" x-intersect.once="$el.classList.add('active')" class="reveal mt-32">
+            <div class="bg-gradient-to-br from-accent to-secondary text-white p-12 md:p-20 text-center relative overflow-hidden rounded-[3rem] shadow-2xl shadow-accent/20">
+                <!-- Abstract BG Elements -->
+                <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 opacity-20 pointer-events-none">
+                    <div class="absolute -top-24 -left-24 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+                    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-black rounded-full blur-3xl"></div>
                 </div>
-                <button @click="activeTestimonial = (activeTestimonial - 1 + testimonials.length) % testimonials.length"
-                    class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 p-2 rounded-full bg-white/50 dark:bg-zinc-800/50 hover:bg-white dark:hover:bg-zinc-700 transition shadow-md">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
-                        </path>
-                    </svg>
-                </button>
-                <button @click="activeTestimonial = (activeTestimonial + 1) % testimonials.length"
-                    class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 p-2 rounded-full bg-white/50 dark:bg-zinc-800/50 hover:bg-white dark:hover:bg-zinc-700 transition shadow-md">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </button>
-            </div>
-        </section> -->
 
-        <section id="contact"
-            class="bento-item bg-gradient-to-br from-accent to-secondary text-white p-10 md:p-16 text-center relative overflow-hidden rounded-2xl mt-24">
-            <div class="relative z-10">
-                <h2 class="text-3xl md:text-5xl font-extrabold mb-6 uppercase leading-tight">
-                    Got a process to fix? <br> Or a system to build?
-                </h2>
-                <p class="text-lg md:text-xl font-medium max-w-2xl mx-auto mb-10 opacity-90">
-                    Open for collaboration on Business Process projects, Backend Development, and anything that sits at the intersection of the two.
-                </p>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="mailto:ramandhika.ilham@gmail.com"
-                        class="rounded-lg bg-white text-black px-8 py-4 font-bold text-lg hover:bg-gray-200 transition-colors transform hover:scale-105">
-                        Email Me
-                    </a>
-                    <a href="https://github.com/ramandhika" target="_blank"
-                        class="rounded-lg bg-black/20 text-white px-8 py-4 font-bold text-lg border border-white/20 hover:bg-black/40 transition-colors transform hover:scale-105">
-                        GitHub Profile
-                    </a>
+                <div class="relative z-10">
+                    <h2 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight leading-tight">
+                        Got a process to fix? <br> Or a system to build?
+                    </h2>
+                    <p class="text-lg md:text-xl font-medium max-w-2xl mx-auto mb-10 text-white/90">
+                        Open for collaboration on Business Process projects, Backend Development, and anything that sits at the intersection of the two.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="mailto:ramandhika.ilham@gmail.com"
+                            class="rounded-2xl bg-white text-zinc-900 px-8 py-4 font-bold text-lg hover:bg-zinc-100 transition-transform active:scale-95 shadow-xl">
+                            Email Me
+                        </a>
+                        <a href="https://github.com/ramandhika" target="_blank"
+                            class="rounded-2xl bg-black/20 text-white px-8 py-4 font-bold text-lg border border-white/20 hover:bg-black/30 transition-transform active:scale-95 backdrop-blur-sm">
+                            GitHub Profile
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="border-t-2 border-black/5 dark:border-white/5 bg-transparent py-12 mt-20">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+    <footer class="border-t border-zinc-200 dark:border-zinc-800 mt-24 py-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="text-center md:text-left">
-                <p class="font-bold text-lg">Ramandhika Ilham Pratama</p>
-                <p class="font-mono text-sm opacity-60">Business Process & IT Professional</p>
+                <p class="font-bold text-lg text-zinc-900 dark:text-white">Ramandhika Ilham Pratama</p>
+                <p class="font-mono text-sm text-zinc-500 mt-1">Business Process & IT Professional</p>
             </div>
-            <p class="font-mono text-sm text-center opacity-60">
-                © <span x-text="new Date().getFullYear()"></span>. Redesigned with Interactive Glassmorphism.
+            <p class="font-mono text-sm text-center text-zinc-400">
+                © <span x-text="new Date().getFullYear()"></span>. Fast & Fresh.
             </p>
         </div>
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
     <script>
         function app() {
             return {
                 darkMode: true,
-                mobileMenu: false,
                 filterTag: 'all',
                 projects: [
                     {
@@ -518,109 +584,52 @@
                         link: 'https://github.com/ramandhika'
                     }
                 ],
-                testimonials: [
-                    {
-                        quote: "Ramandhika has a remarkable ability to transform complex requirements into elegant, functional, and highly scalable backend systems. A true asset to any engineering team.",
-                        author: "Placeholder Name",
-                        company: "CEO at a Tech Company"
-                    },
-                    {
-                        quote: "Working with Ramandhika was a breeze. His deep understanding of business processes helped us streamline our operations and significantly improve efficiency.",
-                        author: "Another Placeholder",
-                        company: "Project Manager"
-                    }
-                ],
 
                 init() {
                     this.setupDarkMode();
-                    this.setupGsapAnimations();
-                    this.setupInteractiveAurora();
-                    this.setup3DTilt();
+                    this.setupThrottledAurora();
                 },
 
                 setupDarkMode() {
-                    if (localStorage.getItem('darkMode') === 'true') {
+                    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                         this.darkMode = true;
                         document.documentElement.classList.add('dark');
+                    } else {
+                        this.darkMode = false;
+                        document.documentElement.classList.remove('dark');
+                    }
+                },
+                
+                toggleDarkMode() {
+                    this.darkMode = !this.darkMode;
+                    if (this.darkMode) {
+                        document.documentElement.classList.add('dark');
+                        localStorage.theme = 'dark';
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        localStorage.theme = 'light';
                     }
                 },
 
-                setupGsapAnimations() {
-                    this.$nextTick(() => {
-                        gsap.registerPlugin(ScrollTrigger);
-                        gsap.utils.toArray('.bento-item').forEach((item, index) => {
-                            gsap.from(item, {
-                                opacity: 0,
-                                y: 50,
-                                scale: 0.95,
-                                duration: 0.5,
-                                delay: index * 0.05,
-                                scrollTrigger: {
-                                    trigger: item,
-                                    start: 'top 90%',
-                                    toggleActions: 'play none none none',
-                                }
-                            });
-                        });
-                    });
-                },
-
-                setupInteractiveAurora() {
-                    const aurora1 = document.querySelector('.aurora-1');
-                    const aurora2 = document.querySelector('.aurora-2');
+                setupThrottledAurora() {
+                    let rafId = null;
+                    let targetX = window.innerWidth / 2;
+                    let targetY = window.innerHeight / 2;
+                    
                     window.addEventListener('mousemove', (e) => {
-                        const { clientX, clientY } = e;
-                        gsap.to(aurora1, {
-                            x: clientX * 0.1,
-                            y: clientY * 0.1,
-                            duration: 1
-                        });
-                        gsap.to(aurora2, {
-                            x: clientX * -0.05,
-                            y: clientY * -0.05,
-                            duration: 1
-                        });
-                    });
-                },
-
-                setup3DTilt() {
-                    this.$nextTick(() => {
-                        const items = document.querySelectorAll('.bento-item');
-                        items.forEach(item => {
-                            item.addEventListener('mousemove', (e) => {
-                                const rect = item.getBoundingClientRect();
-                                const x = e.clientX - rect.left;
-                                const y = e.clientY - rect.top;
-                                const centerX = rect.width / 2;
-                                const centerY = rect.height / 2;
-                                const rotateX = (y - centerY) / 20;
-                                const rotateY = (centerX - x) / 20;
-
-                                gsap.to(item, {
-                                    rotationX: rotateX,
-                                    rotationY: rotateY,
-                                    scale: 1.03,
-                                    duration: 0.5,
-                                    ease: 'power2.out'
-                                });
+                        targetX = e.clientX;
+                        targetY = e.clientY;
+                        
+                        if (!rafId) {
+                            rafId = requestAnimationFrame(() => {
+                                if (this.$refs.aurora1 && this.$refs.aurora2) {
+                                    this.$refs.aurora1.style.transform = `translate(${targetX * 0.05}px, ${targetY * 0.05}px)`;
+                                    this.$refs.aurora2.style.transform = `translate(${targetX * -0.05}px, ${targetY * -0.05}px)`;
+                                }
+                                rafId = null;
                             });
-                            item.addEventListener('mouseleave', () => {
-                                gsap.to(item, {
-                                    rotationX: 0,
-                                    rotationY: 0,
-                                    scale: 1,
-                                    duration: 0.5,
-                                    ease: 'power2.out'
-                                });
-                            });
-                        });
-                    });
-                },
-
-                toggleDarkMode() {
-                    this.darkMode = !this.darkMode;
-                    document.documentElement.classList.toggle('dark');
-                    localStorage.setItem('darkMode', this.darkMode);
+                        }
+                    }, { passive: true });
                 },
 
                 get uniqueTags() {
