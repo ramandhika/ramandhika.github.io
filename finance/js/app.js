@@ -30,31 +30,30 @@ const App = (() => {
   }
   function clearPins() {
     $$('.pin-input').forEach(i => { i.value = ''; i.classList.remove('filled'); });
-    $$('.pin-input')[0]?.focus();
   }
   function clearPinsIn(sel) {
     $$(sel + ' .pin-input').forEach(i => { i.value = ''; i.classList.remove('filled'); });
   }
   function setupPinInputs() {
-    document.addEventListener('input', e => {
+    document.addEventListener('beforeinput', e => {
       if (!e.target.classList.contains('pin-input')) return;
-      e.target.value = e.target.value.replace(/[^0-9]/g, '').slice(-1);
-      if (e.target.value) {
+      if (e.inputType === 'insertText' || e.inputType === 'insertReplacementText') {
+        if (!e.data || !/^[0-9]$/.test(e.data)) { e.preventDefault(); return; }
+        e.preventDefault();
+        e.target.value = e.data;
         e.target.classList.add('filled');
         const next = e.target.nextElementSibling;
         if (next && next.classList.contains('pin-input')) next.focus();
-      } else {
-        e.target.classList.remove('filled');
-      }
-    });
-    document.addEventListener('keydown', e => {
-      if (!e.target.classList.contains('pin-input')) return;
-      if (e.key === 'Backspace' && !e.target.value) {
-        const prev = e.target.previousElementSibling;
-        if (prev && prev.classList.contains('pin-input')) { prev.focus(); prev.value = ''; prev.classList.remove('filled'); }
+      } else if (e.inputType === 'deleteContentBackward') {
+        if (!e.target.value) {
+          const prev = e.target.previousElementSibling;
+          if (prev && prev.classList.contains('pin-input')) { prev.focus(); prev.value = ''; prev.classList.remove('filled'); }
+          e.preventDefault();
+        }
       }
     });
     document.addEventListener('paste', e => {
+      if (!e.target.classList.contains('pin-input')) return;
       const data = (e.clipboardData || window.clipboardData).getData('text').replace(/[^0-9]/g, '');
       if (data.length >= 6) {
         e.preventDefault();
@@ -481,7 +480,7 @@ const App = (() => {
     </div>`);
   }
 
-  function pinInputsHtml() { return Array(6).fill(0).map(() => '<input type="tel" maxlength="1" class="pin-input" inputmode="numeric" pattern="[0-9]">').join(''); }
+  function pinInputsHtml() { return Array(6).fill(0).map(() => '<input type="text" maxlength="1" inputmode="numeric" autocomplete="one-time-code" autocorrect="off" autocapitalize="off" class="pin-input">').join(''); }
 
   async function doChangePin() {
     const oldPin = pinFromSel('#pin-old');
